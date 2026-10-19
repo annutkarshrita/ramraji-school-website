@@ -8,43 +8,81 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#10345d;background:#fffaf4}
-.topbar{background:#0b3975;color:white;padding:12px 4%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.school-header{background:linear-gradient(110deg,#fffaf0,#fff0dc);padding:25px 4%;display:grid;grid-template-columns:150px 1fr 200px;align-items:center;gap:20px;text-align:center}
-.school-logo{width:130px;height:130px;object-fit:contain;border:3px solid #efa21a;border-radius:50%;padding:8px;background:white}
-.school-name{font-size:clamp(22px,3vw,42px);color:#c51e1e;margin:0 0 8px}
-.school-address{font-size:clamp(18px,2vw,30px);margin:0;color:#073b78}
-.motto{color:#a52b0c;font-weight:bold;line-height:1.7}
-.tabs{display:grid;grid-template-columns:repeat(9,minmax(100px,1fr));gap:10px;padding:15px 20px;background:#fff8ef}
-.tab{border:1px solid #f0e1d2;border-radius:12px;background:white;padding:14px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008}
-.tab .emoji{display:block;font-size:25px;margin-bottom:8px}
-.tab strong{display:block;margin-bottom:5px}
-.tab small{color:#68758b}
+html{width:100%;min-width:0;scroll-behavior:smooth}
+body{margin:0;width:100%;min-width:0;overflow-x:hidden;font-family:Arial,sans-serif;color:#10345d;background:#fffaf4}
+img{max-width:100%}
+.topbar{background:#0b3975;color:white;padding:10px 4%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;font-size:14px}
+.topbar a{color:white;white-space:nowrap}
+.school-header{background:linear-gradient(110deg,#fffaf0,#fff0dc);padding:24px 3%;display:grid;grid-template-columns:140px minmax(0,1fr) 180px;align-items:center;gap:18px;text-align:center}
+.school-logo{display:block;width:125px;height:125px;max-width:100%;object-fit:contain;border:3px solid #efa21a;border-radius:50%;padding:7px;background:white;margin:auto}
+.school-name{font-size:clamp(23px,2.7vw,42px);line-height:1.18;color:#c51e1e;margin:0 0 8px;overflow-wrap:anywhere}
+.school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
+.school-header p{line-height:1.5;margin:12px 0 0}
+.motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
+.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
+.tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
+.tab .emoji{display:block;font-size:24px;margin-bottom:7px}
+.tab strong{display:block;margin-bottom:5px;font-size:14px;line-height:1.25}
+.tab small{display:block;color:#68758b;font-size:11px;line-height:1.3}
 .tab.active{border:2px solid #ff6500;background:#fff2e5;box-shadow:0 0 0 2px #ffb07855}
-main{padding:24px;min-height:320px}
-.panel{background:white;border:1px solid #f0e1d2;border-radius:14px;padding:24px;margin-bottom:18px}
-.panel h2,.panel h3{margin-top:0}
-.hero{position:relative;overflow:hidden;border-radius:14px;height:900px;background:#eee}
-.hero img{width:100%;height:100%;object-fit:contain;display:none}
+main{padding:22px;min-height:320px;min-width:0}
+.panel{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:22px;margin-bottom:18px;overflow-wrap:anywhere}
+.panel h2,.panel h3{margin-top:0;line-height:1.3}
+.panel p,.panel li{line-height:1.7}
+.hero{position:relative;overflow:hidden;border-radius:14px;min-height:280px;height:clamp(300px,48vw,620px);background:#eee}
+.hero img{width:100%;height:100%;position:absolute;inset:0;object-fit:contain;display:none}
 .hero img.active{display:block}
-.hero-caption{position:absolute;bottom:0;left:0;right:0;padding:20px;color:white;background:linear-gradient(transparent,#000b);font-size:24px;font-weight:bold}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.gallery img{width:100%;height:200px;object-fit:cover;border-radius:12px;border:1px solid #eee}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;margin:6px 0 14px;font:inherit}
-label{font-weight:bold}
+.hero-caption{position:absolute;bottom:0;left:0;right:0;padding:18px 20px;color:white;background:linear-gradient(transparent,#000b);font-size:clamp(18px,2vw,25px);font-weight:bold;line-height:1.35}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px}
+.gallery img{display:block;width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid #eee}
+input,select,textarea{display:block;width:100%;max-width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;margin:6px 0 14px;font:inherit;background:#fff}
+label{font-weight:bold;line-height:1.5}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
-button.submit{background:#ff6900;color:white;border:0;border-radius:7px;padding:12px 24px;font-weight:bold;cursor:pointer}
-footer{background:#092f61;color:white;padding:25px 4%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
-@media(max-width:900px){
- .school-header{grid-template-columns:1fr}
- .school-logo{margin:auto}
- .tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+button.submit{background:#ff6900;color:white;border:0;border-radius:7px;padding:12px 24px;font-weight:bold;cursor:pointer;max-width:100%}
+footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;line-height:1.6}
+/* About Us leadership cards */
+.leaders-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}
+.leader-card{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:20px;text-align:center;overflow-wrap:anywhere}
+.leader-photo{display:block;width:135px;height:135px;max-width:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #efa21a;margin:0 auto 14px;background:#fffaf4}
+@media(max-width:1200px){
+ .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .school-header{grid-template-columns:110px minmax(0,1fr) 150px;gap:12px}
+ .school-logo{width:105px;height:105px}
+}
+@media(max-width:800px){
+ .school-header{grid-template-columns:1fr;gap:12px;padding:20px 16px}
+ .school-logo{width:100px;height:100px}
+ .motto br{display:none}
+ .tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px}
+ main{padding:14px}
+ .panel{padding:17px}
+ .hero{height:clamp(250px,55vw,430px);min-height:250px}
+ footer{gap:16px}
 }
 @media(max-width:520px){
- .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}
- main{padding:12px}
- .form-grid{grid-template-columns:1fr}
- .hero{height:240px}
+ .topbar{justify-content:center;text-align:center;padding:10px 12px;gap:8px 14px;font-size:13px}
+ .school-header{padding:18px 12px}
+ .school-name{font-size:clamp(22px,6.2vw,31px)}
+ .school-address{font-size:clamp(17px,4.7vw,23px)}
+ .school-header p{font-size:14px}
+ .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px;gap:8px}
+ .tab{min-height:88px;padding:10px 4px}
+ .tab .emoji{font-size:22px;margin-bottom:5px}
+ .tab strong{font-size:13px}
+ .tab small{font-size:10px}
+ main{padding:10px}
+ .panel{padding:14px;border-radius:11px;margin-bottom:12px}
+ .form-grid,.leaders-section{grid-template-columns:minmax(0,1fr)}
+ .hero{height:clamp(220px,68vw,360px);min-height:220px}
+ .hero-caption{padding:12px;font-size:18px}
+ .gallery{grid-template-columns:minmax(0,1fr)}
+ .gallery img{height:auto;max-height:320px;object-fit:contain;background:#f7f7f7}
+ footer{padding:20px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;font-size:14px}
+}
+@media(max-width:360px){
+ .tabs{grid-template-columns:minmax(0,1fr)}
+ .tab{min-height:70px}
+ .topbar{font-size:12px}
 }
 </style>
 </head>
@@ -95,15 +133,18 @@ const pages = {
 home: `
   <section class="panel">
     <div class="hero">
-      <img class="active" src="${photo("home-slide-1.jpg")}" alt="School campus">
-      <img src="${photo("home-slide-2.jpg")}" alt="School activities">
-      <img src="${photo("home-slide-3.jpg")}" alt="School students">
+      <img class="active" data-caption="Welcome to Our School" src="${photo("home-slide-1.jpg")}" alt="School campus">
+      <img data-caption="School Activities" src="${photo("home-slide-2.jpg")}" alt="School activities">
+      <img data-caption="Our Students, Our Pride" src="${photo("home-slide-3.jpg")}" alt="School students">
       <div class="hero-caption">Welcome to Our School</div>
     </div>
+  </section>
       `,
 about: `
-  <section class="panel"><h3>Principal’s Message</h3><p>Our aim is to empower students with education, values, Indian culture and moral principles, helping them become aware, self-reliant citizens who actively contribute to nation building.</p><b>Renu Singh · Principal</b></section>
-  <section class="panel"><h3>Manager’s Message</h3><p>Add the approved message from the school manager here before publishing.</p><b>School Manager</b></section>
+  <section class="leaders-section">
+    <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>School Manager</h3><p>Add the approved message from the school manager here before publishing.</p><b>School Manager</b></article>
+    <article class="leader-card"><img class="leader-photo" src="${photo("principal.jpg")}" alt="Principal Renu Singh"><h3>Principal’s Message</h3><p>Our aim is to empower students with education, values, Indian culture and moral principles, helping them become aware, self-reliant citizens who actively contribute to nation building.</p><b>Renu Singh · Principal</b></article>
+  </section>
   <section class="panel"><h3>About the School</h3><p>Ramraji Saraswati Balika Vidya Mandir Inter College is located in Shahganj, Sultanpur, Uttar Pradesh. The school aims to support students through education, discipline, cultural values, confidence and personal development.</p></section>
 `,
 admissions: `
@@ -192,13 +233,16 @@ function showPage(page) {
   document.getElementById("content").innerHTML = pages[page] || pages.home;
 
   clearInterval(slideTimer);
-  const slides = document.querySelectorAll(".hero img");
-  if (slides.length > 1) {
+  const slides = Array.from(document.querySelectorAll(".hero img"));
+  const caption = document.querySelector(".hero-caption");
+  if (slides.length > 1 && caption) {
     let current = 0;
+    caption.textContent = slides[0].dataset.caption || slides[0].alt || "Welcome to Our School";
     slideTimer = setInterval(() => {
       slides[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].classList.add("active");
+      caption.textContent = slides[current].dataset.caption || slides[current].alt || "Welcome to Our School";
     }, 3500);
   }
 }
