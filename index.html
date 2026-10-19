@@ -1,11 +1,11 @@
-
+a
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ramraji Saraswati Balika Vidya Mandir Inter College</title>
-
+a
 <style>
 *{box-sizing:border-box}
 html{width:100%;min-width:0;scroll-behavior:smooth}
@@ -19,7 +19,7 @@ img{max-width:100%}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
-.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
+.nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
 .tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
 .tab .emoji{display:block;font-size:24px;margin-bottom:7px}
 .tab strong{display:block;margin-bottom:5px;font-size:14px;line-height:1.25}
@@ -53,7 +53,11 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
  .school-header{grid-template-columns:1fr;gap:12px;padding:20px 16px}
  .school-logo{width:100px;height:100px}
  .motto br{display:none}
- .tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px}
+ .nav-wrap{padding:10px 12px}
+ .menu-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin-left:auto;width:100%;max-width:100%;padding:12px 15px;border:1px solid #d9e2ef;border-radius:10px;background:#0b3975;color:white;font-size:16px;font-weight:bold;cursor:pointer}
+ .menu-toggle .hamburger{font-size:23px;line-height:1}
+ .tabs{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px 0 0}
+ .tabs.menu-open{display:grid}
  main{padding:14px}
  .panel{padding:17px}
  .hero{height:clamp(250px,55vw,430px);min-height:250px}
@@ -65,7 +69,7 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
  .school-name{font-size:clamp(22px,6.2vw,31px)}
  .school-address{font-size:clamp(17px,4.7vw,23px)}
  .school-header p{font-size:14px}
- .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px;gap:8px}
+ .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 0 0;gap:8px}
  .tab{min-height:88px;padding:10px 4px}
  .tab .emoji{font-size:22px;margin-bottom:5px}
  .tab strong{font-size:13px}
@@ -106,6 +110,8 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
   <div class="motto">“A strong step towards<br> values, education and<br> nation building”</div>
 </header>
 
+<div class="nav-wrap">
+<button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="tabs"><span class="hamburger" aria-hidden="true">☰</span><span>Menu</span></button>
 <nav class="tabs" id="tabs">
   <button class="tab active" data-page="home"><span class="emoji">🏠</span><strong>Home</strong><small>Welcome to our school</small></button>
   <button class="tab" data-page="about"><span class="emoji">🏫</span><strong>About Us</strong><small>Our school & leaders</small></button>
@@ -117,6 +123,7 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
   <button class="tab" data-page="contact"><span class="emoji">📞</span><strong>Contact Us</strong><small>Get in touch</small></button>
   <button class="tab" data-page="alumni"><span class="emoji">🎓</span><strong>Alumni</strong><small>Former students</small></button>
 </nav>
+</div>
 
 <main id="content"></main>
 
@@ -142,7 +149,7 @@ home: `
       `,
 about: `
   <section class="leaders-section">
-    <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>Manager's Massage</h3><p>Add the approved message from the school manager here before publishing.</p><b>Dr Tulika Gupta</b></article>
+    <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>School Manager</h3><p>Add the approved message from the school manager here before publishing.</p><b>School Manager</b></article>
     <article class="leader-card"><img class="leader-photo" src="${photo("principal.jpg")}" alt="Principal Renu Singh"><h3>Principal’s Message</h3><p>Our aim is to empower students with education, values, Indian culture and moral principles, helping them become aware, self-reliant citizens who actively contribute to nation building.</p><b>Renu Singh · Principal</b></article>
   </section>
   <section class="panel"><h3>About the School</h3><p>Ramraji Saraswati Balika Vidya Mandir Inter College is located in Shahganj, Sultanpur, Uttar Pradesh. The school aims to support students through education, discipline, cultural values, confidence and personal development.</p></section>
@@ -225,10 +232,25 @@ function demoSubmit(event) {
 
 let slideTimer;
 
+const menuToggle = document.getElementById("menuToggle");
+const tabsNav = document.getElementById("tabs");
+menuToggle.addEventListener("click", () => {
+  const isOpen = tabsNav.classList.toggle("menu-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.querySelector(".hamburger").textContent = isOpen ? "✕" : "☰";
+  menuToggle.querySelector("span:last-child").textContent = isOpen ? "Close Menu" : "Menu";
+});
+
 function showPage(page) {
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.dataset.page === page);
   });
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    tabsNav.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.querySelector(".hamburger").textContent = "☰";
+    menuToggle.querySelector("span:last-child").textContent = "Menu";
+  }
 
   document.getElementById("content").innerHTML = pages[page] || pages.home;
 
