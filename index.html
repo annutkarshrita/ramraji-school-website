@@ -16,13 +16,14 @@ img{max-width:100%}
 .school-name{font-size:clamp(23px,2.7vw,42px);line-height:1.18;color:#c51e1e;margin:0 0 8px;overflow-wrap:anywhere}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
-/* Compact rotating school photo frame below the school name */
-.school-photo-frame{display:block;width:min(500px,100%);max-width:100%;height:145px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
+/* School photo frame with the school name placed directly over the photograph */
+.school-photo-frame{display:block;width:min(720px,100%);max-width:100%;height:220px;margin:0 auto 10px;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018;text-decoration:none}
 .school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
 .school-photo-frame img.active{opacity:1}
+.school-photo-title{position:absolute;z-index:2;top:0;left:0;right:0;margin:0;padding:13px 12px;color:#fff;text-align:center;font-size:clamp(18px,2.2vw,30px);line-height:1.2;text-shadow:0 2px 5px #000;background:linear-gradient(180deg,#062954e8,#0629548c);overflow-wrap:anywhere}
 .school-photo-frame:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
-@media(max-width:800px){.school-photo-frame{width:100%;height:135px}}
-@media(max-width:520px){.school-photo-frame{width:min(100%,450px);height:115px;margin-top:8px}}
+@media(max-width:800px){.school-photo-frame{width:100%;height:200px}.school-photo-title{font-size:clamp(18px,4vw,27px);padding:12px 10px}}
+@media(max-width:520px){.school-photo-frame{width:100%;height:175px;margin-top:0}.school-photo-title{font-size:clamp(17px,5vw,23px);padding:10px 8px}}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
 .nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
 .tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
@@ -35,10 +36,10 @@ main{padding:22px;min-height:320px;min-width:0}
 .panel h2,.panel h3{margin-top:0;line-height:1.3}
 .panel p,.panel li{line-height:1.7}
 .home-feature-grid{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:16px;align-items:stretch;margin-bottom:18px}
-.home-feature-card{min-width:0;background:#fff;border:1px solid #f0e1d2;border-radius:12px;padding:18px;box-shadow:0 3px 10px #00000008;overflow:hidden}
-.home-feature-card h3{margin:0 0 12px;color:#0b3975;font-size:clamp(17px,1.8vw,22px);line-height:1.3}
-.home-feature-card p{font-size:15px;line-height:1.7;margin:0 0 10px}
-.home-flash{position:relative;width:100%;height:205px;overflow:hidden;border:2px solid #efa21a;border-radius:9px;background:#f4eadc}
+.home-feature-card{min-width:0;min-height:370px;background:#fff;border:1px solid #f0e1d2;border-radius:12px;padding:20px;box-shadow:0 3px 10px #00000008;overflow:hidden}
+.home-feature-card h3{margin:0 0 14px;color:#0b3975;font-size:clamp(17px,1.8vw,22px);line-height:1.3}
+.home-feature-card p{font-size:15px;line-height:1.8;margin:0 0 12px}
+.home-flash{position:relative;width:100%;height:300px;overflow:hidden;border:2px solid #efa21a;border-radius:9px;background:#f4eadc}
 .home-flash img{position:absolute;inset:0;display:none;width:100%;height:100%;max-width:100%;object-fit:cover}
 .home-flash img.active{display:block}
 .home-flash-caption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;background:linear-gradient(transparent,#000b);font-size:14px;font-weight:bold;line-height:1.3}
@@ -94,9 +95,9 @@ footer a{color:white;text-decoration:none}
  .school-address{font-size:clamp(17px,4.7vw,23px)}
  .school-header p{font-size:14px}
  .home-feature-grid{grid-template-columns:minmax(0,1fr);gap:12px}
- .home-feature-card{padding:15px}
- .home-feature-card p{font-size:14px}
- .home-flash{height:175px}
+ .home-feature-card{padding:16px;min-height:330px}
+ .home-feature-card p{font-size:14px;line-height:1.75}
+ .home-flash{height:270px}
  .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 0 0;gap:8px}
  .tab{min-height:88px;padding:10px 4px}
  .tab .emoji{font-size:22px;margin-bottom:5px}
@@ -131,8 +132,9 @@ footer a{color:white;text-decoration:none}
     <img class="school-logo" src="assets/photos/school-logo.png" alt="School Logo">
   </div>
   <div>
-    <h1 class="school-name">Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
-    <img class="school-photo active" src="assets/photos/School-Photo-1.jpg" alt="School photo">
+    <a class="school-photo-frame" href="https://drive.google.com/drive/folders/1W8Rb2n_HDu9NUQifH3kloEm6rWwcb8lI" target="_blank" rel="noopener noreferrer" aria-label="Open school photo and video gallery">
+      <img class="school-photo active" src="assets/photos/School-Photo-1.jpg" alt="School photo">
+      <h1 class="school-name school-photo-title">Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
     </a>
     <h2 class="school-address">Shahganj, Sultanpur, Uttar Pradesh</h2>
     <p><b>✦ Knowledge brings humility &nbsp; | &nbsp; Vidya Bharati School ✦</b></p>
