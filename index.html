@@ -17,12 +17,12 @@ img{max-width:100%}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
 /* Compact rotating school photo frame below the school name */
-.school-photo-frame{display:block;width:min(1100px,100%);max-width:100%;height:400px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
+.school-photo-frame{display:block;width:min(500px,100%);max-width:100%;height:145px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
 .school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
 .school-photo-frame img.active{opacity:1}
 .school-photo-frame:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
-@media(max-width:800px){.school-photo-frame{width:100%;height:260px}}
-@media(max-width:520px){.school-photo-frame{width:min(100%,550px);height:150px;margin-top:8px}}
+@media(max-width:800px){.school-photo-frame{width:100%;height:135px}}
+@media(max-width:520px){.school-photo-frame{width:min(100%,450px);height:115px;margin-top:8px}}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
 .nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
 .tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
@@ -34,6 +34,14 @@ main{padding:22px;min-height:320px;min-width:0}
 .panel{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:22px;margin-bottom:18px;overflow-wrap:anywhere}
 .panel h2,.panel h3{margin-top:0;line-height:1.3}
 .panel p,.panel li{line-height:1.7}
+.home-feature-grid{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:16px;align-items:stretch;margin-bottom:18px}
+.home-feature-card{min-width:0;background:#fff;border:1px solid #f0e1d2;border-radius:12px;padding:18px;box-shadow:0 3px 10px #00000008;overflow:hidden}
+.home-feature-card h3{margin:0 0 12px;color:#0b3975;font-size:clamp(17px,1.8vw,22px);line-height:1.3}
+.home-feature-card p{font-size:15px;line-height:1.7;margin:0 0 10px}
+.home-flash{position:relative;width:100%;height:205px;overflow:hidden;border:2px solid #efa21a;border-radius:9px;background:#f4eadc}
+.home-flash img{position:absolute;inset:0;display:none;width:100%;height:100%;max-width:100%;object-fit:cover}
+.home-flash img.active{display:block}
+.home-flash-caption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;background:linear-gradient(transparent,#000b);font-size:14px;font-weight:bold;line-height:1.3}
 .hero{position:relative;overflow:hidden;border-radius:14px;min-height:280px;height:clamp(300px,48vw,620px);background:#eee}
 .hero img{width:100%;height:100%;position:absolute;inset:0;object-fit:contain;display:none}
 .hero img.active{display:block}
@@ -85,6 +93,10 @@ footer a{color:white;text-decoration:none}
  .school-name{font-size:clamp(22px,6.2vw,31px)}
  .school-address{font-size:clamp(17px,4.7vw,23px)}
  .school-header p{font-size:14px}
+ .home-feature-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+ .home-feature-card{padding:15px}
+ .home-feature-card p{font-size:14px}
+ .home-flash{height:175px}
  .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 0 0;gap:8px}
  .tab{min-height:88px;padding:10px 4px}
  .tab .emoji{font-size:22px;margin-bottom:5px}
@@ -157,15 +169,23 @@ const photo = name => "assets/photos/" + name;
 
 const pages = {
 home: `
-  <section class="panel">
-    <div class="hero">
-      <img class="active" data-caption="Welcome to Our School" src="${photo("home-slide-1.jpg")}" alt="School campus">
-      <img data-caption="School Activities" src="${photo("home-slide-2.jpg")}" alt="School activities">
-      <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="School students">
-      <div class="hero-caption">Welcome to Our School</div>
-    </div>
-  </section>
-      `,
+  <section class="home-feature-grid" aria-label="School introduction and photos">
+    <article class="home-feature-card">
+      <h3>About Our School</h3>
+      <p>Ramraji Saraswati Balika Vidya Mandir Inter College is located in Shahganj, Sultanpur, Uttar Pradesh.</p>
+      <p>Our school aims to support students through education, discipline, cultural values, confidence and personal development. We believe that education, values and a caring environment help every student build a brighter future.</p>
+    </article>
+    <article class="home-feature-card">
+      <h3>School Photo Flash</h3>
+      <div class="home-flash" aria-label="Rotating school photographs">
+        <img class="active" data-caption="School Campus" src="${photo("School-Photo-1.jpg")}" alt="School campus">
+        <img data-caption="School Activities" src="${photo("home-slide-1.jpg")}" alt="School activities">
+        <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="Our students">
+        <img data-caption="School Events" src="${photo("home-slide-2.jpg")}" alt="School event">
+        <div class="home-flash-caption">School Campus</div>
+      </div>
+    </article>
+  </section>`,
 about: `
   <section class="leaders-section">
     <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>School Manager</h3><p>Add the approved message from the school manager here before publishing.</p><b>School Manager</b></article>
@@ -253,20 +273,7 @@ function demoSubmit(event) {
 }
 
 let slideTimer;
-let schoolPhotoTimer;
-
-function startSchoolPhotoSlideshow() {
-  const photos = Array.from(document.querySelectorAll(".school-photo"));
-  if (photos.length < 2) return;
-  let current = 0;
-  clearInterval(schoolPhotoTimer);
-  schoolPhotoTimer = setInterval(() => {
-    photos[current].classList.remove("active");
-    current = (current + 1) % photos.length;
-    photos[current].classList.add("active");
-  }, 3000);
-}
-startSchoolPhotoSlideshow();
+let flashTimer;
 
 const menuToggle = document.getElementById("menuToggle");
 const tabsNav = document.getElementById("tabs");
@@ -291,6 +298,19 @@ function showPage(page) {
   document.getElementById("content").innerHTML = pages[page] || pages.home;
 
   clearInterval(slideTimer);
+  clearInterval(flashTimer);
+  const flashSlides = Array.from(document.querySelectorAll(".home-flash img"));
+  const flashCaption = document.querySelector(".home-flash-caption");
+  if (flashSlides.length > 1 && flashCaption) {
+    let flashIndex = 0;
+    flashCaption.textContent = flashSlides[0].dataset.caption || flashSlides[0].alt || "School photos";
+    flashTimer = setInterval(() => {
+      flashSlides[flashIndex].classList.remove("active");
+      flashIndex = (flashIndex + 1) % flashSlides.length;
+      flashSlides[flashIndex].classList.add("active");
+      flashCaption.textContent = flashSlides[flashIndex].dataset.caption || flashSlides[flashIndex].alt || "School photos";
+    }, 3000);
+  }
   const slides = Array.from(document.querySelectorAll(".hero img"));
   const caption = document.querySelector(".hero-caption");
   if (slides.length > 1 && caption) {
