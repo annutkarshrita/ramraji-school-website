@@ -1,11 +1,9 @@
-a
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ramraji Saraswati Balika Vidya Mandir Inter College</title>
-a
 <style>
 *{box-sizing:border-box}
 html{width:100%;min-width:0;scroll-behavior:smooth}
@@ -19,10 +17,11 @@ img{max-width:100%}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
 /* Compact rotating school photo frame below the school name */
-.school-photo-frame{display:block;width:min(1100px);Max-width:100%;height:400px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
-.school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .30s ease}
+.school-photo-frame{display:block;width:min(1100px,100%);max-width:100%;height:400px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
+.school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
 .school-photo-frame img.active{opacity:1}
 .school-photo-frame:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
+@media(max-width:800px){.school-photo-frame{width:100%;height:260px}}
 @media(max-width:520px){.school-photo-frame{width:min(100%,550px);height:150px;margin-top:8px}}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
 .nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
@@ -40,12 +39,23 @@ main{padding:22px;min-height:320px;min-width:0}
 .hero img.active{display:block}
 .hero-caption{position:absolute;bottom:0;left:0;right:0;padding:18px 20px;color:white;background:linear-gradient(transparent,#000b);font-size:clamp(18px,2vw,25px);font-weight:bold;line-height:1.35}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px}
+.gallery a{display:block;text-decoration:none;border-radius:12px;overflow:hidden}
+.gallery a:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
 .gallery img{display:block;width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid #eee}
+.social-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;border-radius:8px;color:#fff;text-decoration:none;font-weight:bold;transition:transform .2s,opacity .2s}
+.social-btn:hover{transform:translateY(-2px);opacity:.92}
+.social-btn:focus-visible{outline:3px solid #efa21a;outline-offset:3px}
+.social-btn.facebook{background:#1877F2}
+.social-btn.instagram{background:#C13584}
+.social-btn.youtube{background:#FF0000}
+.social-btn.whatsapp{background:#25D366}
 input,select,textarea{display:block;width:100%;max-width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;margin:6px 0 14px;font:inherit;background:#fff}
 label{font-weight:bold;line-height:1.5}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
 button.submit{background:#ff6900;color:white;border:0;border-radius:7px;padding:12px 24px;font-weight:bold;cursor:pointer;max-width:100%}
-footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;line-height:1.6}
+footer{background:#092f61;color:white;padding:5px 10px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 14px;line-height:1.25;font-size:10px;text-align:center;min-height:0}
+footer a{color:white;text-decoration:none}
 /* About Us leadership cards */
 .leaders-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}
 .leader-card{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:20px;text-align:center;overflow-wrap:anywhere}
@@ -87,7 +97,7 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
  .hero-caption{padding:12px;font-size:18px}
  .gallery{grid-template-columns:minmax(0,1fr)}
  .gallery img{height:auto;max-height:320px;object-fit:contain;background:#f7f7f7}
- footer{padding:20px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;font-size:14px}
+ footer{padding:5px 8px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:3px 10px;font-size:9px;line-height:1.25}
 }
 @media(max-width:360px){
  .tabs{grid-template-columns:minmax(0,1fr)}
@@ -110,8 +120,9 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
   </div>
   <div>
     <h1 class="school-name">Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
-    <img class="school-photo active" src="assets/photos/School-Photo-1.jpg" alt="School photo 1">
-      </a>
+    <a class="school-photo-frame" href="https://drive.google.com/drive/folders/1W8Rb2n_HDu9NUQifH3kloEm6rWwcb8lI" target="_blank" rel="noopener noreferrer" aria-label="Open school photo and video gallery">
+      <img class="school-photo active" src="assets/photos/School-Photo-1.jpg" alt="School photo">
+    </a>
     <h2 class="school-address">Shahganj, Sultanpur, Uttar Pradesh</h2>
     <p><b>✦ Knowledge brings humility &nbsp; | &nbsp; Vidya Bharati School ✦</b></p>
   </div>
@@ -135,10 +146,10 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
 
 <main id="content"></main>
 
-<footer>
-  <div><b>Ramraji Saraswati Balika Vidya Mandir Inter College</b><br>Shahganj, Sultanpur, Uttar Pradesh</div>
-  <div><b>Contact</b><br>Mobile: 9415469746<br>Email: ramrajisln@gmail.com</div>
-  <div><b>Quick Links</b><br>Admissions | Notices | Gallery<br>© 2026 School. All rights reserved.</div>
+<footer aria-label="Website developer contact">
+  <span><b>Developer:</b> <a href="https://shantiraman.co.in" target="_blank" rel="noopener noreferrer">shantiraman.co.in</a></span>
+  <span><b>Email:</b> <a href="mailto:shanteeraman@gmail.com">shanteeraman@gmail.com</a></span>
+  <span><b>Mobile:</b> <a href="tel:+919415469746">+91 9415469746</a></span>
 </footer>
 
 <script>
@@ -148,7 +159,7 @@ const pages = {
 home: `
   <section class="panel">
     <div class="hero">
-      <img class="active" data-caption="Welcome to Our School" src="${photo("home-slide-2.jpg")}" alt="School campus">
+      <img class="active" data-caption="Welcome to Our School" src="${photo("home-slide-1.jpg")}" alt="School campus">
       <img data-caption="School Activities" src="${photo("home-slide-2.jpg")}" alt="School activities">
       <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="School students">
       <div class="hero-caption">Welcome to Our School</div>
@@ -157,14 +168,8 @@ home: `
       `,
 about: `
   <section class="leaders-section">
-    <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>School Manager</h3><p>We believe that education is the most powerful tool to empower young girls and shape a brighter future for society. Our institution is deeply committed to providing a safe, nurturing, and excellent learning environment where every girl can realize her full potential. Along with academic brilliance, we instill strong cultural values, moral ethics, and discipline to help our students become responsible and confident citizens. I extend my heartfelt gratitude to our dedicated teachers and supportive parents who partner with us in this beautiful journey of learning and empowerment."</p><p>हमारा मानना ​​है कि शिक्षा युवा लड़कियों को सशक्त बनाने और समाज के लिए एक उज्ज्वल भविष्य तैयार करने का सबसे शक्तिशाली साधन है। हमारा संस्थान एक ऐसा सुरक्षित, सकारात्मक और बेहतरीन सीखने का माहौल देने के लिए पूरी तरह प्रतिबद्ध है, जहाँ हर लड़की अपनी पूरी क्षमता को पहचान सके। शैक्षणिक उत्कृष्टता के साथ-साथ, हम अपनी छात्राओं में मजबूत सांस्कृतिक मूल्य, नैतिक संस्कार और अनुशासन विकसित करते हैं, ताकि वे जिम्मेदार और आत्मविश्वासी नागरिक बन सकें। मैं अपने समर्पित शिक्षकों और सहयोगी अभिभावकों का तहे दिल से आभार व्यक्त करता हूँ, जो सीखने और सशक्तिकरण के इस खूबसूरत सफर में हमारे साथ कदम से कदम मिलाकर चलते हैं।
-</p><b>Dr. Tulika Gupta (Manager)</article>
-    <article class="leader-card"><img class="leader-photo" src="${photo("principal.jpg")}" alt="Principal Renu Singh"><h3>Principal’s Message</h3><p>As the Principal of this esteemed institution, it is my privilege to welcome you . At Ramraji Saraswati Balika Vidya mandier Inter College, we are committed to providing a nurturing and inspiring environment where every student can discover their true potential.
-Our focus goes beyond academic excellence. We believe in the holistic development of our students by fostering creativity, critical thinking, and strong moral values. With a dedicated faculty and modern infrastructure, we aim to prepare our students to become responsible global citizens and future leaders.
-We strongly believe that education is a shared journey between the school, students, and parents. I invite you to explore our website to learn more about our curriculum, achievements, and vibrant campus life.</p><p>इस प्रतिष्ठित संस्थान के प्रधानाचार्य के रूप में, आपका स्वागत करना मेरे लिए सौभाग्य की बात है। रामराजी सरस्वती बालिका विद्या मंदिर इंटर कॉलेज में, हम एक ऐसा प्रेरक और सहायक वातावरण प्रदान करने के लिए प्रतिबद्ध हैं, जहाँ हर छात्रा अपनी वास्तविक क्षमताओं को पहचान सके।
-हमारा ध्यान केवल शैक्षणिक उत्कृष्टता तक ही सीमित नहीं है। हम रचनात्मकता, आलोचनात्मक सोच और मजबूत नैतिक मूल्यों को बढ़ावा देकर अपनी छात्राओं के सर्वांगीण विकास में विश्वास रखते हैं। समर्पित शिक्षकों और आधुनिक सुविधाओं के साथ, हमारा लक्ष्य अपनी छात्राओं को जिम्मेदार वैश्विक नागरिक और भविष्य के नेतृत्वकर्ता के रूप में तैयार करना है।
-हमारा दृढ़ विश्वास है कि शिक्षा, स्कूल, छात्राओं और अभिभावकों के बीच एक साझा सफर है। मैं आपसे आग्रह करता हूँ कि हमारे पाठ्यक्रम, उपलब्धियों और जीवंत परिसर जीवन के बारे में अधिक जानने के लिए हमारी वेबसाइट देखें।
-</p><b>Renu Singh (Principal)</b></article>
+    <article class="leader-card"><img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager"><h3>School Manager</h3><p>Add the approved message from the school manager here before publishing.</p><b>School Manager</b></article>
+    <article class="leader-card"><img class="leader-photo" src="${photo("principal.jpg")}" alt="Principal Renu Singh"><h3>Principal’s Message</h3><p>Our aim is to empower students with education, values, Indian culture and moral principles, helping them become aware, self-reliant citizens who actively contribute to nation building.</p><b>Renu Singh · Principal</b></article>
   </section>
   <section class="panel"><h3>About the School</h3><p>Ramraji Saraswati Balika Vidya Mandir Inter College is located in Shahganj, Sultanpur, Uttar Pradesh. The school aims to support students through education, discipline, cultural values, confidence and personal development.</p></section>
 `,
@@ -188,12 +193,12 @@ achievements: `
   <section class="panel"><h3>Student Achievements</h3><p>Replace this sample text with approved achievements and actual dates.</p></section>
 `,
 gallery: `
-  <section class="panel"><h3>School Photo Gallery</h3><p>Save photos in the assets/photos folder and update the filenames below.</p>
+  <section class="panel"><h3>School Photo Gallery</h3><p>किसी भी फोटो पर क्लिक करके स्कूल की पूरी फोटो और वीडियो गैलरी देखें।</p>
     <div class="gallery">
-<a href="https://drive.google.com/drive/folders/1W8Rb2n_HDu9NUQifH3kloEm6rWwcb8lI"_blank"rel="noopener noreferrer"aria-label="Open school photo and video gallery"><img src="${photo("gallery-1.jpg")}" alt="School event"></a>
-<a href="https://drive.google.com/drive/folders/1J0sLu21oqrk1l6cWjFpOZNKUn-S5weTI"_blank"rel="noopener noreferrer"aria-label="Open school photo and video gallery"><img src="${photo("gallery-2.jpg")}" alt="School function"></a>
-<a href="https://drive.google.com/drive/folders/1W5pOxsohhlOkfTB2Cg1gL6b_v2CEE9_J"target="_blank"rel="noopener noreferrer"aria-label="Open school photo and video gallery"><img src="${photo("gallery-3.jpg")}" alt="School activity"></a>
-<a href="https://drive.google.com/drive/folders/1p58NxlLWONhJB9f0LD_tY1KlJncwo-sw"target="_blank"rel="noopener noreferrer"aria-label="Open school photo and video gallery"><img src="${photo("gallery-4.jpg")}" alt="School campus"></a>
+      <a href="https://drive.google.com/drive/folders/1W8Rb2n_HDu9NUQifH3kloEm6rWwcb8lI" target="_blank" rel="noopener noreferrer" aria-label="Open school event gallery"><img src="${photo("gallery-1.jpg")}" alt="School event"></a>
+      <a href="https://drive.google.com/drive/folders/1J0sLu21oqrk1l6cWjFpOZNKUn-S5weTI" target="_blank" rel="noopener noreferrer" aria-label="Open school function gallery"><img src="${photo("gallery-2.jpg")}" alt="School function"></a>
+      <a href="https://drive.google.com/drive/folders/1W5pOxsohhlOkfTB2Cg1gL6b_v2CEE9_J" target="_blank" rel="noopener noreferrer" aria-label="Open school activity gallery"><img src="${photo("gallery-3.jpg")}" alt="School activity"></a>
+      <a href="https://drive.google.com/drive/folders/1p58NxlLWONhJB9f0LD_tY1KlJncwo-sw" target="_blank" rel="noopener noreferrer" aria-label="Open school campus gallery"><img src="${photo("gallery-4.jpg")}" alt="School campus"></a>
     </div>
   </section>
 `,
@@ -207,55 +212,22 @@ notices: `
     <p><b>Examination Schedule and Results</b><br>Check with the school for official dates and result announcements.</p>
   </section>
 `,
-```javascript
 contact: `
   <section class="panel">
-    <h3>School Address</h3><p><b>Ramraji Saraswati Balika Vidya Mandir Inter College</b></p><p>Shahganj, Sultanpur, Uttar Pradesh</p>
-    <p>Phone: <a href="tel:+919415469746">+91 9415469746</a></p>
-    <p>Email: <a href="mailto:ramrajisln@gmail.com">ramrajisln@gmail.com</a></p>
-    <h3>Follow Us</h3><div class="social-buttons"><a class="social-btn facebook"href="https://www.facebook.com/"target="_blank" rel="noopener noreferrer"
-         aria-label="Facebook">📘 Facebook</a>
-
-      <a class="social-btn instagram"
-         href="https://www.instagram.com/"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Instagram">📸 Instagram</a>
-
-      <a class="social-btn whatsapp"
-         href="https://wa.me/919415469746"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="WhatsApp">💬 WhatsApp</a>
-
-      <a class="social-btn youtube"
-         href="https://www.youtube.com/"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="YouTube">▶️ YouTube</a>
+    <h3>Contact Us</h3>
+    <p><b>Ramraji Saraswati Balika Vidya Mandir Inter College</b></p>
+    <p>📍 Shahganj, Sultanpur, Uttar Pradesh</p>
+    <p>📞 Phone: <a href="tel:+919415469746">+91 9415469746</a></p>
+    <p>✉️ Email: <a href="mailto:ramrajisln@gmail.com">ramrajisln@gmail.com</a></p>
+    <h3>Follow Us</h3>
+    <div class="social-buttons">
+      <a class="social-btn facebook" href="https://www.facebook.com/profile.php?id=100077401940891" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><span aria-hidden="true">f</span> Facebook</a>
+      <a class="social-btn instagram" href="https://www.instagram.com/ramrajisln/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page"><span aria-hidden="true">◎</span> Instagram</a>
+      <a class="social-btn whatsapp" href="https://wa.me/919415469746" target="_blank" rel="noopener noreferrer" aria-label="Contact the school on WhatsApp"><span aria-hidden="true">☎</span> WhatsApp</a>
+      <a class="social-btn youtube" href="https://www.youtube.com/@ramrajisultanpur4654" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel"><span aria-hidden="true">▶</span> YouTube</a>
     </div>
   </section>
-
-  <section class="panel">
-    <h3>Send an Enquiry</h3>
-    <form onsubmit="demoSubmit(event)">
-      <div class="form-grid">
-        <div>
-          <label>Your name</label>
-          <input name="name" required>
-        </div>
-        <div>
-          <label>Email</label>
-          <input name="email" type="email" required>
-        </div>
-      </div>
-
-      <label>Message</label>
-      <textarea name="message" rows="4" required></textarea>
-
-      <button class="submit" type="submit">Send Enquiry</button>
-      <p><small>Demo form: messages are not sent or stored yet.</small></p>
-    </form>
-  </section>
 `,
-```
 alumni: `
   <section class="panel"><h3>Alumni Registration</h3><p>We welcome former students to register and stay connected with the school.</p>
   <form onsubmit="demoSubmit(event)">
