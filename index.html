@@ -17,13 +17,13 @@ img{max-width:100%}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
 /* School photo frame with the school name placed directly over the photograph */
-.school-photo-frame{display:block;width:min(720px,100%);max-width:100%;height:220px;margin:0 auto 10px;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018;text-decoration:none}
-.school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.school-photo-frame{display:block;width:min(1600px,100%);max-width:100%;height:500px;margin:0 auto 10px;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018;text-decoration:none}
+.school-photo-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition:opacity .3s ease}
 .school-photo-frame img.active{opacity:1}
-.school-photo-title{position:absolute;z-index:2;top:0;left:0;right:0;margin:0;padding:13px 12px;color:#fff;text-align:center;font-size:clamp(18px,2.2vw,30px);line-height:1.2;text-shadow:0 2px 4px #000,1px 1px 2px #000,-1px -1px 2px #000;background:transparent;overflow-wrap:anywhere}
+.school-photo-frame .school-photo-title{position:absolute;z-index:3;top:0;left:0;right:0;margin:0;padding:13px 12px;color:#fff;text-align:center;font-size:clamp(18px,2.2vw,30px);line-height:1.2;text-shadow:0 2px 5px #000,1px 1px 2px #000,-1px -1px 2px #000;background:transparent;overflow-wrap:anywhere;pointer-events:none}
 .school-photo-frame:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
-@media(max-width:800px){.school-photo-frame{width:100%;height:200px}.school-photo-title{font-size:clamp(18px,4vw,27px);padding:12px 10px}}
-@media(max-width:520px){.school-photo-frame{width:100%;height:175px;margin-top:0}.school-photo-title{font-size:clamp(17px,5vw,23px);padding:10px 8px}}
+@media(max-width:800px){.school-photo-frame{width:100%;height:280px}.school-photo-frame .school-photo-title{font-size:clamp(18px,4vw,27px);padding:12px 10px}}
+@media(max-width:520px){.school-photo-frame{width:100%;height:220px;margin-top:0}.school-photo-frame .school-photo-title{font-size:clamp(17px,5vw,23px);padding:10px 8px}}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
 .nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
 .tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
@@ -35,11 +35,16 @@ main{padding:22px;min-height:320px;min-width:0}
 .panel{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:22px;margin-bottom:18px;overflow-wrap:anywhere}
 .panel h2,.panel h3{margin-top:0;line-height:1.3}
 .panel p,.panel li{line-height:1.7}
+.page-heading-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.page-heading-row h3{margin:0}
+.page-action-btn{display:inline-flex;align-items:center;justify-content:center;background:#ff6900;color:#fff;text-decoration:none;border:0;border-radius:7px;padding:8px 13px;font-size:13px;font-weight:bold;white-space:nowrap;cursor:pointer}
+.page-action-btn:hover{background:#d95000}
+.page-action-btn:focus-visible{outline:3px solid #0b3975;outline-offset:2px}
 .home-feature-grid{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:16px;align-items:stretch;margin-bottom:18px}
 .home-feature-card{min-width:0;min-height:370px;background:#fff;border:1px solid #f0e1d2;border-radius:12px;padding:20px;box-shadow:0 3px 10px #00000008;overflow:hidden}
 .home-feature-card h3{margin:0 0 14px;color:#0b3975;font-size:clamp(17px,1.8vw,22px);line-height:1.3}
 .home-feature-card p{font-size:15px;line-height:1.8;margin:0 0 12px}
-.home-flash{position:relative;width:100%;height:700px;overflow:hidden;border:2px solid #efa21a;border-radius:9px;background:#f4eadc}
+.home-flash{position:relative;width:100%;height:600px;overflow:hidden;border:2px solid #efa21a;border-radius:9px;background:#f4eadc}
 .home-flash img{position:absolute;inset:0;display:none;width:100%;height:100%;max-width:100%;object-fit:cover}
 .home-flash img.active{display:block}
 .home-flash-caption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;background:linear-gradient(transparent,#000b);font-size:14px;font-weight:bold;line-height:1.3}
@@ -134,9 +139,8 @@ footer a{color:white;text-decoration:none}
   <div>
     <div class="school-photo-frame">
       <img class="school-photo active" src="assets/photos/School-Photo-1.jpg" alt="School photo">
-      <h1 class="school-name school-photo-title">Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
+      <h1 class="school-name school-photo-title">Ramraji Saraswati Balika Vidya Mandir Inter College, Shahganj, Sultanpur</h1>
     </div>
-    <h2 class="school-address">Shahganj, Sultanpur, Uttar Pradesh</h2>
     <p><b>✦ Knowledge brings humility &nbsp; | &nbsp; Vidya Bharati School ✦</b></p>
   </div>
   <div class="motto">“A strong step towards<br> values, education and<br> nation building”</div>
@@ -168,35 +172,108 @@ footer a{color:white;text-decoration:none}
 <script>
 const photo = name => "assets/photos/" + name;
 
+// Try common file-name variants for the top school photograph.
+(function loadTopSchoolPhoto(){
+  const img = document.querySelector(".school-photo-frame img.school-photo");
+  if (!img) return;
+  const candidates = [
+    "assets/photos/School-Photo-1.jpg",
+    "assets/photos/School-Photo.jpg",
+    "assets/photos/School Photo.jpg",
+    "assets/photos/school-photo.jpg",
+    "assets/photos/school photo.jpg",
+    "assets/photos/School-Photo-1.jpeg",
+    "assets/photos/School-Photo.jpeg",
+    "assets/photos/School Photo.jpeg",
+    "assets/photos/school-photo.jpeg",
+    "assets/photos/School-Photo-1.png",
+    "assets/photos/School-Photo.png",
+    "assets/photos/School Photo.png",
+    "assets/photos/school-photo.png"
+  ];
+  let index = 0;
+  img.onerror = () => {
+    index += 1;
+    if (index < candidates.length) {
+      img.src = candidates[index];
+    } else {
+      img.alt = "School photo file not found. Check the file name in assets/photos.";
+      img.removeAttribute("src");
+    }
+  };
+  if (img.complete && img.naturalWidth === 0) {
+    img.onerror();
+  } else {
+    img.src = candidates[0];
+  }
+})();
+
 const pages = {
 home: `
-  <section class="home-feature-grid" aria-label="School introduction and photos">
-    <article class="home-feature-card">
-      <h1>"हमारा लक्ष्य"</h1>
-      <p>हमारा लक्ष्य इस प्रकार की राष्ट्रीय शिक्षा-पद्धति का विकास करना है,
-         जिसके द्वारा ऐसी युवा-पीढ़ी का निर्माण हो सके जो हिन्दुत्वनिष्ठ एवं राष्ट्रभक्त हो, शारीरिक, प्राणिक, मानसिक, बौद्धिक एवं आध्यात्मिक दृष्टि से पूर्ण विकसित हो 
-         तथा जो जीवन की वर्तमान चुनौतियों का सामना सफलतापूर्वक कर सके और उसका जीवन ग्रामों, वनों, शिक्षित-अशिक्षित एवं झुग्गी-झोपड़ियों में निवास करने वाले 
-         दीन-दुःखी अव्यवस्थित अपने बन्धुओं को सामाजिक कुरीतियों, शोषण एवं अन्याय से मुक्त कराकर राष्ट्र जीवन को समरस, सुसंस्कृत एवं सुसंस्कृत बनाने के लिए समर्पित हो।</p>
-         <h3>"भारत माता की जय "</h3>
-         <h1>"Our Goal"</h1>
-         <p>Our goal is to develop a national system of education that fosters a generation of youth who are rooted in *Hindutva* (Hindu ethos) 
-         and deeply patriotic—individuals who are fully developed in physical, vital, mental, intellectual, and spiritual dimensions. Such youth should 
-         be capable of successfully confronting the challenges of contemporary life and, furthermore, be dedicated to uplifting their less fortunate, 
-         marginalized, and struggling brethren—whether they reside in villages, forests, or urban slums—by liberating them from social evils, exploitation, 
-         and injustice, thereby helping to transform the national life into one that is harmonious, cultured, and refined.</p>
-         <h3>"BHARAT MATA KI JAI"</h3>
-    </article>
-    <article class="home-feature-card">
-      <h3>School Photo Flash</h3>
-      <div class="home-flash" aria-label="Rotating school photographs">
-        <img class="active" data-caption="School Campus" src="${photo("School-Photo-1.jpg")}" alt="School campus">
-        <img data-caption="School Activities" src="${photo("home-slide-1.jpg")}" alt="School activities">
-        <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="Our students">
-        <img data-caption="School Events" src="${photo("home-slide-2.jpg")}" alt="School event">
-        <div class="home-flash-caption">School Campus</div>
-      </div>
-    </article>
-  </section>`,
+<section class="home-feature-grid" aria-label="School introduction and photos">
+
+  <article class="home-feature-card">
+
+    <h2 style="text-align:center;">"हमारा लक्ष्य"</h2>
+
+    <p style="text-align:justify;">
+      हमारा लक्ष्य इस प्रकार की राष्ट्रीय शिक्षा-पद्धति का विकास करना है,
+      जिसके द्वारा ऐसी युवा-पीढ़ी का निर्माण हो सके जो हिन्दुत्वनिष्ठ एवं राष्ट्रभक्त हो,
+      शारीरिक, प्राणिक, मानसिक, बौद्धिक एवं आध्यात्मिक दृष्टि से पूर्ण विकसित हो
+      तथा जो जीवन की वर्तमान चुनौतियों का सामना सफलतापूर्वक कर सके और उसका जीवन
+      ग्रामों, वनों, शिक्षित-अशिक्षित एवं झुग्गी-झोपड़ियों में निवास करने वाले
+      दीन-दुःखी अव्यवस्थित अपने बन्धुओं को सामाजिक कुरीतियों, शोषण एवं अन्याय से
+      मुक्त कराकर राष्ट्र जीवन को समरस, सुसंस्कृत एवं सुसंस्कृत बनाने के लिए समर्पित हो।
+    </p>
+
+    <h3 style="text-align:center;">"भारत माता की जय"</h3>
+
+    <h2 style="text-align:center;">"Our Goal"</h2>
+
+    <p style="text-align:justify;">
+      Our goal is to develop a national system of education that fosters a generation
+      of youth who are rooted in <em>Hindutva</em> (Hindu ethos) and deeply patriotic—
+      individuals who are fully developed in physical, vital, mental, intellectual,
+      and spiritual dimensions. Such youth should be capable of successfully confronting
+      the challenges of contemporary life and, furthermore, be dedicated to uplifting
+      their less fortunate, marginalized, and struggling brethren—whether they reside
+      in villages, forests, or urban slums—by liberating them from social evils,
+      exploitation, and injustice, thereby helping to transform the national life
+      into one that is harmonious, cultured, and refined.
+    </p>
+
+    <h3 style="text-align:center;">"BHARAT MATA KI JAI"</h3>
+
+  </article>
+
+  <article class="home-feature-card">
+
+    <h3 style="text-align:center;">School Photo Flash</h3>
+
+    <div class="home-flash" aria-label="Rotating school photographs">
+      <img class="active"
+           data-caption="School Campus"
+           src="${photo("School-Photo-1.jpg")}"
+           alt="School campus">
+
+      <img data-caption="School Activities"
+           src="${photo("home-slide-1.jpg")}"
+           alt="School activities">
+
+      <img data-caption="Our Students, Our Pride"
+           src="${photo("Our Pride.jpg")}"
+           alt="Our students">
+
+      <img data-caption="School Events"
+           src="${photo("home-slide-2.jpg")}"
+           alt="School event">
+
+      <div class="home-flash-caption">School Campus</div>
+    </div>
+
+  </article>
+
+</section>`,
 about: `
   <section class="leaders-section">
     <article class="leader-card">
@@ -218,20 +295,15 @@ about: `
 `,
 
 admissions: `
-  <section class="panel"><h3>Admission Information</h3><p>For admission enquiries, please contact the school office for current availability of seats, eligibility, documents and admission dates.</p><ul><li>Ask the school office about required documents.</li><li>Confirm the class and academic session before applying.</li><li>Check official notices for admission announcements.</li></ul></section>
-  <section class="panel"><h3>Admission Enquiry</h3>
-  <form onsubmit="demoSubmit(event)">
-    <div class="form-grid">
-      <div><label>Student name</label><input required></div>
-      <div><label>Parent/guardian name</label><input required></div>
-      <div><label>Class seeking admission</label><select required><option value="">Select class</option><option>Nursery</option><option>LKG</option><option>UKG</option><option>Class 1</option><option>Class 2–5</option><option>Class 6–8</option><option>Class 9–10</option><option>Class 11–12</option></select></div>
-      <div><label>Contact number</label><input type="tel" required></div>
+  <section class="panel">
+    <div class="page-heading-row">
+      <h3>Admission Information</h3>
+      <a class="page-action-btn" href="#online-admission-form" aria-label="Go to online admission application">📝 Apply Online</a>
     </div>
-    <label>Message</label><textarea rows="4"></textarea>
-    <button class="submit">Send Enquiry</button>
-    <p><small>Demo form: details are not sent or stored yet.</small></p>
-  </form></section>
-`,
+    <p>For admission enquiries, please contact the school office for current availability of seats, eligibility, documents and admission dates.</p>
+    <ul><li>Ask the school office about required documents.</li><li>Confirm the class and academic session before applying.</li><li>Check official notices for admission announcements.</li></ul>
+  </section>
+  `,
 achievements: `
   <section class="panel"><h3>School Highlights</h3><p>Add verified school achievements, student awards, sports results and cultural programme highlights here.</p></section>
   <section class="panel"><h3>Student Achievements</h3><p>Replace this sample text with approved achievements and actual dates.</p></section>
@@ -247,7 +319,14 @@ gallery: `
   </section>
 `,
 results: `
-  <section class="panel"><h3>Examination Results</h3><p>Use the official school result portal to check examination results.</p><p>Connect the approved result portal link here before publishing.</p></section>
+  <section class="panel">
+    <div class="page-heading-row">
+      <h3>Examination Results</h3>
+      <a class="page-action-btn" href="https://login.shantiraman.co.in" target="_blank" rel="noopener noreferrer" aria-label="Open student result portal">📊 View Result</a>
+    </div>
+    <p>विद्यार्थी अपना परिणाम देखने के लिए दाईं ओर दिए गए <b>View Result</b> बटन पर क्लिक करें।</p>
+    <p>Click the button to open the school portal. The student result page must be enabled on that portal for results to appear.</p>
+  </section>
 `,
 notices: `
   <section class="panel"><h3>School Notices</h3>
