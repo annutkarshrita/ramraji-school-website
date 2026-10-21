@@ -18,6 +18,12 @@ img{max-width:100%}
 .school-name{font-size:clamp(23px,2.7vw,42px);line-height:1.18;color:#c51e1e;margin:0 0 8px;overflow-wrap:anywhere}
 .school-address{font-size:clamp(17px,1.9vw,29px);line-height:1.25;margin:0;color:#073b78}
 .school-header p{line-height:1.5;margin:12px 0 0}
+/* Compact rotating school photo frame below the school name */
+.school-photo-frame{display:block;width:min(100%,260px);height:92px;margin:10px auto 0;position:relative;overflow:hidden;border:2px solid #efa21a;border-radius:10px;background:#f4eadc;box-shadow:0 3px 10px #00000018}
+.school-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.school-photo-frame img.active{opacity:1}
+.school-photo-frame:focus-visible{outline:3px solid #0b3975;outline-offset:3px}
+@media(max-width:520px){.school-photo-frame{width:min(100%,230px);height:82px;margin-top:8px}}
 .motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
 .nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;padding:14px 18px;background:#fff8ef}
 .tab{min-width:0;min-height:98px;border:1px solid #f0e1d2;border-radius:12px;background:white;padding:12px 5px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
@@ -104,6 +110,11 @@ footer{background:#092f61;color:white;padding:24px 4%;display:flex;justify-conte
   </div>
   <div>
     <h1 class="school-name">Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
+    <a class="school-photo-frame" href="https://drive.google.com/drive/folders/1W8Rb2n_HDu9NUQifH3kloEm6rWwcb8lI" target="_blank" rel="noopener noreferrer" aria-label="Open school photo and video gallery">
+      <img class="school-photo active" src="assets/photos/home-slide-1.jpg" alt="School photo 1">
+      <img class="school-photo" src="assets/photos/home-slide-2.jpg" alt="School photo 2">
+      <img class="school-photo" src="assets/photos/home-slide-3.jpg" alt="School photo 3">
+    </a>
     <h2 class="school-address">Shahganj, Sultanpur, Uttar Pradesh</h2>
     <p><b>✦ Knowledge brings humility &nbsp; | &nbsp; Vidya Bharati School ✦</b></p>
   </div>
@@ -142,7 +153,7 @@ home: `
     <div class="hero">
       <img class="active" data-caption="Welcome to Our School" src="${photo("home-slide-1.jpg")}" alt="School campus">
       <img data-caption="School Activities" src="${photo("home-slide-2.jpg")}" alt="School activities">
-      <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="School students">
+      <img data-caption="Our Students, Our Pride" src="${photo("home-slide-3.jpg")}" alt="School students">
       <div class="hero-caption">Welcome to Our School</div>
     </div>
   </section>
@@ -231,6 +242,20 @@ function demoSubmit(event) {
 }
 
 let slideTimer;
+let schoolPhotoTimer;
+
+function startSchoolPhotoSlideshow() {
+  const photos = Array.from(document.querySelectorAll(".school-photo"));
+  if (photos.length < 2) return;
+  let current = 0;
+  clearInterval(schoolPhotoTimer);
+  schoolPhotoTimer = setInterval(() => {
+    photos[current].classList.remove("active");
+    current = (current + 1) % photos.length;
+    photos[current].classList.add("active");
+  }, 3000);
+}
+startSchoolPhotoSlideshow();
 
 const menuToggle = document.getElementById("menuToggle");
 const tabsNav = document.getElementById("tabs");
