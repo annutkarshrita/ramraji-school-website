@@ -207,19 +207,55 @@ notices: `
     <p><b>Examination Schedule and Results</b><br>Check with the school for official dates and result announcements.</p>
   </section>
 `,
+```javascript
 contact: `
-  <section class="panel"><h3>School Address</h3><p><b>Ramraji Saraswati Balika Vidya Mandir Inter College</b></p><p>Shahganj, Sultanpur, Uttar Pradesh</p><p>Phone: Add official school phone</p><p>Email: Add official school email</p></section>
-  <section class="panel"><h3>Send an Enquiry</h3>
-  <form onsubmit="demoSubmit(event)">
-    <div class="form-grid">
-      <div><label>Your name</label><input required></div>
-      <div><label>Email</label><input type="email" required></div>
+  <section class="panel">
+    <h3>School Address</h3><p><b>Ramraji Saraswati Balika Vidya Mandir Inter College</b></p><p>Shahganj, Sultanpur, Uttar Pradesh</p>
+    <p>Phone: <a href="tel:+919415469746">+91 9415469746</a></p>
+    <p>Email: <a href="mailto:ramrajisln@gmail.com">ramrajisln@gmail.com</a></p>
+    <h3>Follow Us</h3><div class="social-buttons"><a class="social-btn facebook"href="https://www.facebook.com/"target="_blank" rel="noopener noreferrer"
+         aria-label="Facebook">📘 Facebook</a>
+
+      <a class="social-btn instagram"
+         href="https://www.instagram.com/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Instagram">📸 Instagram</a>
+
+      <a class="social-btn whatsapp"
+         href="https://wa.me/919415469746"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="WhatsApp">💬 WhatsApp</a>
+
+      <a class="social-btn youtube"
+         href="https://www.youtube.com/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="YouTube">▶️ YouTube</a>
     </div>
-    <label>Message</label><textarea rows="4" required></textarea>
-    <button class="submit">Send Enquiry</button>
-    <p><small>Demo form: messages are not sent or stored yet.</small></p>
-  </form></section>
+  </section>
+
+  <section class="panel">
+    <h3>Send an Enquiry</h3>
+    <form onsubmit="demoSubmit(event)">
+      <div class="form-grid">
+        <div>
+          <label>Your name</label>
+          <input name="name" required>
+        </div>
+        <div>
+          <label>Email</label>
+          <input name="email" type="email" required>
+        </div>
+      </div>
+
+      <label>Message</label>
+      <textarea name="message" rows="4" required></textarea>
+
+      <button class="submit" type="submit">Send Enquiry</button>
+      <p><small>Demo form: messages are not sent or stored yet.</small></p>
+    </form>
+  </section>
 `,
+```
 alumni: `
   <section class="panel"><h3>Alumni Registration</h3><p>We welcome former students to register and stay connected with the school.</p>
   <form onsubmit="demoSubmit(event)">
