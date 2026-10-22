@@ -11,6 +11,13 @@ body{margin:0;width:100%;min-width:0;overflow-x:hidden;font-family:Arial,sans-se
 img{max-width:100%}
 .topbar{background:#0b3975;color:white;padding:10px 4%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;font-size:14px}
 .topbar a{color:white;white-space:nowrap}
+.login-menu{position:relative;display:inline-flex;align-items:center;z-index:20}
+.login-toggle{border:1px solid #ffffffb3;border-radius:7px;background:#ff6900;color:white;padding:8px 18px;font-size:14px;font-weight:bold;white-space:nowrap;cursor:pointer}
+.login-toggle:hover,.login-toggle:focus-visible{background:#d95000;outline:2px solid white;outline-offset:2px}
+.login-options{position:absolute;top:calc(100% + 8px);right:0;min-width:170px;display:none;flex-direction:column;gap:5px;padding:7px;background:#fff;border:1px solid #dce5ef;border-radius:9px;box-shadow:0 8px 22px #0003}
+.login-options.open{display:flex}
+.login-options a{display:block;padding:10px 12px;border-radius:6px;color:#0b3975;text-decoration:none;font-weight:bold}
+.login-options a:hover,.login-options a:focus-visible{background:#eef5ff;outline:none}
 .school-header{background:linear-gradient(110deg,#fffaf0,#fff0dc);padding:24px 3%;display:grid;grid-template-columns:140px minmax(0,1fr) 180px;align-items:center;gap:18px;text-align:center}
 .school-logo{display:block;width:125px;height:125px;max-width:100%;object-fit:contain;border:3px solid #efa21a;border-radius:50%;padding:7px;background:white;margin:auto}
 .school-name{font-size:clamp(23px,2.7vw,42px);line-height:1.18;color:#c51e1e;margin:0 0 8px;overflow-wrap:anywhere}
@@ -129,8 +136,13 @@ footer a{color:white;text-decoration:none}
 <div class="topbar">
   <span>📍 Shahganj, Sultanpur, Uttar Pradesh</span>
   <span>Knowledge brings humility</span>
-  <a href="https://login.shantiraman.co.in" style="color:white">School Login</a>
-  <a href="https://student.shantiraman.co.in" style="color:white">Student Login</a>
+  <div class="login-menu" id="loginMenu">
+    <button class="login-toggle" id="loginToggle" type="button" aria-expanded="false" aria-controls="loginOptions">Login ▾</button>
+    <div class="login-options" id="loginOptions" role="menu">
+      <a role="menuitem" href="https://login.shantiraman.co.in">School Login</a>
+      <a role="menuitem" href="https://student.shantiraman.co.in">Student Login</a>
+    </div>
+  </div>
 </div>
 
 <header class="school-header">
@@ -171,6 +183,29 @@ footer a{color:white;text-decoration:none}
 </footer>
 
 <script>
+const loginToggle = document.getElementById("loginToggle");
+const loginOptions = document.getElementById("loginOptions");
+
+loginToggle.addEventListener("click", () => {
+  const isOpen = loginOptions.classList.toggle("open");
+  loginToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("click", event => {
+  if (!document.getElementById("loginMenu").contains(event.target)) {
+    loginOptions.classList.remove("open");
+    loginToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    loginOptions.classList.remove("open");
+    loginToggle.setAttribute("aria-expanded", "false");
+    loginToggle.focus();
+  }
+});
+
 const photo = name => "assets/photos/" + name;
 
 // Try common file-name variants for the top school photograph.
