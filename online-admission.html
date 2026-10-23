@@ -417,7 +417,7 @@ async function initAdmissionForm() {
       form.style.display = "none";
       return;
     }
-    if (data.admissionOpen !== true || !data.options) throw new Error("The school has not enabled online admission. Please try again later.");
+    if (data.admissionOpen !== true || !data.options) throw new Error("Admissions for the 2027-28 session will commence soon..");
     fillAdmissionSelect("admissionClass", data.options.classes || [], "Class");
     fillAdmissionSelect("admissionGender", data.options.genders || [], "Gender");
     fillAdmissionSelect("admissionCategory", data.options.categories || [], "Category");
@@ -426,7 +426,7 @@ async function initAdmissionForm() {
   } catch (error) {
     form.style.display = "none";
     const closedMessage = document.getElementById("admissionClosedMessage");
-    closedMessage.textContent = "Online admission is temporarily unavailable. " + error.message;
+    closedMessage.textContent = "Online Admission Close for Session 2026-27. " + error.message;
     closedMessage.hidden = false;
     const intro = document.querySelector(".admission-intro");
     if (intro) intro.style.display = "none";
