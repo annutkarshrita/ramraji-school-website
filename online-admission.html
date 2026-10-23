@@ -23,6 +23,13 @@ main{padding:24px 16px;max-width:1200px;margin:0 auto;min-height:55vh}
 input,select,textarea{display:block;width:100%;max-width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;margin:6px 0 14px;font:inherit;background:#fff}
 label{font-weight:bold;line-height:1.5}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+/* Compact single-row groups on desktop; responsive columns on small screens. */
+.admission-key-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 10px;align-items:start}
+.admission-key-grid>div,.contact-grid>div,.address-grid>div{min-width:0}
+.admission-key-grid label{font-size:12px;display:block;line-height:1.35}
+.admission-key-grid input,.admission-key-grid select{padding:9px 7px;font-size:12px;min-width:0;margin-bottom:12px}.admission-key-grid .field-help{font-size:10px;margin-top:-7px;margin-bottom:10px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 14px;align-items:start}
+.address-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;align-items:start}
 .admission-section{max-width:1100px;margin:0 auto}
 .admission-intro{color:#52627a;margin-bottom:18px;line-height:1.6}
 .admission-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;padding:14px;background:#f7faff;border:1px solid #dfe8f2;border-radius:10px;margin-bottom:18px}
@@ -52,7 +59,9 @@ label{font-weight:bold;line-height:1.5}
 .admission-otp-panel .admission-verify-btn{flex:0 0 auto}
 footer{background:#092f61;color:#fff;padding:10px;text-align:center;font-size:12px;line-height:1.5}
 footer a{color:#fff}
-@media(max-width:600px){main{padding:12px 9px}.admission-meta,.form-grid{grid-template-columns:minmax(0,1fr)}.admission-meta{padding:12px}.admission-submit{width:100%}.page-action-btn{width:auto}}
+@media(max-width:1100px){.admission-key-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.admission-key-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-grid,.address-grid,.form-grid,.admission-meta{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){main{padding:12px 9px}.admission-meta{padding:12px}.admission-submit{width:100%}.page-action-btn{width:auto}.admission-key-grid label{font-size:12px}}
 </style>
 </head>
 <body>
@@ -71,49 +80,54 @@ footer a{color:#fff}
       <h2>Online Admission Application</h2>
       <a class="page-action-btn" href="index.html" aria-label="Return to the school website">← Back to Website</a>
     </div>
-    <p class="admission-intro">Please complete the application carefully. Form Number and Date will be generated automatically. Class, Gender, Category and Religion are loaded from the school master data.</p>
+    <p class="admission-intro">Please fill the application form carefully.</p>
 
     <form id="onlineAdmissionForm" class="admission-form" novalidate>
       <div class="admission-meta">
         <div><label for="applicationFormNo">Form No.</label><input id="applicationFormNo" value="Generated automatically on submit" readonly></div>
         <div><label for="applicationDate">Date</label><input id="applicationDate" readonly></div>
       </div>
-
+	<h4 class="admission-form-section">Student Details</h4>
+      <div class="form-grid name-grid">
+        <div><label for="studentEnglish">Name of Student (English) <span class="required-mark">*</span></label><input id="studentEnglish" name="studentEnglish" type="text" autocomplete="name" 	placeholder="ENTER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
+        <div><label for="studentHindi">Name of Student (Hindi) <span class="required-mark">*</span></label><input id="studentHindi" name="studentHindi" type="text" placeholder="विद्यार्थी का नाम हिंदी में" 	required><small class="field-help"></small></div>
+        <div><label for="fatherEnglish">Father's Name (English) <span class="required-mark">*</span></label><input id="fatherEnglish" name="fatherEnglish" type="text" placeholder="FATHER NAME IN 	CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
+        <div><label for="fatherHindi">Father's Name (Hindi) <span class="required-mark">*</span></label><input id="fatherHindi" name="fatherHindi" type="text" placeholder="पिता का नाम हिंदी में" 	required></div>
+        <div><label for="motherEnglish">Mother's Name (English) <span class="required-mark">*</span></label><input id="motherEnglish" name="motherEnglish" type="text" placeholder="MOTHER NAME IN 	CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
+        <div><label for="motherHindi">Mother's Name (Hindi) <span class="required-mark">*</span></label><input id="motherHindi" name="motherHindi" type="text" placeholder="माता का नाम हिंदी में" 	required></div>
+      </div>
       <h4 class="admission-form-section">Admission Details</h4>
-      <div class="form-grid">
+      <div class="admission-key-grid">
         <div><label for="admissionClass">Class <span class="required-mark">*</span></label><select id="admissionClass" name="class" required><option value="">Loading classes...</option></select></div>
-        <div><label for="admissionDob">Date of Birth (DD-MM-YYYY) <span class="required-mark">*</span></label><input id="admissionDob" name="dob" type="text" inputmode="numeric" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" required><small class="field-help">Enter date in DD-MM-YYYY format.</small></div>
+        <div><label for="admissionDob">Date of Birth<span class="required-mark">*</span></label><input id="admissionDob" name="dob" type="text" inputmode="numeric" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" required><small class="field-help"></small></div>
+        <div><label for="admissionAadhaar">Aadhaar No. (12 digits) <span class="required-mark">*</span></label><input id="admissionAadhaar" name="aadhaar" type="text" inputmode="numeric" maxlength="12" pattern="[0-9]{12}" placeholder="12-digit Aadhaar number" required></div>
         <div><label for="admissionGender">Gender <span class="required-mark">*</span></label><select id="admissionGender" name="gender" required><option value="">Loading genders...</option></select></div>
         <div><label for="admissionCategory">Category <span class="required-mark">*</span></label><select id="admissionCategory" name="category" required><option value="">Loading categories...</option></select></div>
         <div><label for="admissionReligion">Religion <span class="required-mark">*</span></label><select id="admissionReligion" name="religion" required><option value="">Loading religions...</option></select></div>
       </div>
 
-      <h4 class="admission-form-section">Student Details</h4>
-      <div class="form-grid">
-        <div><label for="studentEnglish">Name of Student (English) <span class="required-mark">*</span></label><input id="studentEnglish" name="studentEnglish" type="text" autocomplete="name" placeholder="" pattern="[A-Z ]+" required><small class="field-help">English letters only. Text is automatically converted to CAPITAL LETTERS.</small></div>
-        <div><label for="studentHindi">Name of Student (Hindi) <span class="required-mark">*</span></label><input id="studentHindi" name="studentHindi" type="text" placeholder="" required><small class="field-help">Hindi Unicode text is supported.</small></div>
-        <div><label for="fatherEnglish">Father's Name (English) <span class="required-mark">*</span></label><input id="fatherEnglish" name="fatherEnglish" type="text" placeholder="" pattern="[A-Z ]+" required><small class="field-help">English letters only; automatically converted to CAPITAL LETTERS.</small></div>
-        <div><label for="fatherHindi">Father's Name (Hindi) <span class="required-mark">*</span></label><input id="fatherHindi" name="fatherHindi" type="text" placeholder="" required></div>
-        <div><label for="motherEnglish">Mother's Name (English) <span class="required-mark">*</span></label><input id="motherEnglish" name="motherEnglish" type="text" placeholder="" pattern="[A-Z ]+" required><small class="field-help">English letters only; automatically converted to CAPITAL LETTERS.</small></div>
-        <div><label for="motherHindi">Mother's Name (Hindi) <span class="required-mark">*</span></label><input id="motherHindi" name="motherHindi" type="text" placeholder="" required></div>
-      </div>
-
+   
       <h4 class="admission-form-section">Contact Details</h4>
-      <div class="form-grid">
+      <div class="contact-grid">
         <div>
           <label for="admissionMobile">Mobile (10 digits) <span class="required-mark">*</span></label>
           <input id="admissionMobile" name="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" placeholder="10-digit mobile number" autocomplete="tel-national" required>
           <div class="admission-verify-controls"><button class="admission-verify-btn" type="button" id="sendMobileOtp">Send Mobile OTP</button><span class="admission-verify-status" id="mobileVerificationStatus">Not verified</span></div>
           <div class="admission-otp-panel" id="mobileOtpPanel" hidden><input id="mobileOtp" type="text" inputmode="numeric" maxlength="8" pattern="[0-9]{4,8}" placeholder="Enter SMS OTP" aria-label="Mobile OTP"><button class="admission-verify-btn" type="button" id="verifyMobileOtp">Verify Mobile</button></div>
         </div>
-        <div><label for="admissionWhatsapp">WhatsApp (10 digits) <span class="required-mark">*</span></label><input id="admissionWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit WhatsApp number" required></div>
+        <div>
+          <label for="admissionWhatsapp">WhatsApp (10 digits) <span class="required-mark">*</span></label>
+          <input id="admissionWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit WhatsApp number" required>
+        </div>
         <div>
           <label for="admissionEmail">Email ID <span class="required-mark">*</span></label>
           <input id="admissionEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
           <div class="admission-verify-controls"><button class="admission-verify-btn" type="button" id="sendEmailOtp">Send Email OTP</button><span class="admission-verify-status" id="emailVerificationStatus">Not verified</span></div>
           <div class="admission-otp-panel" id="emailOtpPanel" hidden><input id="emailOtp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter email OTP" aria-label="Email OTP"><button class="admission-verify-btn" type="button" id="verifyEmailOtp">Verify Email</button></div>
         </div>
-        <div><label for="admissionAadhaar">Aadhaar No. (12 digits) <span class="required-mark">*</span></label><input id="admissionAadhaar" name="aadhaar" type="text" inputmode="numeric" maxlength="12" pattern="[0-9]{12}" placeholder="12-digit Aadhaar number" required></div>
+      </div>
+
+      <div class="address-grid">
         <div><label for="admissionAddress">Address</label><textarea id="admissionAddress" name="address" rows="3" placeholder="Complete residential address"></textarea></div>
         <div><label for="admissionLastSchool">Last School</label><input id="admissionLastSchool" name="lastSchool" type="text" placeholder="Name of previous school"></div>
       </div>
