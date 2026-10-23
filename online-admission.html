@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b3975">
+<title>Online Admission Application - Ramraji Saraswati Balika Vidya Mandir Inter College</title>
+<style>
+*{box-sizing:border-box}
+html{width:100%;min-width:0;scroll-behavior:smooth}
+body{margin:0;min-height:100vh;width:100%;font-family:Arial,sans-serif;color:#10345d;background:#fffaf4;overflow-x:hidden}
+.topbar{background:#0b3975;color:#fff;padding:12px 4%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;font-size:14px}
+.topbar a{color:#fff;white-space:nowrap}
+header.school-banner{background:linear-gradient(110deg,#fffaf0,#fff0dc);padding:22px 4%;text-align:center;border-bottom:2px solid #efa21a}
+.school-banner h1{font-size:clamp(22px,3vw,36px);line-height:1.25;color:#c51e1e;margin:0 0 8px}
+.school-banner p{font-size:clamp(14px,1.6vw,18px);color:#073b78;margin:0;line-height:1.5}
+main{padding:24px 16px;max-width:1200px;margin:0 auto;min-height:55vh}
+.panel{background:#fff;border:1px solid #f0e1d2;border-radius:14px;padding:clamp(16px,3vw,28px);box-shadow:0 3px 12px #00000008;overflow-wrap:anywhere}
+.page-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.page-heading-row h2{margin:0;color:#0b3975;line-height:1.3;font-size:clamp(21px,2.5vw,30px)}
+.page-action-btn{display:inline-flex;align-items:center;justify-content:center;background:#0b3975;color:#fff;text-decoration:none;border:0;border-radius:7px;padding:9px 13px;font-size:13px;font-weight:bold;white-space:nowrap;cursor:pointer}
+.page-action-btn:hover{background:#072a58}
+input,select,textarea{display:block;width:100%;max-width:100%;padding:12px;border:1px solid #ccd5df;border-radius:7px;margin:6px 0 14px;font:inherit;background:#fff}
+label{font-weight:bold;line-height:1.5}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.admission-section{max-width:1100px;margin:0 auto}
+.admission-intro{color:#52627a;margin-bottom:18px;line-height:1.6}
+.admission-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;padding:14px;background:#f7faff;border:1px solid #dfe8f2;border-radius:10px;margin-bottom:18px}
+.admission-meta input[readonly]{background:#edf2f7;color:#52627a}
+.admission-form-section{margin:18px 0 10px;padding-bottom:8px;border-bottom:1px solid #e6edf5;color:#0b3975}
+.admission-form .required-mark{color:#c51e1e}
+.admission-form .field-help{display:block;color:#69778b;font-size:12px;margin-top:-8px;margin-bottom:12px;line-height:1.4}
+.admission-form input[type=file]{padding:10px;background:#f8fafc}
+.admission-photo-preview{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:8px 0 14px}
+.admission-photo-preview img{width:96px;height:110px;object-fit:cover;border:1px solid #d5dfeb;border-radius:8px;background:#f8fafc}
+.admission-status{display:none;padding:12px 14px;border-radius:8px;margin:12px 0;font-weight:600;line-height:1.5;white-space:pre-wrap}
+.admission-status.error{display:block;background:#fff0f0;color:#a61b1b;border:1px solid #ffcaca}
+.admission-status.success{display:block;background:#ecfdf3;color:#17663a;border:1px solid #b7eccb}
+.admission-status.info{display:block;background:#eef5ff;color:#174578;border:1px solid #c9def9}
+.admission-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#ff6900;color:white;border:0;border-radius:8px;padding:13px 24px;font-size:15px;font-weight:bold;cursor:pointer;max-width:100%}
+.admission-submit:disabled{opacity:.6;cursor:not-allowed}
+.admission-verify-controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:-4px 0 10px}
+.admission-verify-btn{display:inline-flex;align-items:center;justify-content:center;background:#0b3975;color:#fff;border:0;border-radius:7px;padding:9px 12px;font-size:13px;font-weight:bold;cursor:pointer;max-width:100%}
+.admission-verify-btn:hover{background:#072a58}
+.admission-verify-btn:disabled{opacity:.6;cursor:not-allowed}
+.admission-verify-status{font-size:12px;font-weight:bold;color:#7a4b00}
+.admission-verify-status.verified{color:#167344}
+.admission-verify-status.failed{color:#a61b1b}
+.admission-otp-panel{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.admission-otp-panel[hidden]{display:none}
+.admission-otp-panel input{flex:1 1 130px;min-width:0;width:auto;margin:4px 0;padding:10px}
+.admission-otp-panel .admission-verify-btn{flex:0 0 auto}
+footer{background:#092f61;color:#fff;padding:10px;text-align:center;font-size:12px;line-height:1.5}
+footer a{color:#fff}
+@media(max-width:600px){main{padding:12px 9px}.admission-meta,.form-grid{grid-template-columns:minmax(0,1fr)}.admission-meta{padding:12px}.admission-submit{width:100%}.page-action-btn{width:auto}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span>📍 Shahganj, Sultanpur, Uttar Pradesh</span>
+  <span>Knowledge brings humility</span>
+  <a href="index.html">Back to School Website</a>
+</div>
+<header class="school-banner">
+  <h1>Ramraji Saraswati Balika Vidya Mandir Inter College</h1>
+  <p>Shahganj, Sultanpur, Uttar Pradesh &nbsp; | &nbsp; Knowledge brings humility</p>
+</header>
+<main>
+<section class="panel admission-section">
+    <div class="page-heading-row">
+      <h2>Online Admission Application</h2>
+      <a class="page-action-btn" href="index.html" aria-label="Return to the school website">← Back to Website</a>
+    </div>
+    <p class="admission-intro">Please complete the application carefully. Form Number and Date will be generated automatically. Class, Gender, Category and Religion are loaded from the school master data.</p>
+
+    <form id="onlineAdmissionForm" class="admission-form" novalidate>
+      <div class="admission-meta">
+        <div><label for="applicationFormNo">Form No.</label><input id="applicationFormNo" value="Generated automatically on submit" readonly></div>
+        <div><label for="applicationDate">Date</label><input id="applicationDate" readonly></div>
+      </div>
+
+      <h4 class="admission-form-section">Admission Details</h4>
+      <div class="form-grid">
+        <div><label for="admissionClass">Class <span class="required-mark">*</span></label><select id="admissionClass" name="class" required><option value="">Loading classes...</option></select></div>
+        <div><label for="admissionDob">Date of Birth (DD-MM-YYYY) <span class="required-mark">*</span></label><input id="admissionDob" name="dob" type="text" inputmode="numeric" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" required><small class="field-help">Enter date in DD-MM-YYYY format.</small></div>
+        <div><label for="admissionGender">Gender <span class="required-mark">*</span></label><select id="admissionGender" name="gender" required><option value="">Loading genders...</option></select></div>
+        <div><label for="admissionCategory">Category <span class="required-mark">*</span></label><select id="admissionCategory" name="category" required><option value="">Loading categories...</option></select></div>
+        <div><label for="admissionReligion">Religion <span class="required-mark">*</span></label><select id="admissionReligion" name="religion" required><option value="">Loading religions...</option></select></div>
+      </div>
+
+      <h4 class="admission-form-section">Student Details</h4>
+      <div class="form-grid">
+        <div><label for="studentEnglish">Name of Student (English) <span class="required-mark">*</span></label><input id="studentEnglish" name="studentEnglish" type="text" autocomplete="name" placeholder="ENTER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only. Text is automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="studentHindi">Name of Student (Hindi) <span class="required-mark">*</span></label><input id="studentHindi" name="studentHindi" type="text" placeholder="विद्यार्थी का नाम हिंदी में" required><small class="field-help">Hindi Unicode text is supported.</small></div>
+        <div><label for="fatherEnglish">Father's Name (English) <span class="required-mark">*</span></label><input id="fatherEnglish" name="fatherEnglish" type="text" placeholder="FATHER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only; automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="fatherHindi">Father's Name (Hindi) <span class="required-mark">*</span></label><input id="fatherHindi" name="fatherHindi" type="text" placeholder="पिता का नाम हिंदी में" required></div>
+        <div><label for="motherEnglish">Mother's Name (English) <span class="required-mark">*</span></label><input id="motherEnglish" name="motherEnglish" type="text" placeholder="MOTHER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only; automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="motherHindi">Mother's Name (Hindi) <span class="required-mark">*</span></label><input id="motherHindi" name="motherHindi" type="text" placeholder="माता का नाम हिंदी में" required></div>
+      </div>
+
+      <h4 class="admission-form-section">Contact Details</h4>
+      <div class="form-grid">
+        <div>
+          <label for="admissionMobile">Mobile (10 digits) <span class="required-mark">*</span></label>
+          <input id="admissionMobile" name="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" placeholder="10-digit mobile number" autocomplete="tel-national" required>
+          <div class="admission-verify-controls"><button class="admission-verify-btn" type="button" id="sendMobileOtp">Send Mobile OTP</button><span class="admission-verify-status" id="mobileVerificationStatus">Not verified</span></div>
+          <div class="admission-otp-panel" id="mobileOtpPanel" hidden><input id="mobileOtp" type="text" inputmode="numeric" maxlength="8" pattern="[0-9]{4,8}" placeholder="Enter SMS OTP" aria-label="Mobile OTP"><button class="admission-verify-btn" type="button" id="verifyMobileOtp">Verify Mobile</button></div>
+        </div>
+        <div><label for="admissionWhatsapp">WhatsApp (10 digits) <span class="required-mark">*</span></label><input id="admissionWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit WhatsApp number" required></div>
+        <div>
+          <label for="admissionEmail">Email ID <span class="required-mark">*</span></label>
+          <input id="admissionEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+          <div class="admission-verify-controls"><button class="admission-verify-btn" type="button" id="sendEmailOtp">Send Email OTP</button><span class="admission-verify-status" id="emailVerificationStatus">Not verified</span></div>
+          <div class="admission-otp-panel" id="emailOtpPanel" hidden><input id="emailOtp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter email OTP" aria-label="Email OTP"><button class="admission-verify-btn" type="button" id="verifyEmailOtp">Verify Email</button></div>
+        </div>
+        <div><label for="admissionAadhaar">Aadhaar No. (12 digits) <span class="required-mark">*</span></label><input id="admissionAadhaar" name="aadhaar" type="text" inputmode="numeric" maxlength="12" pattern="[0-9]{12}" placeholder="12-digit Aadhaar number" required></div>
+        <div><label for="admissionAddress">Address</label><textarea id="admissionAddress" name="address" rows="3" placeholder="Complete residential address"></textarea></div>
+        <div><label for="admissionLastSchool">Last School</label><input id="admissionLastSchool" name="lastSchool" type="text" placeholder="Name of previous school"></div>
+      </div>
+
+      <h4 class="admission-form-section">Student Photograph</h4>
+      <label for="admissionPhoto">Photo (maximum 50 KB) <span class="required-mark">*</span></label>
+      <input id="admissionPhoto" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required>
+      <small class="field-help">The photo will be resized/compressed in the browser to stay within 50 KB before submission.</small>
+      <div class="admission-photo-preview" id="admissionPhotoPreview" hidden>
+        <img id="admissionPhotoImage" alt="Student photo preview">
+        <span id="admissionPhotoSize"></span>
+      </div>
+
+      <div id="admissionStatus" class="admission-status" role="status" aria-live="polite"></div>
+      <button id="admissionSubmit" class="admission-submit" type="submit">Submit Online Admission Form</button>
+      <p class="field-help" style="margin-top:12px">Fields marked * are required. Please verify all details before submitting.</p>
+      <input type="text" id="admissionWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px">
+    </form>
+  </section>
+</main>
+<footer>Online Admission Application &nbsp; | &nbsp; Ramraji Saraswati Balika Vidya Mandir Inter College</footer>
+<script>
+const ADMISSION_API_BASE = "https://admission-api.shantiraman.co.in";
+let admissionPhotoData = "";
+let admissionEmailVerificationToken = "";
+let admissionMobileVerificationToken = "";
+
+function localAdmissionDate() {
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, "0");
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  return `${dd}-${mm}-${now.getFullYear()}`;
+}
+
+function setAdmissionStatus(message, kind) {
+  const el = document.getElementById("admissionStatus");
+  if (!el) return;
+  el.className = "admission-status " + (kind || "info");
+  el.textContent = message;
+}
+
+function fillAdmissionSelect(id, values, label) {
+  const select = document.getElementById(id);
+  if (!select) return;
+  select.replaceChildren(new Option("-- Select " + label + " --", ""));
+  values.forEach(value => select.add(new Option(value, value)));
+  if (!values.length) {
+    select.replaceChildren(new Option("No " + label.toLowerCase() + " values configured", ""));
+  }
+}
+
+function setVerificationStatus(kind, message, state) {
+  const el = document.getElementById(kind + "VerificationStatus");
+  if (!el) return;
+  el.textContent = message;
+  el.className = "admission-verify-status" + (state ? " " + state : "");
+}
+
+async function admissionOtpRequest(path, payload) {
+  const response = await fetch(ADMISSION_API_BASE + path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  const data = await response.json();
+  if (!response.ok || !data.success) throw new Error(data.error || "Verification request failed.");
+  return data;
+}
+
+function resetEmailVerification(message) {
+  admissionEmailVerificationToken = "";
+  const panel = document.getElementById("emailOtpPanel");
+  if (panel) panel.hidden = true;
+  const otp = document.getElementById("emailOtp");
+  if (otp) otp.value = "";
+  setVerificationStatus("email", message || "Not verified", "");
+}
+
+function resetMobileVerification(message) {
+  admissionMobileVerificationToken = "";
+  const panel = document.getElementById("mobileOtpPanel");
+  if (panel) panel.hidden = true;
+  const otp = document.getElementById("mobileOtp");
+  if (otp) otp.value = "";
+  setVerificationStatus("mobile", message || "Not verified", "");
+}
+
+function bindAdmissionOtpControls() {
+  const email = document.getElementById("admissionEmail");
+  const mobile = document.getElementById("admissionMobile");
+  const website = () => document.getElementById("admissionWebsite")?.value || "";
+
+  email.addEventListener("input", () => resetEmailVerification("Email changed - verify again"));
+  mobile.addEventListener("input", () => resetMobileVerification("Mobile changed - verify again"));
+
+  document.getElementById("sendEmailOtp").addEventListener("click", async () => {
+    email.value = email.value.trim();
+    if (!email.checkValidity()) { email.reportValidity(); return; }
+    const button = document.getElementById("sendEmailOtp");
+    button.disabled = true;
+    button.textContent = "Sending...";
+    resetEmailVerification("Sending email OTP...");
+    try {
+      const result = await admissionOtpRequest("/api/admission/send-email-otp", { email: email.value.trim(), website: website() });
+      document.getElementById("emailOtpPanel").hidden = false;
+      setVerificationStatus("email", "OTP sent - check inbox/spam", "");
+      setAdmissionStatus(result.message || "Email OTP sent. It expires in 5 minutes.", "info");
+      document.getElementById("emailOtp").focus();
+    } catch (error) {
+      resetEmailVerification("Not verified");
+      setVerificationStatus("email", error.message, "failed");
+      setAdmissionStatus("Email verification: " + error.message, "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Resend Email OTP";
+    }
+  });
+
+  document.getElementById("verifyEmailOtp").addEventListener("click", async () => {
+    const otp = document.getElementById("emailOtp").value.trim();
+    if (!/^\d{6}$/.test(otp)) { setVerificationStatus("email", "Enter the 6-digit OTP", "failed"); return; }
+    const button = document.getElementById("verifyEmailOtp");
+    button.disabled = true;
+    button.textContent = "Verifying...";
+    try {
+      const result = await admissionOtpRequest("/api/admission/verify-email-otp", { email: email.value.trim(), otp, website: website() });
+      admissionEmailVerificationToken = result.verificationToken;
+      document.getElementById("emailOtpPanel").hidden = true;
+      setVerificationStatus("email", "Verified ✓", "verified");
+      setAdmissionStatus("Email verified successfully.", "success");
+    } catch (error) {
+      setVerificationStatus("email", error.message, "failed");
+      setAdmissionStatus("Email verification: " + error.message, "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Verify Email";
+    }
+  });
+
+  document.getElementById("sendMobileOtp").addEventListener("click", async () => {
+    mobile.value = mobile.value.replace(/\D/g, "").slice(0, 10);
+    if (!/^[6-9]\d{9}$/.test(mobile.value)) { mobile.setCustomValidity("Enter a valid 10-digit Indian mobile number."); mobile.reportValidity(); mobile.setCustomValidity(""); return; }
+    const button = document.getElementById("sendMobileOtp");
+    button.disabled = true;
+    button.textContent = "Sending...";
+    resetMobileVerification("Sending SMS OTP...");
+    try {
+      const result = await admissionOtpRequest("/api/admission/send-mobile-otp", { mobile: mobile.value, website: website() });
+      document.getElementById("mobileOtpPanel").hidden = false;
+      setVerificationStatus("mobile", "OTP sent by SMS", "");
+      setAdmissionStatus(result.message || "Mobile OTP sent. It expires in 5 minutes.", "info");
+      document.getElementById("mobileOtp").focus();
+    } catch (error) {
+      resetMobileVerification("Not verified");
+      setVerificationStatus("mobile", error.message, "failed");
+      setAdmissionStatus("Mobile verification: " + error.message, "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Resend Mobile OTP";
+    }
+  });
+
+  document.getElementById("verifyMobileOtp").addEventListener("click", async () => {
+    const otp = document.getElementById("mobileOtp").value.trim();
+    if (!/^\d{4,8}$/.test(otp)) { setVerificationStatus("mobile", "Enter the OTP from the SMS", "failed"); return; }
+    const button = document.getElementById("verifyMobileOtp");
+    button.disabled = true;
+    button.textContent = "Verifying...";
+    try {
+      const result = await admissionOtpRequest("/api/admission/verify-mobile-otp", { mobile: mobile.value, otp, website: website() });
+      admissionMobileVerificationToken = result.verificationToken;
+      document.getElementById("mobileOtpPanel").hidden = true;
+      setVerificationStatus("mobile", "Verified ✓", "verified");
+      setAdmissionStatus("Mobile number verified successfully.", "success");
+    } catch (error) {
+      setVerificationStatus("mobile", error.message, "failed");
+      setAdmissionStatus("Mobile verification: " + error.message, "error");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Verify Mobile";
+    }
+  });
+}
+
+function forceEnglishUppercase(id) {
+  const input = document.getElementById(id);
+  if (!input) return;
+  input.addEventListener("input", () => {
+    input.value = input.value.toUpperCase().replace(/[^A-Z ]/g, "").replace(/\s+/g, " ");
+  });
+}
+
+function digitsOnly(id, maxLength) {
+  const input = document.getElementById(id);
+  if (!input) return;
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "").slice(0, maxLength);
+  });
+}
+
+function formatDobInput(input) {
+  input.addEventListener("input", () => {
+    const digits = input.value.replace(/\D/g, "").slice(0, 8);
+    if (digits.length <= 2) input.value = digits;
+    else if (digits.length <= 4) input.value = digits.slice(0, 2) + "-" + digits.slice(2);
+    else input.value = digits.slice(0, 2) + "-" + digits.slice(2, 4) + "-" + digits.slice(4);
+  });
+}
+
+function compressAdmissionPhoto(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith("image/")) {
+      reject(new Error("Please select a valid image file."));
+      return;
+    }
+    const imageUrl = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = async () => {
+      try {
+        let scale = Math.min(1, 1000 / Math.max(img.naturalWidth, img.naturalHeight));
+        let blob = null;
+        for (let resizePass = 0; resizePass < 7; resizePass++) {
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+          canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          for (let quality = 0.88; quality >= 0.28; quality -= 0.10) {
+            blob = await new Promise(resolveBlob => canvas.toBlob(resolveBlob, "image/jpeg", quality));
+            if (blob && blob.size <= 50 * 1024) break;
+          }
+          if (blob && blob.size <= 50 * 1024) break;
+          scale *= 0.82;
+        }
+        URL.revokeObjectURL(imageUrl);
+        if (!blob || blob.size > 50 * 1024) {
+          reject(new Error("The selected photo could not be compressed under 50 KB. Please select a smaller photo."));
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => resolve({ dataUrl: reader.result, blob });
+        reader.onerror = () => reject(new Error("Could not read the selected photo."));
+        reader.readAsDataURL(blob);
+      } catch (err) {
+        URL.revokeObjectURL(imageUrl);
+        reject(err);
+      }
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(imageUrl);
+      reject(new Error("The selected photo could not be opened."));
+    };
+    img.src = imageUrl;
+  });
+}
+
+async function initAdmissionForm() {
+  const form = document.getElementById("onlineAdmissionForm");
+  if (!form || form.dataset.initialized === "yes") return;
+  form.dataset.initialized = "yes";
+  bindAdmissionOtpControls();
+  const date = document.getElementById("applicationDate");
+  if (date) date.value = localAdmissionDate();
+
+  ["studentEnglish", "fatherEnglish", "motherEnglish"].forEach(forceEnglishUppercase);
+  [["admissionMobile", 10], ["admissionWhatsapp", 10], ["admissionAadhaar", 12]].forEach(([id, len]) => digitsOnly(id, len));
+  const dob = document.getElementById("admissionDob");
+  if (dob) formatDobInput(dob);
+
+  try {
+    const response = await fetch(ADMISSION_API_BASE + "/api/admission/options", { method: "GET", headers: { "Accept": "application/json" } });
+    const data = await response.json();
+    if (!response.ok || !data.success) throw new Error(data.error || "Could not load school master data.");
+    fillAdmissionSelect("admissionClass", data.options.classes || [], "Class");
+    fillAdmissionSelect("admissionGender", data.options.genders || [], "Gender");
+    fillAdmissionSelect("admissionCategory", data.options.categories || [], "Category");
+    fillAdmissionSelect("admissionReligion", data.options.religions || [], "Religion");
+  } catch (error) {
+    ["admissionClass", "admissionGender", "admissionCategory", "admissionReligion"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.replaceChildren(new Option("Master data unavailable - retry page", ""));
+    });
+    setAdmissionStatus("Could not connect to the school admission service. Please try again later. Details: " + error.message, "error");
+  }
+
+  const photoInput = document.getElementById("admissionPhoto");
+  if (photoInput) {
+    photoInput.addEventListener("change", async () => {
+      const preview = document.getElementById("admissionPhotoPreview");
+      const image = document.getElementById("admissionPhotoImage");
+      const size = document.getElementById("admissionPhotoSize");
+      admissionPhotoData = "";
+      if (!photoInput.files || !photoInput.files[0]) {
+        if (preview) preview.hidden = true;
+        return;
+      }
+      setAdmissionStatus("Preparing and compressing the photo...", "info");
+      try {
+        const result = await compressAdmissionPhoto(photoInput.files[0]);
+        admissionPhotoData = result.dataUrl;
+        image.src = result.dataUrl;
+        size.textContent = "Compressed photo: " + (result.blob.size / 1024).toFixed(1) + " KB (maximum 50 KB)";
+        preview.hidden = false;
+        setAdmissionStatus("Photo is ready for upload.", "success");
+      } catch (error) {
+        photoInput.value = "";
+        setAdmissionStatus(error.message, "error");
+        if (preview) preview.hidden = true;
+      }
+    });
+  }
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const status = document.getElementById("admissionStatus");
+    if (!form.reportValidity()) return;
+    if (!admissionPhotoData) {
+      setAdmissionStatus("Please select a student photo. It must be compressed to 50 KB or less.", "error");
+      return;
+    }
+    if (!admissionEmailVerificationToken || !admissionMobileVerificationToken) {
+      setAdmissionStatus("Please verify both the Email ID and Mobile number before submitting the form.", "error");
+      return;
+    }
+    const dobValue = document.getElementById("admissionDob").value.trim();
+    const dobMatch = /^(\d{2})-(\d{2})-(\d{4})$/.exec(dobValue);
+    if (!dobMatch) {
+      setAdmissionStatus("Date of Birth must use DD-MM-YYYY format.", "error");
+      return;
+    }
+    const parsedDob = new Date(Number(dobMatch[3]), Number(dobMatch[2]) - 1, Number(dobMatch[1]));
+    if (parsedDob.getFullYear() !== Number(dobMatch[3]) || parsedDob.getMonth() !== Number(dobMatch[2]) - 1 || parsedDob.getDate() !== Number(dobMatch[1]) || parsedDob > new Date()) {
+      setAdmissionStatus("Please enter a valid Date of Birth that is not in the future.", "error");
+      return;
+    }
+
+    const submitButton = document.getElementById("admissionSubmit");
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+    setAdmissionStatus("Submitting your admission application securely...", "info");
+    const payload = {
+      class: document.getElementById("admissionClass").value,
+      studentEnglish: document.getElementById("studentEnglish").value.trim(),
+      studentHindi: document.getElementById("studentHindi").value.trim(),
+      fatherEnglish: document.getElementById("fatherEnglish").value.trim(),
+      fatherHindi: document.getElementById("fatherHindi").value.trim(),
+      motherEnglish: document.getElementById("motherEnglish").value.trim(),
+      motherHindi: document.getElementById("motherHindi").value.trim(),
+      dob: dobValue,
+      gender: document.getElementById("admissionGender").value,
+      category: document.getElementById("admissionCategory").value,
+      religion: document.getElementById("admissionReligion").value,
+      mobile: document.getElementById("admissionMobile").value,
+      whatsapp: document.getElementById("admissionWhatsapp").value,
+      email: document.getElementById("admissionEmail").value.trim(),
+      aadhaar: document.getElementById("admissionAadhaar").value,
+      address: document.getElementById("admissionAddress").value.trim(),
+      lastSchool: document.getElementById("admissionLastSchool").value.trim(),
+      photoData: admissionPhotoData,
+      emailVerificationToken: admissionEmailVerificationToken,
+      mobileVerificationToken: admissionMobileVerificationToken,
+      website: document.getElementById("admissionWebsite").value
+    };
+    try {
+      const response = await fetch(ADMISSION_API_BASE + "/api/online-admission", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.error || "The application could not be submitted.");
+      document.getElementById("applicationFormNo").value = result.formNo;
+      setAdmissionStatus("Application submitted successfully.\nForm No.: " + result.formNo + "\nDate: " + result.date + "\nPlease keep your Form No. for future reference.", "success");
+      form.reset();
+      document.getElementById("applicationFormNo").value = result.formNo;
+      document.getElementById("applicationDate").value = result.date;
+      admissionPhotoData = "";
+      admissionEmailVerificationToken = "";
+      admissionMobileVerificationToken = "";
+      document.getElementById("admissionPhotoPreview").hidden = true;
+      resetEmailVerification("Not verified");
+      resetMobileVerification("Not verified");
+    } catch (error) {
+      setAdmissionStatus("Application was not submitted. " + error.message, "error");
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Online Admission Form";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initAdmissionForm(); });
+
+</script>
+</body>
+</html>
