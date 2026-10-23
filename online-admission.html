@@ -35,6 +35,9 @@ label{font-weight:bold;line-height:1.5}
 .admission-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;padding:14px;background:#f7faff;border:1px solid #dfe8f2;border-radius:10px;margin-bottom:18px}
 .admission-meta input[readonly]{background:#edf2f7;color:#52627a}
 .admission-form-section{margin:18px 0 10px;padding-bottom:8px;border-bottom:1px solid #e6edf5;color:#0b3975}
+.admission-form{display:none}
+#admissionClosedMessage{margin:18px 0;padding:22px;border:1px solid #f2d8a8;border-radius:12px;background:#fff8e8;color:#754c00;font-size:17px;font-weight:700;line-height:1.7;text-align:center}
+#admissionClosedMessage[hidden]{display:none}
 .admission-form .required-mark{color:#c51e1e}
 .admission-form .field-help{display:block;color:#69778b;font-size:12px;margin-top:-8px;margin-bottom:12px;line-height:1.4}
 .admission-form input[type=file]{padding:10px;background:#f8fafc}
@@ -81,30 +84,34 @@ footer a{color:#fff}
       <a class="page-action-btn" href="index.html" aria-label="Return to the school website">← Back to Website</a>
     </div>
     <p class="admission-intro">Please fill the application form carefully.</p>
+    <div id="admissionClosedMessage" hidden role="status" aria-live="polite"></div>
 
     <form id="onlineAdmissionForm" class="admission-form" novalidate>
       <div class="admission-meta">
         <div><label for="applicationFormNo">Form No.</label><input id="applicationFormNo" value="Generated automatically on submit" readonly></div>
         <div><label for="applicationDate">Date</label><input id="applicationDate" readonly></div>
       </div>
-	<h4 class="admission-form-section">Student Details</h4>
-      <div class="form-grid name-grid">
-        <div><label for="studentEnglish">Name of Student (English) <span class="required-mark">*</span></label><input id="studentEnglish" name="studentEnglish" type="text" autocomplete="name" 	placeholder="ENTER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
-        <div><label for="studentHindi">Name of Student (Hindi) <span class="required-mark">*</span></label><input id="studentHindi" name="studentHindi" type="text" placeholder="विद्यार्थी का नाम हिंदी में" 	required><small class="field-help"></small></div>
-        <div><label for="fatherEnglish">Father's Name (English) <span class="required-mark">*</span></label><input id="fatherEnglish" name="fatherEnglish" type="text" placeholder="FATHER NAME IN 	CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
-        <div><label for="fatherHindi">Father's Name (Hindi) <span class="required-mark">*</span></label><input id="fatherHindi" name="fatherHindi" type="text" placeholder="पिता का नाम हिंदी में" 	required></div>
-        <div><label for="motherEnglish">Mother's Name (English) <span class="required-mark">*</span></label><input id="motherEnglish" name="motherEnglish" type="text" placeholder="MOTHER NAME IN 	CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help"></small></div>
-        <div><label for="motherHindi">Mother's Name (Hindi) <span class="required-mark">*</span></label><input id="motherHindi" name="motherHindi" type="text" placeholder="माता का नाम हिंदी में" 	required></div>
-      </div>
+
       <h4 class="admission-form-section">Admission Details</h4>
       <div class="admission-key-grid">
         <div><label for="admissionClass">Class <span class="required-mark">*</span></label><select id="admissionClass" name="class" required><option value="">Loading classes...</option></select></div>
-        <div><label for="admissionDob">Date of Birth<span class="required-mark">*</span></label><input id="admissionDob" name="dob" type="text" inputmode="numeric" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" required><small class="field-help"></small></div>
+        <div><label for="admissionDob">Date of Birth (DD-MM-YYYY) <span class="required-mark">*</span></label><input id="admissionDob" name="dob" type="text" inputmode="numeric" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" required><small class="field-help">DD-MM-YYYY</small></div>
         <div><label for="admissionAadhaar">Aadhaar No. (12 digits) <span class="required-mark">*</span></label><input id="admissionAadhaar" name="aadhaar" type="text" inputmode="numeric" maxlength="12" pattern="[0-9]{12}" placeholder="12-digit Aadhaar number" required></div>
         <div><label for="admissionGender">Gender <span class="required-mark">*</span></label><select id="admissionGender" name="gender" required><option value="">Loading genders...</option></select></div>
         <div><label for="admissionCategory">Category <span class="required-mark">*</span></label><select id="admissionCategory" name="category" required><option value="">Loading categories...</option></select></div>
         <div><label for="admissionReligion">Religion <span class="required-mark">*</span></label><select id="admissionReligion" name="religion" required><option value="">Loading religions...</option></select></div>
       </div>
+
+      <h4 class="admission-form-section">Student Details</h4>
+      <div class="form-grid name-grid">
+        <div><label for="studentEnglish">Name of Student (English) <span class="required-mark">*</span></label><input id="studentEnglish" name="studentEnglish" type="text" autocomplete="name" placeholder="ENTER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only. Text is automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="studentHindi">Name of Student (Hindi) <span class="required-mark">*</span></label><input id="studentHindi" name="studentHindi" type="text" placeholder="विद्यार्थी का नाम हिंदी में" required><small class="field-help">Hindi Unicode text is supported.</small></div>
+        <div><label for="fatherEnglish">Father's Name (English) <span class="required-mark">*</span></label><input id="fatherEnglish" name="fatherEnglish" type="text" placeholder="FATHER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only. Text is automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="fatherHindi">Father's Name (Hindi) <span class="required-mark">*</span></label><input id="fatherHindi" name="fatherHindi" type="text" placeholder="पिता का नाम हिंदी में" required></div>
+        <div><label for="motherEnglish">Mother's Name (English) <span class="required-mark">*</span></label><input id="motherEnglish" name="motherEnglish" type="text" placeholder="MOTHER NAME IN CAPITAL LETTERS" pattern="[A-Z ]+" required><small class="field-help">English letters only. Text is automatically converted to CAPITAL LETTERS.</small></div>
+        <div><label for="motherHindi">Mother's Name (Hindi) <span class="required-mark">*</span></label><input id="motherHindi" name="motherHindi" type="text" placeholder="माता का नाम हिंदी में" required></div>
+      </div>
+
       <h4 class="admission-form-section">Contact Details</h4>
       <div class="contact-grid">
         <div>
@@ -398,14 +405,31 @@ async function initAdmissionForm() {
   if (dob) formatDobInput(dob);
 
   try {
-    const response = await fetch(ADMISSION_API_BASE + "/api/admission/options", { method: "GET", headers: { "Accept": "application/json" } });
+    const response = await fetch(ADMISSION_API_BASE + "/api/admission/options", { method: "GET", headers: { "Accept": "application/json" }, cache: "no-store" });
     const data = await response.json();
     if (!response.ok || !data.success) throw new Error(data.error || "Could not load school master data.");
+    if (data.admissionOpen === false) {
+      const closedMessage = document.getElementById("admissionClosedMessage");
+      closedMessage.textContent = data.message || "Online admission for the 2027-28 session is not available yet.";
+      closedMessage.hidden = false;
+      const intro = document.querySelector(".admission-intro");
+      if (intro) intro.style.display = "none";
+      form.style.display = "none";
+      return;
+    }
+    if (data.admissionOpen !== true || !data.options) throw new Error("The school has not enabled online admission. Please try again later.");
     fillAdmissionSelect("admissionClass", data.options.classes || [], "Class");
     fillAdmissionSelect("admissionGender", data.options.genders || [], "Gender");
     fillAdmissionSelect("admissionCategory", data.options.categories || [], "Category");
     fillAdmissionSelect("admissionReligion", data.options.religions || [], "Religion");
+    form.style.display = "block";
   } catch (error) {
+    form.style.display = "none";
+    const closedMessage = document.getElementById("admissionClosedMessage");
+    closedMessage.textContent = "Online admission is temporarily unavailable. " + error.message;
+    closedMessage.hidden = false;
+    const intro = document.querySelector(".admission-intro");
+    if (intro) intro.style.display = "none";
     ["admissionClass", "admissionGender", "admissionCategory", "admissionReligion"].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.replaceChildren(new Option("Master data unavailable - retry page", ""));
