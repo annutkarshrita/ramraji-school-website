@@ -83,6 +83,17 @@ footer a{color:white;text-decoration:none}
 .leaders-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}
 .leader-card{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:20px;text-align:center;overflow-wrap:anywhere}
 .leader-photo{display:block;width:135px;height:135px;max-width:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #efa21a;margin:0 auto 14px;background:#fffaf4}
+
+.faculty-table-wrap{width:100%;overflow-x:auto;margin-top:14px}
+.faculty-table{width:100%;min-width:620px;border-collapse:collapse;background:#fff;font-size:14px}
+.faculty-table th{background:#0b3975;color:#fff;text-align:left;padding:12px 14px;white-space:nowrap}
+.faculty-table td{padding:11px 14px;border:1px solid #e4eaf1;color:#26384d;vertical-align:top}
+.faculty-table tbody tr:nth-child(even){background:#f3f7fc}
+.faculty-table tbody tr:hover{background:#fff0df}
+.faculty-table th:first-child,.faculty-table td:first-child{text-align:center;width:70px}
+.faculty-table th:nth-child(3),.faculty-table td:nth-child(3){width:90px;text-align:center}
+.faculty-note{color:#68758b;font-size:13px;margin:10px 0 0}
+
 @media(max-width:1200px){
  .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
  .school-header{grid-template-columns:110px minmax(0,1fr) 150px;gap:12px}
@@ -342,25 +353,46 @@ achievements: `
   <section class="panel"><h3>Student Achievements</h3><p>Replace this sample text with approved achievements and actual dates.</p></section>
   `,
 Faculties: `
-   <section class="panel"><h3>Our Principal</h3><p>Renu Singh</p></section>
-   <tr><td>S.N.</td><td>Name of teacher's</td><td>Post</td><td>Qualification</td></tr>
-   <tr><td>01</td><td>Mrs. Roli Srivastava</td><td>PGT</td><td>M.A., Sangeet Prabhakar</td></tr>
-   <tr><td>02</td><td>Mrs. Kusum Srivastava</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>03</td><td>Mrs. Ranjana Mishra</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>04</td><td>Mrs. Kirti Singh</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-   <tr><td>05</td><td>Mrs. Meena Devi</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-   <tr><td>06</td><td>Mrs. Supriya Verma</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>07</td><td>Mrs. Preeti Singh</td><td>PGT</td><td>M.A.</td></tr>
-   <tr><td>08</td><td>Mr. Narendra Kumar Chauhan</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-   tr><td>09</td><td>Mrs. Rajni Shukla</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>10</td><td>Miss Namita Agrahari</td><td>TGT</td><td>M.A., B.P.Ed.</td></tr>
-   <tr><td>11</td><td>Mrs. Bindu Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>12</td><td>Mrs. Pooja Singh</td><td>TGT</td><td>M.A., P.G.D.C.A.</td></tr>
-   <tr><td>13</td><td>Mrs. Kanchan Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>14</td><td>Dr. Preeti Singh</td><td>TGT</td><td>M.A., B.Ed., P.G.D.</td></tr>
-   <tr><td>15</td><td>Mrs. Sanju Shukla</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>16</td><td>Mrs. Mangla Pandey</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-   <tr><td>17</td><td>Mr. Subhash Srivasta</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+   <section class="panel">
+     <h2>Our Principal</h2>
+     <p><b>Mrs. Renu Singh</b></p>
+   </section>
+
+   <section class="panel">
+     <h2>Our Teaching Staff</h2>
+     <div class="faculty-table-wrap">
+       <table class="faculty-table">
+         <thead>
+           <tr>
+             <th>S.N.</th>
+             <th>Name of Teachers</th>
+             <th>Post</th>
+             <th>Qualification</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr><td>01</td><td>Mrs. Roli Srivastava</td><td>PGT</td><td>M.A., Sangeet Prabhakar</td></tr>
+           <tr><td>02</td><td>Mrs. Kusum Srivastava</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>03</td><td>Mrs. Ranjana Mishra</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>04</td><td>Mrs. Kirti Singh</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>05</td><td>Mrs. Meena Devi</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>06</td><td>Mrs. Supriya Verma</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>07</td><td>Mrs. Preeti Singh</td><td>PGT</td><td>M.A.</td></tr>
+           <tr><td>08</td><td>Mr. Narendra Kumar Chauhan</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>09</td><td>Mrs. Rajni Shukla</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>10</td><td>Miss Namita Agrahari</td><td>TGT</td><td>M.A., B.P.Ed.</td></tr>
+           <tr><td>11</td><td>Mrs. Bindu Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>12</td><td>Mrs. Pooja Singh</td><td>TGT</td><td>M.A., P.G.D.C.A.</td></tr>
+           <tr><td>13</td><td>Mrs. Kanchan Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>14</td><td>Dr. Preeti Singh</td><td>TGT</td><td>M.A., B.Ed., P.G.D.</td></tr>
+           <tr><td>15</td><td>Mrs. Sanju Shukla</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>16</td><td>Mrs. Mangla Pandey</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>17</td><td>Mr. Subhash Srivasta</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+         </tbody>
+       </table>
+     </div>
+     <p class="faculty-note">On mobile devices, swipe horizontally to view all columns.</p>
+   </section>
 `,
 gallery: `
   <section class="panel"><h3>School Photo Gallery</h3><p>किसी भी फोटो पर क्लिक करके स्कूल की पूरी फोटो और वीडियो गैलरी देखें।</p>
