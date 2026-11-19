@@ -85,12 +85,15 @@ footer a{color:white;text-decoration:none}
 .leader-photo{display:block;width:135px;height:135px;max-width:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #efa21a;margin:0 auto 14px;background:#fffaf4}
 
 .faculty-table-wrap{width:100%;overflow-x:auto;margin-top:14px}
-.faculty-table{width:100%;min-width:620px;border-collapse:collapse;background:#fff;font-size:14px}
+.faculty-table{width:100%;min-width:760px;border-collapse:collapse;background:#fff;font-size:14px}
 .faculty-table th{background:#0b3975;color:#fff;text-align:left;padding:12px 14px;white-space:nowrap}
 .faculty-table td{padding:11px 14px;border:1px solid #e4eaf1;color:#26384d;vertical-align:top}
 .faculty-table tbody tr:nth-child(even){background:#f3f7fc}
 .faculty-table tbody tr:hover{background:#fff0df}
-.faculty-table th:first-child,.faculty-table td:first-child{text-align:center;width:70px}
+.faculty-table th:first-child,.faculty-table td:first-child{text-align:center;width:60px}
+.faculty-photo{width:76px;height:76px;object-fit:cover;object-position:center top;border-radius:9px;border:2px solid #efa21a;background:#fffaf4;display:block;margin:auto}
+.faculty-table th.photo-col,.faculty-table td.photo-col{text-align:center;width:100px;vertical-align:middle}
+.faculty-table td.teacher-name{font-weight:700;color:#0b3975}
 .faculty-table th:nth-child(3),.faculty-table td:nth-child(3){width:90px;text-align:center}
 .faculty-note{color:#68758b;font-size:13px;margin:10px 0 0}
 
@@ -365,33 +368,34 @@ Faculties: `
          <thead>
            <tr>
              <th>S.N.</th>
+             <th>Photo</th>
              <th>Name of Teachers</th>
              <th>Post</th>
              <th>Qualification</th>
            </tr>
          </thead>
          <tbody>
-           <tr><td>01</td><td>Mrs. Roli Srivastava</td><td>PGT</td><td>M.A., Sangeet Prabhakar</td></tr>
-           <tr><td>02</td><td>Mrs. Kusum Srivastava</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>03</td><td>Mrs. Ranjana Mishra</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>04</td><td>Mrs. Kirti Singh</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-           <tr><td>05</td><td>Mrs. Meena Devi</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-           <tr><td>06</td><td>Mrs. Supriya Verma</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>07</td><td>Mrs. Preeti Singh</td><td>PGT</td><td>M.A.</td></tr>
-           <tr><td>08</td><td>Mr. Narendra Kumar Chauhan</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
-           <tr><td>09</td><td>Mrs. Rajni Shukla</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>10</td><td>Miss Namita Agrahari</td><td>TGT</td><td>M.A., B.P.Ed.</td></tr>
-           <tr><td>11</td><td>Mrs. Bindu Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>12</td><td>Mrs. Pooja Singh</td><td>TGT</td><td>M.A., P.G.D.C.A.</td></tr>
-           <tr><td>13</td><td>Mrs. Kanchan Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>14</td><td>Dr. Preeti Singh</td><td>TGT</td><td>M.A., B.Ed., P.G.D.</td></tr>
-           <tr><td>15</td><td>Mrs. Sanju Shukla</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>16</td><td>Mrs. Mangla Pandey</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
-           <tr><td>17</td><td>Mr. Subhash Srivasta</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>01</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Roli_Srivastava.jpg" alt="Mrs. Roli Srivastava" loading="lazy"></td><td class="teacher-name">Mrs. Roli Srivastava</td><td>PGT</td><td>M.A., Sangeet Prabhakar</td></tr>
+           <tr><td>02</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Kusum_Srivastava.jpg" alt="Mrs. Kusum Srivastava" loading="lazy"></td><td class="teacher-name">Mrs. Kusum Srivastava</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>03</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Ranjana_Mishra.jpg" alt="Mrs. Ranjana Mishra" loading="lazy"></td><td class="teacher-name">Mrs. Ranjana Mishra</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>04</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Kirti_Singh.jpg" alt="Mrs. Kirti Singh" loading="lazy"></td><td class="teacher-name">Mrs. Kirti Singh</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>05</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Meena_Devi.jpg" alt="Mrs. Meena Devi" loading="lazy"></td><td class="teacher-name">Mrs. Meena Devi</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>06</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Supriya_Verma.jpg" alt="Mrs. Supriya Verma" loading="lazy"></td><td class="teacher-name">Mrs. Supriya Verma</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>07</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Preeti_Singh.jpg" alt="Mrs. Preeti Singh" loading="lazy"></td><td class="teacher-name">Mrs. Preeti Singh</td><td>PGT</td><td>M.A.</td></tr>
+           <tr><td>08</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Narendra_Kumar_Chauhan.jpg" alt="Mr. Narendra Kumar Chauhan" loading="lazy"></td><td class="teacher-name">Mr. Narendra Kumar Chauhan</td><td>PGT</td><td>M.Sc., B.Ed.</td></tr>
+           <tr><td>09</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Rajni_Shukla.jpg" alt="Mrs. Rajni Shukla" loading="lazy"></td><td class="teacher-name">Mrs. Rajni Shukla</td><td>PGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>10</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Namita_Agrahari.jpg" alt="Miss Namita Agrahari" loading="lazy"></td><td class="teacher-name">Miss Namita Agrahari</td><td>TGT</td><td>M.A., B.P.Ed.</td></tr>
+           <tr><td>11</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Bindu_Singh.jpg" alt="Mrs. Bindu Singh" loading="lazy"></td><td class="teacher-name">Mrs. Bindu Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>12</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Pooja_Singh.jpg" alt="Mrs. Pooja Singh" loading="lazy"></td><td class="teacher-name">Mrs. Pooja Singh</td><td>TGT</td><td>M.A., P.G.D.C.A.</td></tr>
+           <tr><td>13</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Kanchan_Singh.jpg" alt="Mrs. Kanchan Singh" loading="lazy"></td><td class="teacher-name">Mrs. Kanchan Singh</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>14</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Preeti_Singh_2.jpg" alt="Dr. Preeti Singh" loading="lazy"></td><td class="teacher-name">Dr. Preeti Singh</td><td>TGT</td><td>M.A., B.Ed., P.G.D.</td></tr>
+           <tr><td>15</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Sanju_Shukla.jpg" alt="Mrs. Sanju Shukla" loading="lazy"></td><td class="teacher-name">Mrs. Sanju Shukla</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>16</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Mangla_Pandey.jpg" alt="Mrs. Mangla Pandey" loading="lazy"></td><td class="teacher-name">Mrs. Mangla Pandey</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
+           <tr><td>17</td><td class="photo-col"><img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy"></td><td class="teacher-name">Mr. Subhash Srivasta</td><td>TGT</td><td>M.A., B.Ed.</td></tr>
          </tbody>
        </table>
      </div>
-     <p class="faculty-note">On mobile devices, swipe horizontally to view all columns.</p>
+     <p class="faculty-note">Each teacher photo is displayed beside their name. On mobile devices, swipe horizontally to view all columns.</p>
    </section>
 `,
 gallery: `
