@@ -85,21 +85,23 @@ footer a{color:white;text-decoration:none}
 .leader-photo{display:block;width:135px;height:135px;max-width:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #efa21a;margin:0 auto 14px;background:#fffaf4}
 
 /* Faculty profile cards: photo first, then name, post and qualification */
-.faculty-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:18px}
+.faculty-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:18px}
 .faculty-card{min-width:0;overflow:hidden;background:#fff;border:1px solid #e5eaf1;border-radius:14px;text-align:center;box-shadow:0 4px 14px #0b397510;transition:transform .18s ease,box-shadow .18s ease}
 .faculty-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px #0b39751c}
-.faculty-card figure{margin:0;padding:12px 12px 7px}
-.faculty-photo{display:block;width:85%;height:235px;object-fit:contain;object-position:center center;border-radius:10px;background:#f2f5f9;border:1px solid #e5eaf1}
-.faculty-photo-missing{display:flex;align-items:center;justify-content:center;min-height:235px;padding:12px;background:#f2f5f9;color:#65758b;border:1px dashed #aab7c7;border-radius:10px;font-size:12px;overflow-wrap:anywhere}
+.faculty-card figure{margin:0;padding:10px 8px 6px}
+.faculty-photo{display:block;width:82%;height:200px;margin:0 auto;object-fit:contain;object-position:center center;border-radius:10px;background:#f2f5f9;border:1px solid #e5eaf1}
+.faculty-photo-missing{display:flex;width:82%;margin:0 auto;align-items:center;justify-content:center;min-height:200px;padding:12px;background:#f2f5f9;color:#65758b;border:1px dashed #aab7c7;border-radius:10px;font-size:12px;overflow-wrap:anywhere}
 .faculty-card figcaption{padding:10px 12px 14px}
+.employee-card .faculty-card-content{text-align:center;padding:10px 12px 14px}
+.employee-photo-placeholder{height:125px;width:82%;margin:10px auto 6px;display:flex;align-items:center;justify-content:center;border:1px dashed #aab7c7;border-radius:10px;background:linear-gradient(135deg,#f2f5f9,#e8eef6);color:#25476e;font-size:34px;font-weight:700;letter-spacing:2px}
 .faculty-name{font-size:16px;line-height:1.35;color:#0b3975;font-weight:700;margin:0 0 8px}
 .faculty-post{display:inline-block;padding:4px 12px;border-radius:20px;background:#fff0dc;color:#9a4b00;font-size:12px;font-weight:700;margin-bottom:9px}
 .faculty-qualification{font-size:13px;line-height:1.5;color:#42536a;margin:0}
 .faculty-qualification strong{color:#173d69}
 .faculty-note{color:#68758b;font-size:13px;margin:12px 0 0}
-@media(max-width:1250px){.faculty-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:1250px){.faculty-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:900px){.faculty-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:650px){.faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.faculty-card figure{padding:9px 9px 5px}.faculty-photo,.faculty-photo-missing{height:190px;min-height:190px}.faculty-card figcaption{padding:8px}.faculty-name{font-size:14px}}
+@media(max-width:650px){.employee-photo-placeholder{height:120px;margin:9px 9px 5px}.faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.faculty-card figure{padding:9px 9px 5px}.faculty-photo,.faculty-photo-missing{height:190px;min-height:190px}.faculty-card figcaption{padding:8px}.faculty-name{font-size:14px}}
 @media(max-width:380px){.faculty-grid{grid-template-columns:1fr}.faculty-photo,.faculty-photo-missing{height:230px;min-height:230px}}
 
 @media(max-width:1200px){
@@ -362,12 +364,11 @@ achievements: `
   `,
 Faculties: `
    <section class="panel">
-     <h2>Our Principal</h2>
+     <h2>Principal</h2>
      <p><b>Mrs. Renu Singh</b></p>
    </section>
-
    <section class="panel">
-     <h2>Our Teaching Staff</h2>
+     <h2>PGT</h2>
      <div class="faculty-grid">
        <article class="faculty-card">
          <figure>
@@ -375,7 +376,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Roli Srivastava</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., Sangeet Prabhakar</strong></p>
+             <p class="faculty-qualification">M.A., Sangeet Prabhakar</p>
            </figcaption>
          </figure>
        </article>
@@ -385,7 +386,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Kusum Srivastava</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -395,7 +396,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Ranjana Mishra</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -405,7 +406,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Kirti Singh</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.Sc., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.Sc., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -415,17 +416,17 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Meena Devi</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.Sc., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.Sc., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
        <article class="faculty-card">
          <figure>
-           <img class="faculty-photo" src="assets/photos/staff/Supriya_Verma.jpg" alt="Mrs. Supriya Verma" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Supriya_Verma.jpg</div>');this.remove();">
+           <img class="faculty-photo" src="assets/photos/staff/Supriya_Verma.jpg" alt="Mrs. Supriya Srivastava" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Supriya_Verma.jpg</div>');this.remove();">
            <figcaption>
-             <h3 class="faculty-name">Mrs. Supriya Verma</h3>
+             <h3 class="faculty-name">Mrs. Supriya Srivastava</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -435,7 +436,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Preeti Singh</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A.</p>
            </figcaption>
          </figure>
        </article>
@@ -445,7 +446,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mr. Narendra Kumar Chauhan</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.Sc., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.Sc., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -455,17 +456,22 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Rajni Shukla</h3>
              <span class="faculty-post">PGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
+     </div>
+   </section>
+   <section class="panel">
+     <h2>TGT</h2>
+     <div class="faculty-grid">
        <article class="faculty-card">
          <figure>
            <img class="faculty-photo" src="assets/photos/staff/Namita_Agrahari.jpg" alt="Miss Namita Agrahari" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Namita_Agrahari.jpg</div>');this.remove();">
            <figcaption>
              <h3 class="faculty-name">Miss Namita Agrahari</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.P.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.P.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -475,7 +481,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Bindu Singh</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -485,7 +491,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Pooja Singh</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., P.G.D.C.A.</strong></p>
+             <p class="faculty-qualification">M.A., P.G.D.C.A.</p>
            </figcaption>
          </figure>
        </article>
@@ -495,7 +501,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Kanchan Singh</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -505,7 +511,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Dr. Preeti Singh</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed., P.Hd.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed., P.G.D.</p>
            </figcaption>
          </figure>
        </article>
@@ -515,7 +521,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Sanju Shukla</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -525,7 +531,7 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mrs. Mangla Pandey</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
@@ -535,83 +541,158 @@ Faculties: `
            <figcaption>
              <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
              <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
-           </figcaption>
-         </figure>
-         <img class="faculty-photo" src="assets/photos/staff/Subhash_Srivasta.jpg" alt="Mr. Subhash Srivasta" loading="lazy" onerror="this.onerror=null;this.insertAdjacentHTML('afterend','<div class=&quot;faculty-photo-missing&quot;>Photo not found: Subhash_Srivasta.jpg</div>');this.remove();">
-           <figcaption>
-             <h3 class="faculty-name">Mr. Subhash Srivasta</h3>
-             <span class="faculty-post">TGT</span>
-             <p class="faculty-qualification"><strong>M.A., B.Ed.</strong></p>
+             <p class="faculty-qualification">M.A., B.Ed.</p>
            </figcaption>
          </figure>
        </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">RS</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Ratnam Singh</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">Not provided in report</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">PS</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Pratiksha Singh</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">Post Graduation (M.A.)</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">NT</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Nisha Tripathi</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">B.Sc., B.Ed.</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">B</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Bavita</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">M.A., B.Ed.</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">PK</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Prasanna Kumar Singh</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">B.Sc., B.Ed.</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">CS</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Chandra Shekhar Mishra</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">M.A., B.Ed.</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">SS</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Sarita Singh</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">Not provided in report</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">PT</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Pooja Tiwari</h3>
+           <span class="faculty-post">TGT</span>
+           <p class="faculty-qualification">Post Graduation (M.A.)</p>
+         </div>
+       </article>
      </div>
    </section>
-`,
+   <section class="panel">
+     <h2>Office Head</h2>
+     <div class="faculty-grid">
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">GP</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Guru Prasad Shukla</h3>
+           <span class="faculty-post">Office Head</span>
+           <p class="faculty-qualification">Graduation (B.A.)</p>
+         </div>
+       </article>
+     </div>
+   </section>
+   <section class="panel">
+     <h2>Office Assistant</h2>
+     <div class="faculty-grid">
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">PK</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Pradeep Kumar</h3>
+           <span class="faculty-post">Office Assistant</span>
+           <p class="faculty-qualification">M.Com.</p>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">PK</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Praveen Kumar Tiwari</h3>
+           <span class="faculty-post">Office Assistant</span>
+           <p class="faculty-qualification">B.A., P.G.D.C.A.</p>
+         </div>
+       </article>
+     </div>
+   </section>
+   <section class="panel">
+     <h2>Peon</h2>
+     <div class="faculty-grid">
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">AD</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Asha Devi</h3>
+           <span class="faculty-post">Peon</span>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">J</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Jiyalal</h3>
+           <span class="faculty-post">Peon</span>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">AK</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Anil Kumar Yadav</h3>
+           <span class="faculty-post">Peon</span>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+         <div class="employee-photo-placeholder" aria-label="Photo not provided">A</div>
+         <div class="faculty-card-content">
+           <h3 class="faculty-name">Anjali</h3>
+           <span class="faculty-post">Peon</span>
+         </div>
+       </article>
+       <article class="faculty-card employee-card">
+ <div class="employee-photo-placeholder" aria-label="Photo not provided">RD</div>
+ <div class="faculty-card-content">
+  <h3 class="faculty-name">Radha Devi</h3>
+  <span class="faculty-post">Peon</span>
+ </div>
+</article>
+       <article class="faculty-card employee-card">
+ <div class="employee-photo-placeholder" aria-label="Photo not provided">KD</div>
+ <div class="faculty-card-content">
+  <h3 class="faculty-name">Kamala Devi</h3>
+  <span class="faculty-post">Peon</span>
+ </div>
+</article>
+     </div>
+   </section>
+`, 
 gallery: `
   <section class="panel"><h3>School Photo Gallery</h3><p>किसी भी फोटो पर क्लिक करके स्कूल की पूरी फोटो और वीडियो गैलरी देखें।</p>
     <div class="gallery">
