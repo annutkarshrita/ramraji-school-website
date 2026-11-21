@@ -152,6 +152,25 @@ footer a{color:white;text-decoration:none}
  .tab{min-height:70px}
  .topbar{font-size:12px}
 }
+ .achievement-row {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 15px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.achievement-row p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .achievement-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
 </style>
 </head>
 <body>
@@ -410,12 +429,46 @@ admissions: `
   </section>
 `,
 achievements: `
+<div class="achievement-table">
+
+  <div class="achievement-row">
+    <p>Pratibha Verma</p>
+    <p>District Magistrate</p>
+    <p>Jaipur</p>
+  </div>
+
+  <div class="achievement-row">
+    <p>Abha Singh</p>
+    <p>Superintendent of Police</p>
+    <p>Gorakhpur</p>
+  </div>
+
+  <div class="achievement-row">
+    <p>Sakshi Srivastava</p>
+    <p>Village Development Officer</p>
+    <p>Ayodhya</p>
+  </div>
+
+  <div class="achievement-row">
+    <p>Prachi Srivastava</p>
+    <p>Assistant Commissioner</p>
+    <p>Noida</p>
+  </div>
+
+  <div class="achievement-row">
+    <p>Garima Singh</p>
+    <p>Military Officer</p>
+    <p>Government of India</p>
+  </div>
+
+</div>
+  <section class="panel"><h3>Our illustrious female students</h3><p>Replace this sample text with approved achievements and actual dates.</p></section>
   <section class="panel"><h3>School Highlights</h3>
-  <p>Pratibha Verma secured third position in the state in 2013 High School.</p>
-  <p>Anshika Soni secured seventh position in the state in 2023 High School.</p>
+  <p>Pratibha Verma secured 3rd position in the state in 2013 High School.</p>
+  <p>Anshika Soni secured 7th position in the state in 2023 High School.</p>
   <p>Richa Pandey secured 13th position in the state in 2009 high school.</p>
-  <p>Shweta Singh secured first position in the district In 1998 high school.</p></section>
-  <section class="panel"><h3>Student Achievements</h3><p>Replace this sample text with approved achievements and actual dates.</p></section>
+  <p>Shweta Singh secured 1st position in the district In 1998 high school.</p></section>
+  
   `,
 Faculties: `
    <section class="panel">
