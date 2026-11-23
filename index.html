@@ -84,6 +84,13 @@ footer a{color:white;text-decoration:none}
 .leader-card{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:20px;text-align:center;overflow-wrap:anywhere}
 .leader-photo{display:block;width:135px;height:135px;max-width:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #efa21a;margin:0 auto 14px;background:#fffaf4}
 
+
+/* Principal profile: centered and slightly larger than teacher photos */
+.principal-profile-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 12px 14px}
+.principal-profile-photo{display:block;width:190px;height:250px;max-width:90%;object-fit:cover;object-position:center top;border:3px solid #efa21a;border-radius:12px;background:#fff;margin:0 auto 12px;box-shadow:0 4px 14px #0b39751a}
+.principal-profile-card .faculty-name{margin-bottom:8px}
+@media(max-width:520px){.principal-profile-photo{width:175px;height:230px}}
+
 /* Faculty profile cards: photo first, then name, post and qualification */
 .faculty-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:18px}
 .faculty-card{min-width:0;overflow:hidden;background:#fff;border:1px solid #e5eaf1;border-radius:14px;text-align:center;box-shadow:0 4px 14px #0b397510;transition:transform .18s ease,box-shadow .18s ease}
@@ -547,9 +554,13 @@ achievements: `
   </section>
 `,
 Faculties: `
-   <section class="panel">
-     <h2>Principal</h2>
-     <p><b>Mrs. Renu Singh</b></p>
+   <section class="panel principal-profile-panel">
+     <h2 style="text-align:center;">Principal</h2>
+     <div class="principal-profile-card">
+       <img class="principal-profile-photo" src="assets/photos/principal.jpg" alt="Mrs. Renu Singh, Principal" loading="lazy">
+       <h3 class="faculty-name">Mrs. Renu Singh</h3>
+       <span class="faculty-post">Principal</span>
+     </div>
    </section>
    <section class="panel">
      <h2>Our Respected Teachers</h2>
@@ -913,16 +924,19 @@ contact: `
   </section>
 `,
 alumni: `
-  <section class="panel">
-    <div class="page-heading-row">
-      <h3>🎓 Alumni Registration - पूर्व छात्र पंजीकरण</h3>
-      <a class="page-action-btn" href="https://student.shantiraman.co.in/alumni-register" target="_blank" rel="noopener noreferrer">Register Now</a>
+  <section class="panel"><h3>Alumni Registration</h3><p>We welcome former students to register and stay connected with the school.</p>
+  <form onsubmit="demoSubmit(event)">
     </div>
-    <p>We welcome our former students to register and stay connected with the school.</p>
-    <p>हमारे पूर्व विद्यार्थियों से अनुरोध है कि वे पूर्व छात्र पंजीकरण में अपना विवरण दर्ज कराएँ और विद्यालय से जुड़े रहें।</p>
-    </section>
+    <button class="submit">Register</button>
+    <p><small>https://student.shantiraman.co.in/alumni-register</small></p>
+  </form></section>
 `
 };
+
+function demoSubmit(event) {
+  event.preventDefault();
+  alert("https://student.shantiraman.co.in/alumni-register");
+}
 
 let slideTimer;
 let flashTimer;
@@ -978,7 +992,13 @@ function showPage(page) {
 }
 
 document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => showPage(tab.dataset.page));
+  tab.addEventListener("click", () => {
+    if (tab.dataset.page === "alumni") {
+      window.location.href = "https://student.shantiraman.co.in/alumni-register";
+      return;
+    }
+    showPage(tab.dataset.page);
+  });
 });
 
 showPage("home");
