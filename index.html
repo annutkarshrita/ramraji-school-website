@@ -152,6 +152,31 @@ footer a{color:white;text-decoration:none}
  .tab{min-height:70px}
  .topbar{font-size:12px}
 }
+
+/* Our Achievements page */
+.achievement-intro{text-align:center;padding:10px 8px 22px}
+.achievement-trophy{display:block;font-size:38px;margin-bottom:5px}
+.achievement-intro h2{color:#0b3975;margin:0 0 7px;font-size:clamp(23px,3vw,32px)}
+.achievement-intro p{margin:0;color:#64748b}
+.achievement-section{min-width:0;background:#fff;border:1px solid #e8edf4;border-radius:12px;padding:18px;margin:0 0 18px;box-shadow:0 3px 12px #0b39750a}
+.achievement-section h3{color:#0b3975;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid #fff0dc;font-size:19px}
+.achievement-table{width:100%;border:1px solid #e5eaf1;border-radius:9px;overflow:hidden}
+.achievement-row{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:14px;padding:12px 15px;align-items:center;border-bottom:1px solid #e9edf3}
+.achievement-row:last-child{border-bottom:0}
+.achievement-row p{margin:0;line-height:1.45}
+.achievement-head{background:#0b3975;color:#fff;font-weight:700}
+.achievement-top-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr);gap:16px;align-items:stretch}
+.achievement-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.achievement-name-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.achievement-name-list li,.highlight-list li{position:relative;padding:9px 10px 9px 28px;background:#f7f9fc;border-radius:7px;color:#263f5d;line-height:1.4;overflow-wrap:anywhere}
+.achievement-name-list li:before{content:"✓";position:absolute;left:10px;color:#e87916;font-weight:700}
+.highlight-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.highlight-list li:before{content:"🏆";position:absolute;left:8px}
+.highlight-list li{padding-left:34px}
+@media(max-width:900px){.achievement-top-grid{grid-template-columns:1fr}.achievement-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.achievement-category-grid{grid-template-columns:1fr}.achievement-name-list{grid-template-columns:repeat(2,minmax(0,1fr))}.achievement-section{padding:14px}}
+@media(max-width:520px){.achievement-row{grid-template-columns:1fr;gap:4px;padding:11px}.achievement-head{display:none}.achievement-row:not(.achievement-head) p:first-child{font-weight:700;color:#0b3975}.achievement-row:not(.achievement-head) p:nth-child(2){font-size:14px}.achievement-row:not(.achievement-head) p:nth-child(3){font-size:13px;color:#64748b}.achievement-name-list{grid-template-columns:1fr}}
+
  .achievement-row {
   display: grid;
   grid-template-columns: 1fr 1.3fr 1fr;
@@ -170,6 +195,28 @@ footer a{color:white;text-decoration:none}
     grid-template-columns: 1fr;
     gap: 5px;
   }
+ .main-layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.section {
+    min-width: 0;
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
 }
 </style>
 </head>
@@ -429,91 +476,72 @@ admissions: `
   </section>
 `,
 achievements: `
-<div class="achievement-table">
+  <section class="panel achievements-page">
+    <div class="achievement-intro">
+      <span class="achievement-trophy">🏆</span>
+      <h2>Our Achievements</h2>
+      <p>हमारी छात्राओं की उपलब्धियाँ, सफलता और गौरवपूर्ण उपलब्धियाँ</p>
+    </div>
 
-  
+    <div class="achievement-top-grid">
+    <section class="achievement-section">
+      <h3>🌟 Our Illustrious Female Students</h3>
+      <div class="achievement-table">
+        <div class="achievement-row achievement-head"><p>Name</p><p>Designation</p><p>Place</p></div>
+        <div class="achievement-row"><p>Pratibha Verma</p><p>District Magistrate</p><p>Jaipur</p></div>
+        <div class="achievement-row"><p>Abha Singh</p><p>Superintendent of Police</p><p>Gorakhpur</p></div>
+        <div class="achievement-row"><p>Sakshi Srivastava</p><p>Village Development Officer</p><p>Ayodhya</p></div>
+        <div class="achievement-row"><p>Prachi Srivastava</p><p>Assistant Commissioner</p><p>Noida</p></div>
+        <div class="achievement-row"><p>Garima Singh</p><p>Military Officer</p><p>Government of India</p></div>
+      </div>
+    </section>
 
-</div>
-  <section class="panel"><h3>Our illustrious female students</h3><p>
-  <div class="achievement-row">
-    <p>Pratibha Verma</p>
-    <p>District Magistrate</p>
-    <p>Jaipur</p>
-  </div>
+    <section class="achievement-section school-highlights">
+      <h3>🏅 School Highlights</h3>
+      <ul class="highlight-list">
+        <li>Pratibha Verma secured 3rd position in the state in 2013 High School.</li>
+        <li>Anshika Soni secured 7th position in the state in 2023 High School.</li>
+        <li>Richa Pandey secured 13th position in the state in 2009 High School.</li>
+        <li>Shweta Singh secured 1st position in the district in 1998 High School.</li>
+      </ul>
+    </section>
+    </div>
 
-  <div class="achievement-row">
-    <p>Abha Singh</p>
-    <p>Superintendent of Police</p>
-    <p>Gorakhpur</p>
-  </div>
+    <div class="achievement-category-grid">
+      <section class="achievement-section">
+        <h3>🩺 Our Students Who Became Doctors</h3>
+        <ul class="achievement-name-list">
+          <li>Dr. Swati Singh</li><li>Dr. Aastha Tripathi</li><li>Dr. Shweta Singh</li>
+          <li>Dr. Nidhi Barnwal</li><li>Dr. Sippy Maurya</li><li>Dr. Seema Gupta</li>
+          <li>Dr. Meenakshi Tiwari</li><li>Dr. Nimisha Singh</li><li>Dr. Anamika Pandey</li>
+          <li>Dr. Namita Singh</li>
+        </ul>
+      </section>
 
-  <div class="achievement-row">
-    <p>Sakshi Srivastava</p>
-    <p>Village Development Officer</p>
-    <p>Ayodhya</p>
-  </div>
+      <section class="achievement-section">
+        <h3>⚙️ Our Students Who Became Engineers</h3>
+        <ul class="achievement-name-list">
+          <li>Manisha Chaturvedi</li><li>Pragya Mishra</li><li>Anupriya Pal</li>
+          <li>Mandavi Tiwari</li><li>Smriti Pandey</li><li>Priya Srivastava</li>
+          <li>Namrata Singh</li><li>Jyoti Verma</li><li>Priyam Singh</li>
+          <li>Tripti Srivastava</li><li>Arvi Upadhyay</li><li>Anchal</li>
+          <li>Pallavi Srivastava</li>
+        </ul>
+      </section>
 
-  <div class="achievement-row">
-    <p>Prachi Srivastava</p>
-    <p>Assistant Commissioner</p>
-    <p>Noida</p>
-  </div>
-
-  <div class="achievement-row">
-    <p>Garima Singh</p>
-    <p>Military Officer</p>
-    <p>Government of India</p>
-  </div>
-  </p></section>
- 
-  <section class="panel"><h3>Our Students who Got Doctor</h3>
-  <p>Dr. Swati Singh</p>
-  <p>Dr. Aastha Tripathi</p>
-  <p>Dr. Shweta Singh</p>
-  <p>Dr. Nidhi Barnwal</p>
-  <p>Dr. Sippy Maurya</p>
-  <p>Dr. Seema Gupta</p>
-  <p>Dr. Meenakshi Tiwari</p>
-  <p>Dr. Nimisha Singh</p>
-  <p>Dr. Anamika Pandey</p>
-  <p>Dr. Namita Singh</p>
-  <section class="panel"><h3>Our Students who Got Engineer</h3>
-  <p>Manisha Chaturvedi</p>
-  <p>Pragya Mishra</p>
-  <p>Anupriya Pal</p>
-  <p>Mandavi Tiwari</p>
-  <p>Smriti Pandey</p>
-  <p>Priya Srivastava</p>
-  <p>Namrata Singh</p>
-  <p>Jyoti Verma</p>
-  <p>Priyam Singh</p>
-  <p>Tripti Srivastava</p>
-  <p>Arvi Upadhyay</p>	
-  <p>Anchal</p>
-  <p>Pallavi Srivastava</p>
-  <section class="panel"><h3>Our Students who Got Teacher</h3>
-  <p>Dr. Pallavi Tiwari</p>
-  <p>Dr. Preeti Prakash</p>
-  <p>Dr. Amita Singh</p>
-  <p>Sarita Pandey</p>
-  <p>Kirti Singh</p>
-  <p>Pooja Singh</p>
-  <p>Saumya Srivastava</p>
-  <p>Divya Pandey</p>
-  <p>Vartika Khare</p>
-  <p>Anuja Gupta</p>
-  <p>Richa Pandey</p>
-  <p>Geeta Singh</p>
-  <p>Shalini Singh</p>
-  <p>Charul Gupta</p>
-  <p>Mahima Kasaudhan</p>
-  <section class="panel"><h3>School Highlights</h3>
-  <p>Pratibha Verma secured 3rd position in the state in 2013 High School.</p>
-  <p>Anshika Soni secured 7th position in the state in 2023 High School.</p>
-  <p>Richa Pandey secured 13th position in the state in 2009 high school.</p>
-  <p>Shweta Singh secured 1st position in the district In 1998 high school.</p></section>
-  
-  `,
+      <section class="achievement-section">
+        <h3>📚 Our Students Who Became Teachers</h3>
+        <ul class="achievement-name-list">
+          <li>Dr. Pallavi Tiwari</li><li>Dr. Preeti Prakash</li><li>Dr. Amita Singh</li>
+          <li>Sarita Pandey</li><li>Kirti Singh</li><li>Pooja Singh</li>
+          <li>Saumya Srivastava</li><li>Divya Pandey</li><li>Vartika Khare</li>
+          <li>Anuja Gupta</li><li>Richa Pandey</li><li>Geeta Singh</li>
+          <li>Shalini Singh</li><li>Charul Gupta</li><li>Mahima Kasaudhan</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+`,
 Faculties: `
    <section class="panel">
      <h2>Principal</h2>
