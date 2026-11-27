@@ -303,8 +303,9 @@ footer a{color:white;text-decoration:none}
 .session-topper-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
 .session-topper-card{min-width:0;text-align:center;border:1px solid #e7a05e;border-radius:9px;padding:6px 4px;background:#fff8f1}
 .session-topper-card.inter{border-color:#6f93cf;background:#f3f7ff}
-.session-topper-photo{height:112px;display:flex;align-items:center;justify-content:center;margin-bottom:5px;border-radius:8px;background:#ef7f2f;color:white;font-size:12px;font-weight:700;overflow:hidden}
-.session-topper-photo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:7px}
+/* Portrait topper photo frame: show the full vertical photograph without cutting faces */
+.session-topper-photo{width:min(100%,150px);aspect-ratio:3/4;height:auto;box-sizing:border-box;display:flex;align-items:center;justify-content:center;margin:0 auto 7px;border-radius:8px;background:#fff;color:#fff;font-size:12px;font-weight:700;overflow:hidden;border:1px solid #e6eaf0}
+.session-topper-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:7px;background:#fff}
 .session-topper-card.inter .session-topper-photo{background:#4775c2}
 .session-topper-card strong,.session-topper-card span{display:block;line-height:1.3;overflow-wrap:anywhere}
 .session-topper-card strong{font-size:12px;color:#843d06}
@@ -317,18 +318,15 @@ footer a{color:white;text-decoration:none}
  .home-results-photo-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
  .home-results-panel{min-height:590px}
  .home-photo-panel .home-flash{height:540px}
- .session-topper-photo{height:95px}
 }
 @media(max-width:700px){
  .home-results-photo-layout{grid-template-columns:minmax(0,1fr)}
  .home-results-panel{min-height:unset}
  .home-photo-panel .home-flash{height:340px}
- .session-topper-photo{height:125px}
 }
 @media(max-width:380px){
  .session-topper-grid{gap:4px}
  .session-topper-card{padding:4px 2px}
- .session-topper-photo{height:95px}
  .session-topper-card span{font-size:10px}
 }
 
