@@ -32,11 +32,11 @@ img{max-width:100%}
 @media(max-width:800px){.school-photo-frame{width:100%;height:280px}.school-photo-frame .school-photo-title{font-size:clamp(18px,4vw,27px);padding:12px 10px}}
 @media(max-width:520px){.school-photo-frame{width:100%;height:220px;margin-top:0}.school-photo-frame .school-photo-title{font-size:clamp(17px,5vw,23px);padding:10px 8px}}
 .founder-box{width:100%;min-width:0;text-align:center}.founder-photo{display:block;width:100%;height:245px;object-fit:cover;object-position:center top;border:2px solid #efa21a;border-radius:10px;background:#fff;margin:0 auto 7px}.founder-name{margin:0;color:#0b3975;font-weight:bold;line-height:1.3}.motto{color:#a52b0c;font-weight:bold;line-height:1.7;overflow-wrap:anywhere}
-.nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;padding:10px 8px;background:#fff8ef}
-.tab{min-width:0;min-height:78px;border:1px solid #f0e1d2;border-radius:9px;background:white;padding:8px 3px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
-.tab .emoji{display:block;font-size:20px;margin-bottom:4px}
-.tab strong{display:block;margin-bottom:3px;font-size:12px;line-height:1.2}
-.tab small{display:block;color:#68758b;font-size:9px;line-height:1.2}
+.nav-wrap{position:relative;background:#fff8ef}.menu-toggle{display:none}.tabs{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;padding:8px 6px;background:#fff8ef}
+.tab{min-width:0;min-height:64px;border:1px solid #f0e1d2;border-radius:8px;background:white;padding:5px 2px;text-align:center;cursor:pointer;color:#092f61;box-shadow:0 3px 8px #00000008;font:inherit;overflow-wrap:anywhere}
+.tab .emoji{display:block;font-size:17px;margin-bottom:2px}
+.tab strong{display:block;margin-bottom:2px;font-size:10px;line-height:1.15}
+.tab small{display:block;color:#68758b;font-size:8px;line-height:1.1}
 .tab.active{border:2px solid #ff6500;background:#fff2e5;box-shadow:0 0 0 2px #ffb07855}
 main{padding:22px;min-height:320px;min-width:0}
 .panel{min-width:0;background:white;border:1px solid #f0e1d2;border-radius:14px;padding:22px;margin-bottom:18px;overflow-wrap:anywhere}
@@ -112,7 +112,7 @@ footer a{color:white;text-decoration:none}
 @media(max-width:380px){.faculty-grid{grid-template-columns:1fr}.faculty-photo,.faculty-photo-missing{height:230px;min-height:230px}}
 
 @media(max-width:1200px){
- .tabs{grid-template-columns:repeat(10,minmax(0,1fr))}
+ .tabs{grid-template-columns:repeat(6,minmax(0,1fr))}
  .school-header{grid-template-columns:95px minmax(0,1fr) 190px 130px;gap:12px}
  .school-logo{width:105px;height:105px}
 }
@@ -123,7 +123,7 @@ footer a{color:white;text-decoration:none}
  .nav-wrap{padding:10px 12px}
  .menu-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin-left:auto;width:100%;max-width:100%;padding:12px 15px;border:1px solid #d9e2ef;border-radius:10px;background:#0b3975;color:white;font-size:16px;font-weight:bold;cursor:pointer}
  .menu-toggle .hamburger{font-size:23px;line-height:1}
- .tabs{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px 0 0}
+ .tabs{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:10px 0 0}
  .tabs.menu-open{display:grid}
  main{padding:14px}
  .panel{padding:17px}
@@ -140,11 +140,11 @@ footer a{color:white;text-decoration:none}
  .home-feature-card{padding:16px;min-height:330px}
  .home-feature-card p{font-size:14px;line-height:1.75}
  .home-flash{height:270px}
- .tabs{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px 0 0;gap:8px}
- .tab{min-height:88px;padding:10px 4px}
- .tab .emoji{font-size:22px;margin-bottom:5px}
- .tab strong{font-size:13px}
- .tab small{font-size:10px}
+ .tabs{grid-template-columns:repeat(3,minmax(0,1fr));padding:10px 0 0;gap:7px}
+ .tab{min-height:68px;padding:6px 3px}
+ .tab .emoji{font-size:18px;margin-bottom:3px}
+ .tab strong{font-size:11px}
+ .tab small{font-size:8px}
  main{padding:10px}
  .panel{padding:14px;border-radius:11px;margin-bottom:12px}
  .form-grid,.leaders-section{grid-template-columns:minmax(0,1fr)}
@@ -155,7 +155,7 @@ footer a{color:white;text-decoration:none}
  footer{padding:5px 8px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:3px 10px;font-size:9px;line-height:1.25}
 }
 @media(max-width:360px){
- .tabs{grid-template-columns:minmax(0,1fr)}
+ .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
  .tab{min-height:70px}
  .topbar{font-size:12px}
 }
@@ -183,6 +183,29 @@ footer a{color:white;text-decoration:none}
 @media(max-width:900px){.achievement-top-grid{grid-template-columns:1fr}.achievement-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.achievement-category-grid{grid-template-columns:1fr}.achievement-name-list{grid-template-columns:repeat(2,minmax(0,1fr))}.achievement-section{padding:14px}}
 @media(max-width:520px){.achievement-row{grid-template-columns:1fr;gap:4px;padding:11px}.achievement-head{display:none}.achievement-row:not(.achievement-head) p:first-child{font-weight:700;color:#0b3975}.achievement-row:not(.achievement-head) p:nth-child(2){font-size:14px}.achievement-row:not(.achievement-head) p:nth-child(3){font-size:13px;color:#64748b}.achievement-name-list{grid-template-columns:1fr}}
+
+/* Home page: prominent school result preview */
+.school-result-highlight{margin:0 0 20px;padding:22px;border:1px solid #e7d7bb;border-radius:16px;background:linear-gradient(135deg,#fffaf0,#fff 58%,#f3f8ff);box-shadow:0 6px 20px #0b397510}
+.result-highlight-heading{display:flex;align-items:center;justify-content:center;gap:14px;text-align:left;margin-bottom:18px}
+.result-cup{font-size:42px}
+.result-kicker{margin:0 0 3px;color:#b46a08;font-size:13px;font-weight:800;letter-spacing:.04em}
+.result-highlight-heading h2{margin:0;color:#0b3975;font-size:clamp(22px,2.5vw,30px)}
+.result-highlight-heading p:last-child{margin:4px 0 0;color:#607086;font-size:14px}
+.result-highlight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.result-highlight-card{padding:18px;border-radius:13px;text-align:center;border:1px solid #d7e7f5;background:#eff7ff}
+.result-highlight-card.inter{background:#fff7e8;border-color:#f0dfbd}
+.result-level{display:inline-block;padding:5px 14px;border-radius:20px;background:#d9ecfb;color:#15558b;font-weight:800;font-size:14px}
+.result-highlight-card.inter .result-level{background:#ffebc8;color:#925000}
+.result-percent{display:block;margin:8px 0 0;color:#155b94;font-size:clamp(34px,4vw,46px);line-height:1.15}
+.result-highlight-card.inter .result-percent{color:#a75a00}
+.result-caption{display:block;color:#64748b;font-size:12px;margin:2px 0 10px}
+.result-highlight-card p{margin:0;color:#253b55;font-size:14px}
+.result-highlight-card p span{display:inline-block;margin-left:6px;color:#0b3975;font-weight:900}
+.result-highlight-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid #eadfcf;color:#53657b;font-size:14px}
+.result-view-all{border:0;border-radius:8px;padding:11px 17px;background:#ff6900;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.result-view-all:hover{background:#d95000}
+.results-embed{width:100%;height:1150px;border:1px solid #dce5ef;border-radius:10px;background:#fff}
+@media(max-width:600px){.school-result-highlight{padding:15px}.result-highlight-heading{justify-content:flex-start}.result-highlight-grid{grid-template-columns:1fr}.result-highlight-footer{align-items:stretch}.result-view-all{width:100%}.results-embed{height:1450px}}
 
  .achievement-row {
   display: grid;
@@ -225,6 +248,87 @@ footer a{color:white;text-decoration:none}
     }
 }
 }
+ 
+.home-topper-photo-wrap{width:100%;height:480px;max-height:52vh;display:flex;align-items:center;justify-content:center;background:#f5f7fb;border:2px solid #efa21a;border-radius:10px;overflow:hidden}
+.home-topper-photo{width:100%;height:100%;object-fit:contain}
+.home-topper-name{text-align:center;margin:12px 0 5px!important;color:#b45309!important}
+.home-topper-caption{text-align:center;color:#64748b}
+@media(max-width:520px){.home-topper-photo-wrap{height:270px;max-height:unset}}
+
+/* Year-wise topper flash section */
+.topper-showcase{margin-top:18px}
+.topper-showcase-heading{display:flex;align-items:center;justify-content:center;gap:12px;text-align:left;margin-bottom:14px}
+.topper-showcase-heading>span{font-size:34px}
+.topper-showcase-heading h2{margin:0;color:#0b3975}
+.topper-showcase-heading p{margin:3px 0 0;color:#64748b}
+.topper-year-slide{display:none}
+.topper-year-slide.active{display:block;animation:topperFade .55s ease}
+@keyframes topperFade{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.topper-year-heading{text-align:center;color:#a52b0c;margin:5px 0 12px}
+.topper-level-block{margin:12px 0 18px}
+.topper-level-block h3{margin:0 0 9px;padding:8px 12px;border-radius:8px;background:#eaf3ff;color:#0b3975}
+.topper-level-block:nth-of-type(2) h3{background:#fff2dc;color:#9a4b00}
+.topper-rank-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.topper-rank-card{min-width:0;text-align:center;border:1px solid #e2e8f0;border-radius:10px;padding:10px;background:#fff}
+.topper-photo-placeholder{height:145px;display:flex;align-items:center;justify-content:center;background:#f4f6f9;border:1px dashed #aab7c7;border-radius:8px;color:#68758b;margin-bottom:8px}
+.topper-rank-card strong,.topper-rank-card span,.topper-rank-card small{display:block;line-height:1.5}
+.topper-rank-card strong{color:#0b3975}
+.topper-rank-card span{font-weight:600}
+.topper-rank-card small{color:#64748b}
+.topper-note{text-align:center;color:#64748b;font-size:13px;margin:8px 0 0}
+@media(max-width:520px){.topper-rank-grid{gap:7px}.topper-photo-placeholder{height:105px;font-size:12px}.topper-rank-card{padding:6px}.topper-showcase-heading{justify-content:flex-start}}
+
+/* Home page: session results/topper flash at left, independent school-photo flash at right */
+.home-results-photo-layout{display:grid;grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);gap:16px;align-items:stretch;margin-bottom:18px}
+.home-results-panel,.home-photo-panel{min-width:0;background:#fff;border:1px solid #f0e1d2;border-radius:13px;padding:14px;box-shadow:0 3px 10px #00000008;overflow:hidden}
+.home-results-panel{min-height:620px;display:flex;flex-direction:column;justify-content:space-between}
+.home-photo-panel h3{margin:3px 0 14px;color:#0b3975;font-size:clamp(17px,1.8vw,22px)}
+.home-photo-panel .home-flash{height:570px}
+.session-result-slide{display:none}
+.session-result-slide.active{display:block;animation:sessionSlideFade .55s ease}
+@keyframes sessionSlideFade{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.session-year-heading{text-align:center;margin:0 0 10px;color:#0b3975;font-size:clamp(20px,2.1vw,28px)}
+.session-result-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.session-result-card{min-width:0;border:1px solid #d7e7f5;background:#eff7ff;border-radius:9px;padding:8px 6px;text-align:center}
+.session-result-card.inter{background:#fff7e8;border-color:#f0dfbd}
+.session-result-card>strong{display:block;color:#15558b;font-size:12px}
+.session-result-card.inter>strong{color:#925000}
+.session-result-percent{display:block;font-size:clamp(22px,2.6vw,32px);font-weight:800;color:#155b94;line-height:1.2}
+.session-result-card.inter .session-result-percent{color:#a75a00}
+.session-result-card>small{display:block;color:#64748b;font-size:10px}
+.session-result-card p{font-size:10px;line-height:1.4;margin:4px 0 0;color:#253b55}
+.session-topper-group{margin:10px 0 14px}
+.session-topper-group h3{font-size:16px;color:#9a4b00;margin:0 0 7px;padding:5px 8px;background:#fff0df;border-radius:7px}
+.session-topper-group.inter h3{color:#174c91;background:#eaf2ff}
+.session-topper-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.session-topper-card{min-width:0;text-align:center;border:1px solid #e7a05e;border-radius:9px;padding:6px 4px;background:#fff8f1}
+.session-topper-card.inter{border-color:#6f93cf;background:#f3f7ff}
+.session-topper-photo{height:112px;display:flex;align-items:center;justify-content:center;margin-bottom:5px;border-radius:8px;background:#ef7f2f;color:white;font-size:12px;font-weight:700;overflow:hidden}
+.session-topper-photo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:7px}\n.session-topper-card.inter .session-topper-photo{background:#4775c2}
+.session-topper-card strong,.session-topper-card span{display:block;line-height:1.3;overflow-wrap:anywhere}
+.session-topper-card strong{font-size:12px;color:#843d06}
+.session-topper-card.inter strong{color:#174c91}
+.session-topper-card span{font-size:11px;margin-top:2px;color:#28384c}
+.session-topper-card b{font-size:11px;color:#0b3975}
+.session-slider-indicator{text-align:center;color:#7a8797;font-size:10px;margin-top:4px}
+@media(max-width:900px){
+ .home-results-photo-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+ .home-results-panel{min-height:590px}
+ .home-photo-panel .home-flash{height:540px}
+ .session-topper-photo{height:95px}
+}
+@media(max-width:700px){
+ .home-results-photo-layout{grid-template-columns:minmax(0,1fr)}
+ .home-results-panel{min-height:unset}
+ .home-photo-panel .home-flash{height:340px}
+ .session-topper-photo{height:125px}
+}
+@media(max-width:380px){
+ .session-topper-grid{gap:4px}
+ .session-topper-card{padding:4px 2px}
+ .session-topper-photo{height:95px}
+ .session-topper-card span{font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -264,6 +368,8 @@ footer a{color:white;text-decoration:none}
 <nav class="tabs" id="tabs">
   <button class="tab active" data-page="home"><span class="emoji">🏠</span><strong>Home</strong><small>Welcome to our school</small></button>
   <button class="tab" data-page="about"><span class="emoji">🏫</span><strong>About Us</strong><small>Manager & Principal Message</small></button>
+  <button class="tab" data-page="about-goal"><span class="emoji">🎯</span><strong>Our Goal</strong><small>Vidya Bharati & School Goal</small></button>
+  <button class="tab" data-page="about-message"><span class="emoji">💬</span><strong>Our Message</strong><small>Manager & Principal</small></button>
   <button class="tab" data-page="achievements"><span class="emoji">🏆</span><strong>Our Achievements</strong><small>School highlights</small></button>
   <button class="tab" data-page="Faculties"><span class="emoji">👩‍🏫</span><strong>Our Faculties</strong><small>Teaching & Suporting Staff</small></button>
   <button class="tab" data-page="gallery"><span class="emoji">📸</span><strong>Gallery</strong><small>Photos & activities</small></button>
@@ -347,63 +453,204 @@ const photo = name => "assets/photos/" + name;
 
 const pages = {
 home: `
-<section class="home-feature-grid" aria-label="School introduction and photos">
-
-  <article class="home-feature-card">
-
-    <h2 style="text-align:center;">"हमारा लक्ष्य"</h2>
-
-    <p style="text-align:justify;">
-      हमारा लक्ष्य इस प्रकार की राष्ट्रीय शिक्षा-पद्धति का विकास करना है,
-      जिसके द्वारा ऐसी युवा-पीढ़ी का निर्माण हो सके जो हिन्दुत्वनिष्ठ एवं राष्ट्रभक्त हो,
-      शारीरिक, प्राणिक, मानसिक, बौद्धिक एवं आध्यात्मिक दृष्टि से पूर्ण विकसित हो
-      तथा जो जीवन की वर्तमान चुनौतियों का सामना सफलतापूर्वक कर सके और उसका जीवन
-      ग्रामों, वनों, शिक्षित-अशिक्षित एवं झुग्गी-झोपड़ियों में निवास करने वाले
-      दीन-दुःखी अव्यवस्थित अपने बन्धुओं को सामाजिक कुरीतियों, शोषण एवं अन्याय से
-      मुक्त कराकर राष्ट्र जीवन को समरस, सुसंस्कृत एवं सुसंस्कृत बनाने के लिए समर्पित हो।
-    </p>
-
-    <h3 style="text-align:center;">"भारत माता की जय"</h3>
-
-    <h2 style="text-align:center;">"Our Goal"</h2>
-
-    <p style="text-align:justify;">
-      Our goal is to develop a national system of education that fosters a generation
-      of youth who are rooted in <em>Hindutva</em> (Hindu ethos) and deeply patriotic—
-      individuals who are fully developed in physical, vital, mental, intellectual,
-      and spiritual dimensions. Such youth should be capable of successfully confronting
-      the challenges of contemporary life and, furthermore, be dedicated to uplifting
-      their less fortunate, marginalized, and struggling brethren—whether they reside
-      in villages, forests, or urban slums—by liberating them from social evils,
-      exploitation, and injustice, thereby helping to transform the national life
-      into one that is harmonious, cultured, and refined.
-    </p>
-
-    <h3 style="text-align:center;">"BHARAT MATA KI JAI"</h3>
-
+<section class="home-results-photo-layout" aria-label="Session-wise school results and school photographs">
+  <article class="home-results-panel">
+    <div class="session-results-slider">
+      <div class="session-result-slide active" data-session-year="2023–24">
+      <h2 class="session-year-heading">सत्र 2023–24</h2>
+      <div class="session-result-summary">
+        <article class="session-result-card hs">
+      <strong>हाईस्कूल</strong>
+      <span class="session-result-percent">100%</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर: सगुन यादव <b>92%</b></p>
+    </article>
+        <article class="session-result-card inter">
+      <strong>इंटरमीडिएट</strong>
+      <span class="session-result-percent">97.09%</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर: आराध्या यादव <b>86.1%</b></p>
+    </article>
+      </div>
+      <section class="session-topper-group hs">
+      <h3>हाईस्कूल टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-1.jpg")}" alt="2023-24 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>सगुन यादव</span>
+          <b>92%</b>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-2.jpg")}" alt="2023-24 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-3.jpg")}" alt="2023-24 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+      <section class="session-topper-group inter">
+      <h3>इंटरमीडिएट टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-1.jpg")}" alt="2023-24 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>आराध्या यादव</span>
+          <b>86.1%</b>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-2.jpg")}" alt="2023-24 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-3.jpg")}" alt="2023-24 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+    </div><div class="session-result-slide" data-session-year="2024–25">
+      <h2 class="session-year-heading">सत्र 2024–25</h2>
+      <div class="session-result-summary">
+        <article class="session-result-card hs">
+      <strong>हाईस्कूल</strong>
+      <span class="session-result-percent">—</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर विवरण <b></b></p>
+    </article>
+        <article class="session-result-card inter">
+      <strong>इंटरमीडिएट</strong>
+      <span class="session-result-percent">—</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर विवरण <b></b></p>
+    </article>
+      </div>
+      <section class="session-topper-group hs">
+      <h3>हाईस्कूल टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-1.jpg")}" alt="2024-25 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-2.jpg")}" alt="2024-25 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-3.jpg")}" alt="2024-25 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+      <section class="session-topper-group inter">
+      <h3>इंटरमीडिएट टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-1.jpg")}" alt="2024-25 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-2.jpg")}" alt="2024-25 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-3.jpg")}" alt="2024-25 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+    </div><div class="session-result-slide" data-session-year="2025–26">
+      <h2 class="session-year-heading">सत्र 2025–26</h2>
+      <div class="session-result-summary">
+        <article class="session-result-card hs">
+      <strong>हाईस्कूल</strong>
+      <span class="session-result-percent">—</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर विवरण <b></b></p>
+    </article>
+        <article class="session-result-card inter">
+      <strong>इंटरमीडिएट</strong>
+      <span class="session-result-percent">—</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>टॉपर विवरण <b></b></p>
+    </article>
+      </div>
+      <section class="session-topper-group hs">
+      <h3>हाईस्कूल टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-1.jpg")}" alt="2025-26 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-2.jpg")}" alt="2025-26 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card hs">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-3.jpg")}" alt="2025-26 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+      <section class="session-topper-group inter">
+      <h3>इंटरमीडिएट टॉपर</h3>
+      <div class="session-topper-grid"><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-1.jpg")}" alt="2025-26 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>प्रथम</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-2.jpg")}" alt="2025-26 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>द्वितीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article><article class="session-topper-card inter">
+          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-3.jpg")}" alt="2025-26 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent=\'फोटो जोड़ें\';"></div>
+          <strong>तृतीय</strong>
+          <span>नाम जोड़ा जाएगा</span>
+          <small>प्रतिशत जोड़ा जाएगा</small>
+        </article></div>
+    </section>
+    </div>
+    </div>
+    <div class="session-slider-indicator">सत्र, परीक्षाफल एवं टॉपर सूची अपने-आप बदलती रहेगी</div>
   </article>
-
-  <article class="home-feature-card">
-
+  <article class="home-photo-panel">
     <h3 style="text-align:center;">School Photo Flash</h3>
-
     <div class="home-flash" aria-label="Rotating school photographs">
-      <img class="active"data-caption="Opning New Office"src="${photo("Opning New Office.jpg")}"alt="Opning New Office">
-      <img data-caption="Parents Teacher Meeting"src="${photo("Parents Teacher Meeting.jpg")}"alt="Parents Teacher Meeting">
-      <img data-caption="Our Students, Our Pride"src="${photo("Our Pride.jpg")}"alt="Our students">
-      <img data-caption="Maa ki Jhanki On this Navratri"src="${photo("Maa ki Jhanki On thik Navratri.jpg")}"alt="Maa ki Jhanki On thik Navratri">
-      <img data-caption="क्षेत्रीय बालिका शिक्षा प्रमुख, श्रीमती निधि द्विवेदी का सानिध्य मिल"src="${photo("Nidhi_dwivedi.jpg")}"alt="क्षेत्रीय बालिका शिक्षा प्रमुख, श्रीमती निधि द्विवेदी का सानिध्य मिला">
-      <img data-caption="Our Chemistry Lab"src="${photo("Our Chemistry Lab.jpg")}"alt="Our Chemistry Lab">
-      <img data-caption="Our Assembly Hall"src="${photo("Our Assembly Hall.jpg")}"alt="Our Assembly Hall">
-
+      <img class="active" data-caption="Opening New Office" src="${photo("Opning New Office.jpg")}" alt="Opening New Office">
+      <img data-caption="Parents Teacher Meeting" src="${photo("Parents Teacher Meeting.jpg")}" alt="Parents Teacher Meeting">
+      <img data-caption="Our Students, Our Pride" src="${photo("Our Pride.jpg")}" alt="Our students">
+      <img data-caption="Maa ki Jhanki On this Navratri" src="${photo("Maa ki Jhanki On thik Navratri.jpg")}" alt="Maa ki Jhanki">
+      <img data-caption="क्षेत्रीय बालिका शिक्षा प्रमुख, श्रीमती निधि द्विवेदी का सानिध्य मिला" src="${photo("Nidhi_dwivedi.jpg")}" alt="School guest">
+      <img data-caption="Our Chemistry Lab" src="${photo("Our Chemistry Lab.jpg")}" alt="Our Chemistry Lab">
+      <img data-caption="Our Assembly Hall" src="${photo("Our Assembly Hall.jpg")}" alt="Our Assembly Hall">
       <div class="home-flash-caption">School Campus</div>
     </div>
-
   </article>
-
-</section>`,
+</section>
+`,
 about: `
-  <section class="leaders-section">
+  <section class="panel"><h2 style="text-align:center;">About Us</h2><p style="text-align:center;">हमारे विद्यालय एवं प्रबंधन के बारे में विस्तृत जानकारी</p></section>
+  <section class="panel" id="about-goal">
+    <h2 style="text-align:center;color:#0b3975;">🎯 Our Goal</h2>
+    <h3 style="color:#a52b0c;">Vidya Bharati’s Goal</h3>
+    <p style="text-align:justify;">हमारा लक्ष्य इस प्रकार की राष्ट्रीय शिक्षा-पद्धति का विकास करना है, जिसके द्वारा ऐसी युवा-पीढ़ी का निर्माण हो सके जो हिन्दुत्वनिष्ठ एवं राष्ट्रभक्त हो, शारीरिक, प्राणिक, मानसिक, बौद्धिक एवं आध्यात्मिक दृष्टि से पूर्ण विकसित हो तथा जो जीवन की वर्तमान चुनौतियों का सामना सफलतापूर्वक कर सके और उसका जीवन ग्रामों, वनों, शिक्षित-अशिक्षित एवं झुग्गी-झोपड़ियों में निवास करने वाले दीन-दुःखी अव्यवस्थित अपने बन्धुओं को सामाजिक कुरीतियों, शोषण एवं अन्याय से मुक्त कराकर राष्ट्र जीवन को समरस, सुसंस्कृत एवं सुसंगठित बनाने के लिए समर्पित हो।</p>
+    <h3 style="color:#a52b0c;">Vidya Bharati’s Goal (English)</h3>
+    <p style="text-align:justify;">Our goal is to develop a national system of education that fosters a generation of youth who are rooted in Hindutva (Hindu ethos) and deeply patriotic—individuals who are fully developed in physical, vital, mental, intellectual, and spiritual dimensions. Such youth should be capable of successfully confronting the challenges of contemporary life and dedicated to uplifting less fortunate and marginalized communities by liberating them from social evils, exploitation, and injustice, thereby helping to transform national life into one that is harmonious, cultured, and refined.</p>
+    <div style="margin-top:18px;padding:16px;border:1px dashed #e0a04b;border-radius:10px;background:#fffaf2;">
+      <h3 style="margin:0 0 7px;color:#0b3975;">School’s Goal</h3>
+      <p style="margin:0;color:#68758b;">विद्यालय का लक्ष्य यहाँ जोड़ा जाएगा। विद्यालय का लक्ष्य आपसे प्राप्त होने पर इस भाग में शामिल कर दिया जाएगा।</p>
+    </div>
+  </section>
+  <section class="leaders-section" id="about-message">
     <article class="leader-card">
       <img class="leader-photo" src="${photo("manager.jpg")}" alt="School Manager">
       <h3>School Manager</h3>
@@ -891,13 +1138,13 @@ gallery: `
 results: `
   <section class="panel">
     <div class="page-heading-row">
-      <h3>Examination Results</h3>
-      <a class="page-action-btn" href="https://student.shantiraman.co.in/std-result" target="_blank" rel="noopener noreferrer" aria-label="Open student result portal">📊 View Result</a>
+      <div><h3>विद्यालय का वर्षवार परीक्षाफल</h3><p style="margin:5px 0 0">हाईस्कूल एवं इंटरमीडिएट — दोनों का विस्तृत रिकॉर्ड</p></div>
+      <a class="page-action-btn" href="https://student.shantiraman.co.in/std-result" target="_blank" rel="noopener noreferrer" aria-label="Open student result portal">📊 विद्यार्थी परिणाम देखें</a>
     </div>
-    <p>विद्यार्थी अपना परिणाम देखने के लिए दाईं ओर दिए गए <b>View Result</b> बटन पर क्लिक करें।</p>
-    <p>Click the button to open the school portal. The student result page must be enabled on that portal for results to appear.</p>
+    <iframe class="results-embed" src="high_school_inter_result_side_by_side.html" title="हाईस्कूल और इंटरमीडिएट का वर्षवार परीक्षाफल" loading="lazy"></iframe>
+    <p style="font-size:13px;color:#64748b">नोट: Home Page पर नवीनतम सत्र का रिजल्ट और टॉपर प्रमुखता से दिखाया गया है। यहाँ पूरा वर्षवार चार्ट उपलब्ध है।</p>
   </section>
-`,
+`, 
 notices: `
   <section class="panel"><h3>School Notices</h3>
     <p><b>Admissions and Academic Updates</b><br>Please contact the school office for current, verified announcements.</p>
@@ -938,6 +1185,7 @@ function demoSubmit(event) {
 
 let slideTimer;
 let flashTimer;
+let sessionFlashTimer;
 
 const menuToggle = document.getElementById("menuToggle");
 const tabsNav = document.getElementById("tabs");
@@ -949,6 +1197,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 function showPage(page) {
+  const contentPage = page.startsWith("about-") ? "about" : page;
   document.querySelectorAll(".tab").forEach(tab => {
     tab.classList.toggle("active", tab.dataset.page === page);
   });
@@ -959,10 +1208,15 @@ function showPage(page) {
     menuToggle.querySelector("span:last-child").textContent = "Menu";
   }
 
-  document.getElementById("content").innerHTML = pages[page] || pages.home;
+  document.getElementById("content").innerHTML = pages[contentPage] || pages.home;
+  if (page === "about-goal" || page === "about-message") {
+    const targetId = page === "about-goal" ? "about-goal" : "about-message";
+    setTimeout(() => document.getElementById(targetId)?.scrollIntoView({behavior:"smooth",block:"start"}), 60);
+  }
 
   clearInterval(slideTimer);
   clearInterval(flashTimer);
+  clearInterval(sessionFlashTimer);
   const flashSlides = Array.from(document.querySelectorAll(".home-flash img"));
   const flashCaption = document.querySelector(".home-flash-caption");
   if (flashSlides.length > 1 && flashCaption) {
@@ -974,6 +1228,15 @@ function showPage(page) {
       flashSlides[flashIndex].classList.add("active");
       flashCaption.textContent = flashSlides[flashIndex].dataset.caption || flashSlides[flashIndex].alt || "School photos";
     }, 3000);
+  }
+  const sessionSlides = Array.from(document.querySelectorAll(".session-result-slide"));
+  if (sessionSlides.length > 1) {
+    let sessionIndex = 0;
+    sessionFlashTimer = setInterval(() => {
+      sessionSlides[sessionIndex].classList.remove("active");
+      sessionIndex = (sessionIndex + 1) % sessionSlides.length;
+      sessionSlides[sessionIndex].classList.add("active");
+    }, 5000);
   }
   const slides = Array.from(document.querySelectorAll(".hero img"));
   const caption = document.querySelector(".hero-caption");
