@@ -312,6 +312,7 @@ footer a{color:white;text-decoration:none}
 .session-topper-card span{font-size:11px;margin-top:2px;color:#28384c}
 .session-topper-card b{font-size:11px;color:#0b3975}
 .session-slider-indicator{text-align:center;color:#7a8797;font-size:10px;margin-top:4px}
+.session-merit{display:block;margin-top:5px;color:#8a4b08;font-weight:700;font-size:11px;line-height:1.35}
 @media(max-width:900px){
  .home-results-photo-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
  .home-results-panel{min-height:590px}
@@ -330,6 +331,8 @@ footer a{color:white;text-decoration:none}
  .session-topper-photo{height:95px}
  .session-topper-card span{font-size:10px}
 }
+
+.session-loading{padding:24px 12px;text-align:center;color:#65758b;line-height:1.7}
 </style>
 </head>
 <body>
@@ -342,6 +345,7 @@ footer a{color:white;text-decoration:none}
     <div class="login-options" id="loginOptions" role="menu">
       <a role="menuitem" href="https://login.shantiraman.co.in">School Login</a>
       <a role="menuitem" href="https://student.shantiraman.co.in">Student Login</a>
+      <a role="menuitem" href="https://login.shantiraman.co.in/website-topper-admin">Topper Management</a>
     </div>
   </div>
 </div>
@@ -415,6 +419,140 @@ document.addEventListener("keydown", event => {
 });
 
 const photo = name => "assets/photos/" + name;
+// Website topper data comes from the Shantiraman MobileERP server.
+const WEBSITE_TOPPER_API = "https://student.shantiraman.co.in/api/website-toppers";
+let sessionFlashTimer = null;
+let topperFetchSequence = 0;
+
+function topperEscape(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[ch]));
+}
+
+function topperPhotoUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "https:" ? topperEscape(url.href) : "";
+  } catch (_) {
+    return "";
+  }
+}
+
+function renderWebsiteTopperCard(record, rank, examType) {
+  const names = ["प्रथम", "द्वितीय", "तृतीय"];
+  const photoUrl = topperPhotoUrl(record && record.photo_url);
+  const studentName = record && record.student_name ? topperEscape(record.student_name) : "नाम जोड़ा जाएगा";
+  const percentage = record && record.percentage ? topperEscape(record.percentage) : "";
+  const photoMarkup = photoUrl
+    ? `<img src="${photoUrl}" alt="${studentName}" loading="lazy" onerror="this.remove();this.parentElement.textContent='फोटो उपलब्ध नहीं';">`
+    : "फोटो जोड़ा जाएगा";
+  return `<article class="session-topper-card ${examType}">
+    <div class="session-topper-photo">${photoMarkup}</div>
+    <strong>${names[rank-1]}</strong>
+    <span>${studentName}</span>
+    ${percentage ? `<b>${percentage}</b>` : `<small>प्रतिशत जोड़ा जाएगा</small>`}
+  </article>`;
+}
+
+function renderWebsiteExamGroup(sessionData, examType) {
+  const isHigh = examType === "highschool";
+  const heading = isHigh ? "हाईस्कूल टॉपर" : "इंटरमीडिएट टॉपर";
+  const examData = (sessionData && sessionData[examType]) || {};
+  const topperRecords = Array.isArray(examData.toppers) ? examData.toppers : [];
+  const byPosition = new Map(topperRecords.map(item => [Number(item.position), item]));
+  const cards = [1,2,3].map(rank => renderWebsiteTopperCard(byPosition.get(rank) || {}, rank, examType)).join("");
+  return `<section class="session-topper-group ${isHigh ? "hs" : "inter"}">
+    <h3>${heading}</h3>
+    <div class="session-topper-grid">${cards}</div>
+  </section>`;
+}
+
+function renderWebsiteSession(sessionData, index) {
+  const year = String(sessionData.session_year || "");
+  const yearLabel = topperEscape(year.replace("-", "–"));
+  const hs = sessionData.highschool || {};
+  const inter = sessionData.inter || {};
+  const hsTopper = Array.isArray(hs.toppers) ? hs.toppers.find(x => Number(x.position) === 1) : null;
+  const interTopper = Array.isArray(inter.toppers) ? inter.toppers.find(x => Number(x.position) === 1) : null;
+
+  const summaryCard = (label, item, topper, examClass) => {
+    const pass = item.pass_percentage ? topperEscape(item.pass_percentage) : "—";
+    const topName = topper && topper.student_name ? topperEscape(topper.student_name) : "";
+    const topPct = topper && topper.percentage ? topperEscape(topper.percentage) : "";
+    const topLine = topName ? `टॉपर: ${topName} ${topPct}` : "टॉपर विवरण जोड़ा जाएगा";
+    const meritLine = item.merit_list
+      ? `<small class="session-merit">मेरिट सूची: ${topperEscape(item.merit_list)}</small>`
+      : "";
+    return `<article class="session-result-card ${examClass}">
+      <strong>${label}</strong>
+      <span class="session-result-percent">${pass}</span>
+      <small>उत्तीर्ण प्रतिशत</small>
+      <p>${topLine}</p>
+      ${meritLine}
+    </article>`;
+  };
+
+  return `<div class="session-result-slide${index === 0 ? " active" : ""}" data-session-year="${topperEscape(year)}">
+    <h2 class="session-year-heading">सत्र ${yearLabel}</h2>
+    <div class="session-result-summary">
+      ${summaryCard("हाईस्कूल", hs, hsTopper, "hs")}
+      ${summaryCard("इंटरमीडिएट", inter, interTopper, "inter")}
+    </div>
+    ${renderWebsiteExamGroup(sessionData, "highschool")}
+    ${renderWebsiteExamGroup(sessionData, "inter")}
+  </div>`;
+}
+
+async function loadWebsiteToppers() {
+  const container = document.getElementById("sessionResultsSlider");
+  if (!container) return;
+  const myRequest = ++topperFetchSequence;
+  if (sessionFlashTimer) clearInterval(sessionFlashTimer);
+
+  try {
+    const response = await fetch(WEBSITE_TOPPER_API, { method:"GET", cache:"no-store" });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.message || "सर्वर से जानकारी नहीं मिली।");
+    if (myRequest !== topperFetchSequence) return;
+
+    const allYears = Array.isArray(payload.years) ? payload.years : [];
+    const yearsWithData = allYears.filter(item => {
+      const hs = item.highschool || {};
+      const inter = item.inter || {};
+      return hs.appeared != null || inter.appeared != null
+        || (Array.isArray(hs.toppers) && hs.toppers.length)
+        || (Array.isArray(inter.toppers) && inter.toppers.length);
+    }).sort((a, b) => String(a.session_year).localeCompare(String(b.session_year)));
+
+    // Home page keeps the four most recent populated sessions; the Results
+    // page below contains the full historical record.
+    const years = yearsWithData.slice(-4);
+    if (!years.length) {
+      container.innerHTML = '<p class="session-loading">अभी कोई परीक्षाफल दर्ज नहीं है।</p>';
+      return;
+    }
+
+    container.innerHTML = years.map((item, index) => renderWebsiteSession(item, index)).join("");
+    const slides = Array.from(container.querySelectorAll(".session-result-slide"));
+    let current = 0;
+    if (slides.length > 1) {
+      sessionFlashTimer = setInterval(() => {
+        if (!document.getElementById("sessionResultsSlider")) {
+          clearInterval(sessionFlashTimer);
+          return;
+        }
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 5000);
+    }
+  } catch (error) {
+    if (myRequest !== topperFetchSequence) return;
+    container.innerHTML = `<p class="session-loading">परीक्षाफल सर्वर से प्राप्त नहीं हो सका। ${topperEscape(error.message)}</p>`;
+  }
+}
+
 
 // Try common file-name variants for the top school photograph.
 (function loadTopSchoolPhoto(){
@@ -454,247 +592,12 @@ const photo = name => "assets/photos/" + name;
 
 const pages = {
 home: `
-<section class="home-results-photo-layout" aria-label="Session-wise school results and school photographs">
+<section class="home-results-photo-layout" aria-label="Server-based session-wise results and school photographs">
   <article class="home-results-panel">
-    <div class="session-results-slider">
-      <div class="session-result-slide active" data-session-year="2022-23">
-      <h2 class="session-year-heading">सत्र 2022–23</h2>
-      <div class="session-result-summary">
-        <article class="session-result-card hs">
-          <strong>हाईस्कूल</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-        <article class="session-result-card inter">
-          <strong>इंटरमीडिएट</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-      </div>
-      <section class="session-topper-group hs">
-        <h3>हाईस्कूल टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/highschool-1.jpg")}" alt="2022-23 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/highschool-2.jpg")}" alt="2022-23 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/highschool-3.jpg")}" alt="2022-23 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-      <section class="session-topper-group inter">
-        <h3>इंटरमीडिएट टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/inter-1.jpg")}" alt="2022-23 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/inter-2.jpg")}" alt="2022-23 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2022-23/inter-3.jpg")}" alt="2022-23 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
+    <div class="session-results-slider" id="sessionResultsSlider">
+      <div class="session-loading">सर्वर से परीक्षाफल और टॉपर सूची प्राप्त की जा रही है…</div>
     </div>
-      <div class="session-result-slide" data-session-year="2023-24">
-      <h2 class="session-year-heading">सत्र 2023–24</h2>
-      <div class="session-result-summary">
-        <article class="session-result-card hs">
-          <strong>हाईस्कूल</strong>
-          <span class="session-result-percent">100%</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर: सगुन यादव <b>92%</b></p>
-        </article>
-        <article class="session-result-card inter">
-          <strong>इंटरमीडिएट</strong>
-          <span class="session-result-percent">97.09%</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर: आराध्या यादव <b>86.1%</b></p>
-        </article>
-      </div>
-      <section class="session-topper-group hs">
-        <h3>हाईस्कूल टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-1.jpg")}" alt="2023-24 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>सगुन यादव</span>
-          <b>92%</b>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-2.jpg")}" alt="2023-24 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/highschool-3.jpg")}" alt="2023-24 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-      <section class="session-topper-group inter">
-        <h3>इंटरमीडिएट टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-1.jpg")}" alt="2023-24 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>आराध्या यादव</span>
-          <b>86.1%</b>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-2.jpg")}" alt="2023-24 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2023-24/inter-3.jpg")}" alt="2023-24 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-    </div>
-      <div class="session-result-slide" data-session-year="2024-25">
-      <h2 class="session-year-heading">सत्र 2024–25</h2>
-      <div class="session-result-summary">
-        <article class="session-result-card hs">
-          <strong>हाईस्कूल</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-        <article class="session-result-card inter">
-          <strong>इंटरमीडिएट</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-      </div>
-      <section class="session-topper-group hs">
-        <h3>हाईस्कूल टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-1.jpg")}" alt="2024-25 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-2.jpg")}" alt="2024-25 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/highschool-3.jpg")}" alt="2024-25 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-      <section class="session-topper-group inter">
-        <h3>इंटरमीडिएट टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-1.jpg")}" alt="2024-25 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-2.jpg")}" alt="2024-25 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2024-25/inter-3.jpg")}" alt="2024-25 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-    </div>
-      <div class="session-result-slide" data-session-year="2025-26">
-      <h2 class="session-year-heading">सत्र 2025–26</h2>
-      <div class="session-result-summary">
-        <article class="session-result-card hs">
-          <strong>हाईस्कूल</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-        <article class="session-result-card inter">
-          <strong>इंटरमीडिएट</strong>
-          <span class="session-result-percent">—</span>
-          <small>उत्तीर्ण प्रतिशत</small>
-          <p>टॉपर विवरण जोड़ा जाएगा <small>प्रतिशत जोड़ा जाएगा</small></p>
-        </article>
-      </div>
-      <section class="session-topper-group hs">
-        <h3>हाईस्कूल टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-1.jpg")}" alt="2025-26 highschool rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-2.jpg")}" alt="2025-26 highschool rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card hs">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/highschool-3.jpg")}" alt="2025-26 highschool rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-      <section class="session-topper-group inter">
-        <h3>इंटरमीडिएट टॉपर</h3>
-        <div class="session-topper-grid">
-          <article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-1.jpg")}" alt="2025-26 inter rank 1 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>प्रथम</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-2.jpg")}" alt="2025-26 inter rank 2 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>द्वितीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article><article class="session-topper-card inter">
-          <div class="session-topper-photo"><img src="${photo("toppers/2025-26/inter-3.jpg")}" alt="2025-26 inter rank 3 topper" onerror="this.remove();this.parentElement.textContent='फोटो जोड़ें';"></div>
-          <strong>तृतीय</strong>
-          <span>नाम जोड़ा जाएगा</span>
-          <small>प्रतिशत जोड़ा जाएगा</small>
-        </article>
-        </div>
-      </section>
-    </div>
-    </div>
-    <div class="session-slider-indicator">सत्र, परीक्षाफल एवं टॉपर सूची अपने-आप बदलती रहेगी</div>
+    <div class="session-slider-indicator">सत्र, परीक्षाफल और टॉपर सूची सर्वर से अपने-आप बदलती रहेगी</div>
   </article>
   <article class="home-photo-panel">
     <h3 style="text-align:center;">School Photo Flash</h3>
@@ -1259,7 +1162,6 @@ function demoSubmit(event) {
 
 let slideTimer;
 let flashTimer;
-let sessionFlashTimer;
 
 const menuToggle = document.getElementById("menuToggle");
 const tabsNav = document.getElementById("tabs");
@@ -1303,14 +1205,8 @@ function showPage(page) {
       flashCaption.textContent = flashSlides[flashIndex].dataset.caption || flashSlides[flashIndex].alt || "School photos";
     }, 3000);
   }
-  const sessionSlides = Array.from(document.querySelectorAll(".session-result-slide"));
-  if (sessionSlides.length > 1) {
-    let sessionIndex = 0;
-    sessionFlashTimer = setInterval(() => {
-      sessionSlides[sessionIndex].classList.remove("active");
-      sessionIndex = (sessionIndex + 1) % sessionSlides.length;
-      sessionSlides[sessionIndex].classList.add("active");
-    }, 5000);
+  if (page === "home") {
+    loadWebsiteToppers();
   }
   const slides = Array.from(document.querySelectorAll(".hero img"));
   const caption = document.querySelector(".hero-caption");
