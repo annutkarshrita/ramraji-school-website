@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हाई स्कूल एवं इंटरमीडिएट वर्षवार परीक्षाफल</title>
+<style>
+:root{--blue:#397da9;--red:#a91f25;--muted:#64748b;--line:#e5eaf0}
+*{box-sizing:border-box}
+body{margin:0;background:#fbfcfe;color:#24364b;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+.wrap{max-width:1600px;margin:auto;padding:18px 14px 28px}
+.hero{background:linear-gradient(110deg,#0b3975,#174f8c);color:#fff;padding:20px 22px;border-radius:13px;text-align:center}
+.hero h1{margin:5px 0;font-size:clamp(21px,3vw,30px)}
+.hero p{margin:4px 0;color:#e7eef8}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:15px 0}
+.search,.session-filter{min-height:40px;border:1px solid #cbd5e1;border-radius:8px;padding:8px 11px;background:#fff;font:inherit}
+.search{flex:1;min-width:220px}.session-filter{min-width:160px}
+.hint{font-size:12px;color:var(--muted)}
+.results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.panel{min-width:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px;box-shadow:0 3px 12px #172b460a}
+.panel h2{margin:0 0 10px;text-align:center;font-size:18px;color:#0b3975}
+.table-scroll{width:100%;overflow:auto;max-height:70vh;border:1px solid #e5eaf0;border-radius:8px}
+table{width:100%;min-width:1050px;border-collapse:separate;border-spacing:0;font-size:12px}
+thead th{position:sticky;top:0;background:var(--red);color:#fff;padding:10px 7px;white-space:nowrap;font-weight:800;z-index:1}
+tbody td{padding:8px 7px;text-align:center;border-bottom:1px solid #eceff3;border-right:1px solid #f0f2f5;white-space:nowrap}
+#high-results thead th{background:var(--blue)}
+#high-results tbody tr:nth-child(odd){background:#e7f3fb}
+#high-results tbody tr:nth-child(even){background:#f8fcff}
+#inter-results tbody tr:nth-child(odd){background:#fff9df}
+#inter-results tbody tr:nth-child(even){background:#fff}
+tbody tr:hover{filter:brightness(.97)}
+tbody td:last-child{text-align:left;white-space:normal;min-width:180px}
+tbody td:first-child{font-weight:800;color:#a91f25}
+.status{padding:18px;text-align:center;color:var(--muted);background:#f8fafc;border-radius:8px}
+.error{color:#a52820;background:#fff1ef}
+.note{font-size:12px;color:var(--muted);margin:12px 2px 0;line-height:1.7}
+footer{text-align:center;margin-top:18px;color:#778092;font-size:12px}
+@media(max-width:1050px){.results-grid{grid-template-columns:1fr}.table-scroll{max-height:unset}}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.toolbar{display:none}.results-grid{grid-template-columns:1fr 1fr;gap:8px}.panel{padding:5px;box-shadow:none}.table-scroll{max-height:none;overflow:visible}table{min-width:0;font-size:8px}thead th,tbody td{padding:4px 2px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+<p>विद्यालय की गौरवशाली उपलब्धियाँ</p>
+<h1>हाई स्कूल एवं इंटरमीडिएट परीक्षाफल</h1>
+<p>सत्रवार परीक्षाफल का तुलनात्मक विवरण</p>
+</header>
+<div class="toolbar">
+<input id="search" class="search" type="search" placeholder="सत्र, मेरिट या छात्रा के नाम से खोजें…" aria-label="परिणाम खोजें">
+<select id="sessionFilter" class="session-filter" aria-label="सत्र चुनें"><option value="">सभी सत्र</option></select>
+<span class="hint" id="recordCount">सर्वर से परिणाम लोड हो रहे हैं…</span>
+</div>
+<div id="loadStatus" class="status">परीक्षाफल सर्वर से प्राप्त किया जा रहा है…</div>
+<div class="results-grid" id="resultsGrid" hidden>
+<section class="panel">
+<h2>हाई स्कूल परीक्षाफल</h2>
+<div class="table-scroll"><table id="high-results">
+<thead><tr><th>क्रम</th><th>सत्र</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>प्रतिशत</th><th>प्रथम</th><th>द्वितीय</th><th>तृतीय</th><th>With Honours</th><th>Max Marks</th><th>सर्वाधिक अंक प्राप्त छात्रा</th><th>Merit List</th></tr></thead>
+<tbody></tbody></table></div>
+</section>
+<section class="panel">
+<h2>इंटरमीडिएट परीक्षाफल</h2>
+<div class="table-scroll"><table id="inter-results">
+<thead><tr><th>क्रम</th><th>सत्र</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>प्रतिशत</th><th>प्रथम</th><th>द्वितीय</th><th>तृतीय</th><th>With Honours</th><th>Max Marks</th><th>सर्वाधिक अंक प्राप्त छात्रा</th><th>Merit List</th></tr></thead>
+<tbody></tbody></table></div>
+</section>
+</div>
+<p class="note">यह विवरण विद्यालय के Website Setup में सेव किए गए वार्षिक परीक्षाफल से स्वतः प्राप्त होता है। विद्यार्थी का व्यक्तिगत परीक्षा परिणाम देखने के लिए Student Portal का उपयोग करें।</p>
+<footer>विद्यालय की शैक्षिक उपलब्धियों का अभिलेख</footer>
+</main>
+<script>
+const RESULT_API = "https://student.shantiraman.co.in/api/website-toppers";
+let allResultYears = [];
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[ch]));
+}
+function display(value) {
+  return value === null || value === undefined || value === "" ? "—" : esc(value);
+}
+function rowHtml(year, data, index) {
+  const label = String(year || "").replace("-", "–");
+  return `<tr>
+    <td>${index + 1}</td>
+    <td>${esc(label)}</td>
+    <td>${display(data.appeared)}</td>
+    <td>${display(data.pass_count)}</td>
+    <td>${display(data.fail_count)}</td>
+    <td>${data.pass_percentage ? esc(data.pass_percentage) : "—"}</td>
+    <td>${display(data.first_division)}</td>
+    <td>${display(data.second_division)}</td>
+    <td>${display(data.third_division)}</td>
+    <td>${display(data.with_honours)}</td>
+    <td>${display(data.max_marks)}</td>
+    <td>${display(data.highest_marks_student_name)}</td>
+    <td>${display(data.merit_list)}</td>
+  </tr>`;
+}
+function applyFilters() {
+  const query = document.getElementById("search").value.trim().toLocaleLowerCase("hi");
+  const selectedSession = document.getElementById("sessionFilter").value;
+  const highRows = [];
+  const interRows = [];
+  for (const item of allResultYears) {
+    const year = String(item.session_year || "");
+    if (selectedSession && year !== selectedSession) continue;
+    const hs = item.highschool || {};
+    const inter = item.inter || {};
+    if (hs.appeared != null || hs.pass_count != null || hs.merit_list || hs.highest_marks_student_name) {
+      highRows.push({year, data: hs});
+    }
+    if (inter.appeared != null || inter.pass_count != null || inter.merit_list || inter.highest_marks_student_name) {
+      interRows.push({year, data: inter});
+    }
+  }
+  const filterRows = rows => rows.filter(row => {
+    const searchable = `${row.year} ${Object.values(row.data).join(" ")}`.toLocaleLowerCase("hi");
+    return !query || searchable.includes(query);
+  });
+  const h = filterRows(highRows), i = filterRows(interRows);
+  document.querySelector("#high-results tbody").innerHTML =
+    h.length ? h.map((r,n) => rowHtml(r.year,r.data,n)).join("") :
+    `<tr><td colspan="13">कोई HIGH SCHOOL रिकॉर्ड नहीं मिला।</td></tr>`;
+  document.querySelector("#inter-results tbody").innerHTML =
+    i.length ? i.map((r,n) => rowHtml(r.year,r.data,n)).join("") :
+    `<tr><td colspan="13">कोई INTERMEDIATE रिकॉर्ड नहीं मिला।</td></tr>`;
+  document.getElementById("recordCount").textContent =
+    `HIGH SCHOOL: ${h.length} | INTERMEDIATE: ${i.length} | कुल: ${h.length+i.length}`;
+}
+async function loadResultData() {
+  const status = document.getElementById("loadStatus");
+  try {
+    const response = await fetch(RESULT_API, {method:"GET", cache:"no-store"});
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.message || "सर्वर से डेटा प्राप्त नहीं हुआ।");
+    allResultYears = Array.isArray(payload.years) ? payload.years : [];
+    const years = allResultYears.map(x => String(x.session_year || "")).filter(Boolean);
+    const select = document.getElementById("sessionFilter");
+    select.innerHTML = `<option value="">सभी सत्र</option>` +
+      years.map(y => `<option value="${esc(y)}">${esc(y.replace("-", "–"))}</option>`).join("");
+    status.hidden = true;
+    document.getElementById("resultsGrid").hidden = false;
+    applyFilters();
+  } catch (err) {
+    status.classList.add("error");
+    status.textContent = `परीक्षाफल सर्वर से प्राप्त नहीं हो सका। ${err.message}`;
+    document.getElementById("recordCount").textContent = "डेटा उपलब्ध नहीं";
+  }
+}
+document.getElementById("search").addEventListener("input", applyFilters);
+document.getElementById("sessionFilter").addEventListener("change", applyFilters);
+loadResultData();
+</script>
+</body>
+</html>
