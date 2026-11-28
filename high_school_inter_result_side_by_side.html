@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>हाई स्कूल एवं इंटरमीडिएट वर्षवार परीक्षाफल</title>
+<title>HIGH SCHOOL & INTERMEDIATE YEAR WISE RESULT</title>
 <style>
 :root{--blue:#397da9;--red:#a91f25;--muted:#64748b;--line:#e5eaf0}
 *{box-sizing:border-box}
@@ -42,32 +42,30 @@ footer{text-align:center;margin-top:18px;color:#778092;font-size:12px}
 <body>
 <main class="wrap">
 <header class="hero">
-<p>विद्यालय की गौरवशाली उपलब्धियाँ</p>
-<h1>हाई स्कूल एवं इंटरमीडिएट परीक्षाफल</h1>
-<p>सत्रवार परीक्षाफल का तुलनात्मक विवरण</p>
+<p>Glorious Achievements of the School's</p>
+<h1>High School and Intermediate Examination Results</h1>
 </header>
 <div class="toolbar">
 <input id="search" class="search" type="search" placeholder="सत्र, मेरिट या छात्रा के नाम से खोजें…" aria-label="परिणाम खोजें">
 <select id="sessionFilter" class="session-filter" aria-label="सत्र चुनें"><option value="">सभी सत्र</option></select>
 <span class="hint" id="recordCount">सर्वर से परिणाम लोड हो रहे हैं…</span>
 </div>
-<div id="loadStatus" class="status">परीक्षाफल सर्वर से प्राप्त किया जा रहा है…</div>
+<div id="loadStatus" class="status">loding....</div>
 <div class="results-grid" id="resultsGrid" hidden>
 <section class="panel">
-<h2>हाई स्कूल परीक्षाफल</h2>
+<h2>High School Results</h2>
 <div class="table-scroll"><table id="high-results">
-<thead><tr><th>क्रम</th><th>सत्र</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>प्रतिशत</th><th>प्रथम</th><th>द्वितीय</th><th>तृतीय</th><th>With Honours</th><th>Max Marks</th><th>सर्वाधिक अंक प्राप्त छात्रा</th><th>Merit List</th></tr></thead>
+<thead><tr><th>S.L.</th><th>Session</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>%</th><th>First</th><th>Second</th><th>Third</th><th>With Honours</th><th>Max Marks</th><th>Student with the highest marks</th><th>Merit List</th></tr></thead>
 <tbody></tbody></table></div>
 </section>
 <section class="panel">
-<h2>इंटरमीडिएट परीक्षाफल</h2>
+<h2>Intermediate Results</h2>
 <div class="table-scroll"><table id="inter-results">
-<thead><tr><th>क्रम</th><th>सत्र</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>प्रतिशत</th><th>प्रथम</th><th>द्वितीय</th><th>तृतीय</th><th>With Honours</th><th>Max Marks</th><th>सर्वाधिक अंक प्राप्त छात्रा</th><th>Merit List</th></tr></thead>
+<thead><tr><th>S.L.</th><th>Session</th><th>Appeared</th><th>Pass</th><th>Fail</th><th>%</th><th>First</th><th>Second</th><th>Third</th><th>With Honours</th><th>Max Marks</th><th>Student with the highest marks</th><th>Merit List</th></tr></thead>
 <tbody></tbody></table></div>
 </section>
 </div>
-<p class="note">यह विवरण विद्यालय के Website Setup में सेव किए गए वार्षिक परीक्षाफल से स्वतः प्राप्त होता है। विद्यार्थी का व्यक्तिगत परीक्षा परिणाम देखने के लिए Student Portal का उपयोग करें।</p>
-<footer>विद्यालय की शैक्षिक उपलब्धियों का अभिलेख</footer>
+</p>
 </main>
 <script>
 const RESULT_API = "https://student.shantiraman.co.in/api/website-toppers";
